@@ -17,11 +17,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\wikibellum\wikibellum.Web.csproj" />
+    <Folder Include="Pages\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
+    <ProjectReference Include="..\wikibellum.Entities\wikibellum.Entities.csproj" />
   </ItemGroup>
 
 </Project>

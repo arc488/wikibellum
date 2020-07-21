@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.TagHelpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -8,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using wikibellum.Web.Models;
+using wikibellum.Entities;
 
 namespace wikiparser
 {
@@ -80,7 +79,6 @@ namespace wikiparser
                     }
                     else if (target == "strength1")
                     {
-                        Console.WriteLine("Strength item value: " + rawDict[target]);
                         parsedEvent.Participants[0].Strength = new ParticipantParser().ParseStrength(rawDict[target]);
                     }
                     else if (target == "strength2")
@@ -89,45 +87,6 @@ namespace wikiparser
                     }
                 
             }
-
-
-            //foreach (var item in rawDict)
-            //{
-            //    if (item.Key == "conflict")
-            //    {
-            //        var trimmed = item.Value.Trim();
-            //        parsedEvent.Title = trimmed;
-            //    }
-            //    else if (item.Key == "date")
-            //    {
-            //        var dates = new DateParser().ParseDateLine(item.Value);
-            //        parsedEvent = new DateParser().AddDatesToEvent(dates, parsedEvent);
-            //    } else if (item.Key == "place")
-            //    {
-            //        var location = new LocationParser().Parse(item.Value);
-            //        parsedEvent.Location = location;
-            //    } else if (item.Key == "result")
-            //    {
-            //        var result = new ResultParser().ParseResultLine(item.Value);
-            //        parsedEvent.Result = result;
-            //    } else if (item.Key == "combatant1")
-            //    {
-            //        parsedEvent.Participants.Add(new ParticipantParser().ParseName(item.Value));                 
-            //    } else if (item.Key == "combatant2")
-            //    {
-            //       parsedEvent.Participants.Add(new ParticipantParser().ParseName(item.Value));
-            //    }
-            //    else if (item.Key == "strength1")
-            //    {
-            //        Console.WriteLine("Strength item value: " + item.Value);
-            //        parsedEvent.Participants[0].Strength = new ParticipantParser().ParseStrength(item.Value);
-            //    }
-            //    else if (item.Key == "strength2")
-            //    {
-            //        parsedEvent.Participants[1].Strength = new ParticipantParser().ParseStrength(item.Value);
-            //    }
-            //}
-
             return parsedEvent;
         }
 
@@ -153,10 +112,10 @@ namespace wikiparser
                     }
                 } catch (Exception e)
                 {
-                    if (e.Message != null) Console.WriteLine(e.Message);
-                    Console.WriteLine("An error occured while generating a dictionary of infobox values");
-                    Console.WriteLine("----- Extracted lines --------");
-                    extractedLines.ForEach(str => Console.WriteLine(str));
+                    if (e.Message != null) Debug.WriteLine(e.Message);
+                    Debug.WriteLine("An error occured while generating a dictionary of infobox values");
+                    Debug.WriteLine("----- Extracted lines --------");
+                    extractedLines.ForEach(str => Debug.WriteLine(str));
                 }
 
             }
@@ -185,7 +144,7 @@ namespace wikiparser
             catch (ArgumentOutOfRangeException e)
             {
                 if (e.Source != null)
-                    Console.WriteLine("IOException source: {0}", e.Source);
+                    Debug.WriteLine("IOException source: {0}", e.Source);
                 throw;
             }
             return lines;
@@ -211,8 +170,8 @@ namespace wikiparser
                     }
                 } catch (Exception e)
                 {
-                    if (e.Message != null) Console.WriteLine(e.Message);
-                    Console.WriteLine("Unable to extract '{0}' from infobox", line);
+                    if (e.Message != null) Debug.WriteLine(e.Message);
+                    Debug.WriteLine("Unable to extract '{0}' from infobox", line);
                 }
 
             }
@@ -269,7 +228,7 @@ namespace wikiparser
             catch (ArgumentOutOfRangeException e)
             {
                 if (e.Source != null)
-                    Console.WriteLine("IOException source: {0}", e.Source);
+                    Debug.WriteLine("IOException source: {0}", e.Source);
                 throw;
             }
 

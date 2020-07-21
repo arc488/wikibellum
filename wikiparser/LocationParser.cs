@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
-using wikibellum.Models;
+using wikibellum.Entities;
 
 namespace wikiparser
 {
@@ -13,11 +14,25 @@ namespace wikiparser
         public Location Parse(string locationString)
         {
             var location = new Location();
-            var cityName = locationString.Split(",")[0];
-            string pattern = @"(\[\[[a-zA-Z]*\s?[a-zA-z]*\b)";
+            var cityName = locationString;
+            var offMatch = Regex.Match(cityName, "(Off)");
+            if (offMatch.Success)
+            {
+                cityName = cityName.Remove(offMatch.Index, 3);
+            }
+
+            cityName = cityName.Split(",")[0];
+
+            if (cityName.Contains("|"))
+            {
+                cityName = cityName.Split("|")[0];
+            }
+
+            string pattern = @"(\w+\s?\w+\s?\w+)";
             Regex rg = new Regex(pattern);
             cityName = rg.Match(cityName).Value.Trim(char.Parse("["));
             location.Name = cityName;
+
             return location;
         }
     }

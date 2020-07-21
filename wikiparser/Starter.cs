@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Text;
-using wikibellum.Models;
+using wikibellum.Entities;
 
 namespace wikiparser
 {
-    class Starter
+    public class Starter
     {
 
 
@@ -15,7 +17,7 @@ namespace wikiparser
             int _endFile = endFile;
             var _path = @"C:\Users\KW\source\repos\wikiparser\BattlesRaw.txt";
             var _savePath = @"C:\Users\KW\source\repos\wikiparser\final.txt";
-            var _xmlPath = @"C:\Users\KW\source\repos\wikiparser\Pages\";
+            var _xmlPath = @"C:\Users\KW\source\repos\wikibellum\wikiparser\Pages\";
 
             List<string> nonViables = new List<string>();
             List<string> failedViables = new List<string>();
@@ -30,31 +32,42 @@ namespace wikiparser
 
             for (int i = _startFile; i < _endFile; i++)
             {
-                Console.WriteLine("File: " + i);
+                Debug.WriteLine("VV File: " + i);
                 var path = _xmlPath + i + ".xml";
                 var parsedEvent = new PageReader().ParseXml(path);
+                parsedEvent.FileName = i + ".xml";
                 if (parsedEvent.Title != "none")
                 {
                     parsedEvents.Add(parsedEvent);
-                    Console.WriteLine("##########################");
-                    Console.WriteLine("Title     " + parsedEvent.Title);
-                    Console.WriteLine("Date Start" + parsedEvent.Start.ToString("dd/MMMM/yyyy"));
-                    Console.WriteLine("Date End  " + parsedEvent.End.ToString("dd/MMMM/yyyy"));
-                    Console.WriteLine("Location  " + parsedEvent.Location.Name);
-                    Console.WriteLine("Result    " + parsedEvent.Result);
-                    Console.WriteLine("Combatant1    " + parsedEvent.Participants[0].Name);
-                    Console.WriteLine("Strength1    " + parsedEvent.Participants[0].Strength.Personnel);
-                    Console.WriteLine("Combatant2    " + parsedEvent.Participants[1].Name);
-                    Console.WriteLine("Strength2    " + parsedEvent.Participants[1].Strength.Personnel);
+                    Debug.WriteLine("##########################");
+                    //Debug.WriteLine("Title     " + parsedEvent.Title);
+                    //Debug.WriteLine("Date Start" + parsedEvent.Start.ToString("dd/MMMM/yyyy"));
+                    //Debug.WriteLine("Date End  " + parsedEvent.End.ToString("dd/MMMM/yyyy"));
+                    Debug.WriteLine("Location  " + parsedEvent.Location.Name);
+                    //Debug.WriteLine("Result    " + parsedEvent.Result);
+                    //Debug.WriteLine("Combatant1    " + parsedEvent.Participants[0].Name);
+                    //Debug.WriteLine("Strength1    " + parsedEvent.Participants[0].Strength.Personnel);
+                    //Debug.WriteLine("Combatant2    " + parsedEvent.Participants[1].Name);
+                    //Debug.WriteLine("Strength2    " + parsedEvent.Participants[1].Strength.Personnel);
 
-                    Console.WriteLine("______________________");
+                    Debug.WriteLine("______________________");
 
                 }
                 else
                 {
-                    nonViables.Add(path);
+                    nonViables.Add(i + ".xml");
                 }
             }
+
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"C:\Users\KW\source\repos\wikibellum\wikiparser\nonViables.txt", true))
+            {
+                foreach (var item in nonViables)
+                {
+                    file.WriteLine(item);
+                }
+            }
+
             return parsedEvents;
         }
     }

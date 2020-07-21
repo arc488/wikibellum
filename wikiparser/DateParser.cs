@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using wikibellum.Models;
+using wikibellum.Entities;
 
 namespace wikiparser
 {
@@ -21,8 +22,8 @@ namespace wikiparser
             }
             catch (Exception e)
             {
-                Console.WriteLine("DateParserA failed");
-                if (e.Message != null) Console.WriteLine(e.Message);
+                Debug.WriteLine("DateParserA failed");
+                if (e.Message != null) Debug.WriteLine(e.Message);
             };
 
             try
@@ -31,8 +32,8 @@ namespace wikiparser
                 return dates;
             } catch (Exception e)
             {
-                Console.WriteLine("DateParserB failed");
-                if (e.Message != null) Console.WriteLine(e.Message);
+                Debug.WriteLine("DateParserB failed");
+                if (e.Message != null) Debug.WriteLine(e.Message);
             }
             finally
             {
@@ -47,7 +48,7 @@ namespace wikiparser
         //DD-DD Month YYYY // hyphen in pattern and dateLine is actually another character \u2013
         public List<DateTime> DateParserB(string dateLine)
         {
-            var datePattern = @"(\d+–\d*\s{1}[a-zA-Z]*\s\d{4})";
+            var datePattern = @"(\d+\d*\s{1}[a-zA-Z]*\s\d{4})";
 
             var dateString = String.Empty;
 
@@ -104,7 +105,7 @@ namespace wikiparser
                 dates[0] = new DateTime(dates[1].Year, dates[0].Month, dates[0].Day);
             }
 
-            if (dates.Count < 2) throw new Exception("DD Month YYYY parsed unable to parse: " + dateLine);
+            if (dates.Count < 1) throw new Exception("DD Month YYYY parsed unable to parse: " + dateLine);
             else return dates;
         }
 
@@ -117,7 +118,7 @@ namespace wikiparser
             }
             catch (ArgumentOutOfRangeException e)
             {
-                Console.WriteLine(e.Message, "Dates Length: " + dates.Count);
+                Debug.WriteLine(e.Message, "Dates Length: " + dates.Count);
                 parsedEvent.Start = dates[0];
             }
             finally

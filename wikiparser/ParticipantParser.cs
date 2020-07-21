@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
-using wikibellum.Models;
+using wikibellum.Entities;
 using wikiparser.Enums;
 
 namespace wikiparser
@@ -59,8 +60,8 @@ namespace wikiparser
             }
             catch (Exception e)
             {
-                Console.WriteLine("Unable to parse strength");
-                if (e.Message != null) Console.WriteLine(e.Message);
+                Debug.WriteLine("Unable to parse strength");
+                if (e.Message != null) Debug.WriteLine(e.Message);
                 largestNumber = 0;
             }
 

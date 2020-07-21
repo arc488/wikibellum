@@ -1,6 +1,7 @@
 ﻿using IQToolkit;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace wikiparser
@@ -11,7 +12,14 @@ namespace wikiparser
 
         public ResultParser()
         {
-            _sides = new string[] { "allied", "soviet", "german", "axis", "italian", "british", "french", "american", "japanese", "chinese", "polish", "hungarian", "czech", "slovak", "belgian" };
+            _sides = new string[] { "allied", "soviet", "german", 
+                "axis", "italian", "british", "french", "american", 
+                "japanese", "chinese", "polish", "hungarian", 
+                "czech", "slovak", "belgian", "danish", "greek",
+                "yugoslavian", "dutch", "indian", "canadian", "mexican",
+                "norwegian", "australian", "brazilian", "romanian",
+                "slovakian", "croatian", "bulgarian", "finnish", "finish",
+                "thai", "iraqi" };
         }
 
         public string ParseResultLine(string resultLine)
@@ -20,8 +28,6 @@ namespace wikiparser
             bool sideMatched = false;
             bool outcomeMatched = false;
 
-            Console.WriteLine("Raw line: " + resultLine);
-
             List<string> matches = new List<string>();
 
             foreach (var side in _sides)
@@ -29,9 +35,6 @@ namespace wikiparser
                 if (resultLine.ToLower().Contains(side))
                 {
                     matches.Add(side);
-                    //var formmatedString = char.ToUpper(side[0]) + side.Substring(1);
-                    //result += formmatedString;
-                    //matches += 1;
                     sideMatched = true;
                 }
             }
@@ -46,7 +49,10 @@ namespace wikiparser
                     matchIndex.Add(index, match);
                 }
                 var firstMatch = matchIndex.Keys.Aggregate(0, (min, cur) => min < cur ? min : cur);
-                finalSide = char.ToUpper(matchIndex[firstMatch][0]) + matchIndex[firstMatch].Substring(1);
+                if (firstMatch != 0)
+                {
+                    finalSide = char.ToUpper(matchIndex[firstMatch][0]) + matchIndex[firstMatch].Substring(1);
+                }
             } 
             else if (matches.Count == 1)
             {

@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using wikibellum.Models;
+using wikibellum.Entities;
 using WikimediaProcessing;
 
 namespace wikiparser
@@ -15,10 +15,10 @@ namespace wikiparser
     class Program
     {
 
-        static void Main(int startFile, int endFile)
+        static void Main(string[] args)
         {
-           
 
+            new Starter().StartParse(65, 70);
         }
 
 
