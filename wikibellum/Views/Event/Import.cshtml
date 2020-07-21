@@ -1,0 +1,27 @@
+﻿@model ImportViewModel
+
+    <form asp-controller="Import" asp-action="Process" method="post">
+        <div class="form-group">
+            <label asp-for="@Model.startFile">Title</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <i class="input-group-text fa fa-star"></i>
+                </div>
+                <input asp-for="@Model.startFile" class="form-control" placeholder="Title" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.endFile">Title</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <i class="input-group-text fa fa-star"></i>
+                </div>
+                <input asp-for="@Model.endFile" class="form-control" placeholder="Title" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="border col-md-10 text-center">
+                <input type="submit" value="Start Process" class="btn btn-primary my-2">
+            </div>
+        </div>
+    </form>

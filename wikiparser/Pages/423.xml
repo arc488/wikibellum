@@ -1,0 +1,223 @@
+<page><title>Battle of the Transdanubian Hills</title><ns>0</ns><id>12813019</id><revision><id>948188734</id><parentid>942214429</parentid><timestamp>2020-03-30T16:57:22Z</timestamp><contributor><username>Jonesey95</username><id>9755426</id></contributor><comment>fix ref=harv</comment><model>wikitext</model><format>text/x-wiki</format><text bytes="15382" xml:space="preserve">{{Infobox military conflict
+| conflict    = Battle of the Transdanubian Hills
+| partof      = [[World War II]]
+| image       = [[File:Plattensee-op.png|300 px]]
+| caption     = Planned German attacks for Operation Spring Awakening
+| date        = 6–21 March 1945
+| place       = [[Drava]] river valley and [[Transdanubia|Transdanubian Hills]]
+| result      = Allied victory
+| combatant1  = {{flagcountry|Kingdom of Bulgaria}} &lt;br&gt; {{flag|Soviet Union|1936}}&lt;br&gt;{{flag|Yugoslavia}}
+| combatant2  = {{flagcountry|Nazi Germany}}
+| commander1  = {{flagicon|Kingdom of Bulgaria}} [[Vladimir Stoychev]]&lt;br&gt;{{flagicon|Soviet Union}} [[Mikhail Sharokhin]]&lt;ref&gt;{{cite web|url=http://www.generals.dk/general/Sharokhin/Mikhail_Nikolaevich/Soviet_Union.html|title=Biography of Colonel-General Mikhail Nikolaevich Sharokhin - (Михаил Николаевич Шарохин) (1898 – 1974), Soviet Union|work=generals.dk}}&lt;/ref&gt;&lt;br&gt;{{flagicon|Yugoslavia}} [[Kosta Nađ]]
+| commander2  = {{flagicon|Nazi Germany}} [[Maximilian de Angelis]]&lt;br&gt;{{flagicon|Nazi Germany}} [[Werner von Erdmannsdorff]]
+| strength1   = [[First Army (Bulgaria)|Bulgarian 1st Army]]&lt;br&gt;[[57th Army (Soviet Union)|Soviet 57th Army]]&lt;br&gt;[[3rd Army (Yugoslav Partisans)|Yugoslav 3rd Army]]
+| strength2   = [[2nd Panzer Army]]&lt;br&gt;[[LXXXXI Army Corps (Wehrmacht)|LXXXXI Corps]]
+| casualties1 = 2,500
+| casualties2 = 10,000
+| campaignbox = 
+{{Campaignbox Axis-Soviet War}}
+{{Campaignbox Hungary 1944-1945}}
+}}
+{{command structure
+|name={{flagicon|Soviet Union}} 57th Army&lt;ref name="auto"&gt;Soviet General Staff Official Order of Battle for 1 March 1945&lt;/ref&gt;
+|date=1 March 1945
+|parent=[[3rd Ukrainian Front]]
+|subordinate=[[6th Guards Rifle Corps]]&lt;br&gt;• [[10th Guards Airborne Division]]&lt;br&gt;• [[20th Guards Rifle Division]]&lt;br&gt;• [[61st Guards Rifle Division]]&lt;br&gt;[[64th Rifle Corps]]&lt;br&gt;• [[73rd Guards Rifle Division]]&lt;br&gt;• [[113th Rifle Division]]&lt;br&gt;• [[299th Rifle Division]]&lt;br&gt;[[160th Gun-Artillery Brigade]]&lt;br&gt;[[65th Engineer-Sapper Brigade]]}}
+{{command structure
+|name={{flagicon|Kingdom of Bulgaria}} 1st Army&lt;ref name="auto"/&gt;
+|date=1 March 1945
+|parent=[[3rd Ukrainian Front]]
+|subordinate=III Corps&lt;br&gt;• 8th Infantry Division&lt;br&gt;• 10th Infantry Division&lt;br&gt;• 12th Infantry Division&lt;br&gt;• 16th Infantry Division&lt;br&gt;IV Corps&lt;br&gt;• 3rd Infantry Division&lt;br&gt;• 11th Infantry Division&lt;br&gt;1st Tank Brigade&lt;br&gt;1st motorized Brigade}}
+{{command structure
+|name={{flagicon|Yugoslavia}} [[3rd Army (Yugoslav Partisans)|3rd Army]]
+|date=1945
+|parent=Yugoslav High Command
+|subordinate=12th Corps&lt;br&gt;• 16th Division&lt;br&gt;• 36th Division&lt;br&gt;• 51st Division&lt;br&gt;12th Division&lt;br&gt;17th Division&lt;br&gt;32nd Division&lt;br&gt;33rd Division&lt;br&gt;40th Division}}
+{{command structure
+|name={{flagicon|Nazi Germany}} 2nd Panzer Army{{sfn|Frieser|Schmider|Schönherr|Schreiber|2007|p=941}}
+|date=6 March 1945
+|parent=[[Army Group South]]
+|subordinate=XXII Mountain Corps&lt;br&gt;• 118th Light Infantry Division&lt;br&gt;• 92nd Panzergrenadier Brigade&lt;br&gt;LVIII Corps&lt;br&gt;• 16th SS Panzergrenadier Division&lt;br&gt;• 13th SS Infantry Division&lt;br&gt;• 1st Mountain Division&lt;br&gt;• 71st Infantry Division}}
+{{command structure
+|name={{flagicon|Nazi Germany}} [[LXXXXI Army Corps (Wehrmacht)|LXXXXI Corps]]&lt;ref name="auto1"&gt;''Das Deutsche Reich'', p. 1065&lt;/ref&gt;
+|date=6 March 1945
+|parent=[[Army Group E]]
+|subordinate=297th Infantry Division&lt;br&gt;104th Light Infantry Division&lt;br&gt;11th Luftwaffe Field Division&lt;br&gt;1st Cossack Division (-)}}
+{{Location map+ | Hungary
+|float = right
+|width = 500
+|caption = &lt;center&gt;'''Unit locations on 6 March 1945'''&lt;br&gt;Red - Soviet forces, Orange - Yugoslav forces, Green - Bulgarian forces, Grey - German forces&lt;br&gt;Kapos. = Kaposvár&lt;/center&gt;
+|places =
+  {{Location map~ | Hungary
+    |label=&lt;small&gt;'''XXII Corps'''&lt;/small&gt;
+    |position=left
+    |background=white
+    |mark=Black pog.svg
+    |marksize=8
+    |lat_deg= 46 | lat_min= 39
+    |lon_deg= 17 | lon_min= 23
+    }}
+  {{Location map~ | Hungary
+    |label=&lt;small&gt;'''LXVIII Corps'''&lt;/small&gt;
+    |position=left
+    |background=white
+    |mark=Black pog.svg
+    |marksize=8
+    |lat_deg= 46 | lat_min= 24
+    |lon_deg= 17 | lon_min= 20
+    }}
+  {{Location map~ | Hungary
+    |label=&lt;small&gt;'''LXXXXI Corps'''&lt;/small&gt;
+    |position=left
+    |background=white
+    |mark=Black pog.svg
+    |marksize=8
+    |lat_deg= 45 | lat_min= 40
+    |lon_deg= 18 | lon_min= 18
+    }}
+{{Location map~ | Hungary
+    |label=&lt;small&gt;'''3rd Army'''&lt;/small&gt;
+    |position=right
+    |background=white
+    |mark=Orange pog.svg
+    |marksize=8
+    |lat_deg= 45 | lat_min= 44
+    |lon_deg= 18 | lon_min= 28
+    }}
+{{Location map~ | Hungary
+    |label=&lt;small&gt;'''57th Army'''&lt;/small&gt;
+    |position=right
+    |background=white
+    |mark=Red pog.svg
+    |marksize=8
+    |lat_deg= 46 | lat_min= 30
+    |lon_deg= 17 | lon_min= 36
+    }}
+{{Location map~ | Hungary
+    |label=&lt;small&gt;'''133rd Rifle Corps'''&lt;/small&gt;
+    |position=right
+    |background=white
+    |mark=Red pog.svg
+    |marksize=8
+    |lat_deg= 46 | lat_min= 40
+    |lon_deg= 18 | lon_min= 52
+    }}
+  {{Location map~ | Hungary
+    |label=&lt;small&gt;'''III Corps'''&lt;/small&gt;
+    |position=left
+    |background=white
+    |mark=Green pog.svg
+    |marksize=8
+    |lat_deg= 46 | lat_min= 12
+    |lon_deg= 17 | lon_min= 25
+    }}
+  {{Location map~ | Hungary
+    |label=&lt;small&gt;'''IV Corps'''&lt;/small&gt;
+    |position=left
+    |background=white
+    |mark=Green pog.svg
+    |marksize=8
+    |lat_deg= 45 | lat_min= 51
+    |lon_deg= 18 | lon_min= 15
+    }}
+{{Location map~ | Hungary
+    |label=&lt;small&gt;''PÉCS''&lt;/small&gt;
+    |position=right
+    |background=white
+    |mark=Location dot blue.svg
+    |marksize=5
+    |lat_deg= 46 | lat_min= 04
+    |lon_deg= 18 | lon_min= 14
+    }}
+{{Location map~ | Hungary
+    |label=&lt;small&gt;''MOHÁCS''&lt;/small&gt;
+    |position=right
+    |background=white
+    |mark=Location dot blue.svg
+    |marksize=5
+    |lat_deg= 45 | lat_min= 59
+    |lon_deg= 18 | lon_min= 41
+    }}
+{{Location map~ | Hungary
+    |label=&lt;small&gt;''KAPOS.''&lt;/small&gt;
+    |position=bottom
+    |background=white
+    |mark=Location dot blue.svg
+    |marksize=5
+    |lat_deg= 46 | lat_min= 22
+    |lon_deg= 17 | lon_min= 47
+    }}
+}}
+The '''Battle of the Transdanubian Hills''' (also known in Bulgaria as the "Drava Operation") was a defensive operation of the [[Bulgarian First Army]] during [[Military history of Bulgaria during World War II|Bulgaria's participation in World War II]] against [[Germany|German]] [[Wehrmacht]] forces, who were trying to capture the north bank of the [[Drava]] river as part of [[Operation Spring Awakening]].
+
+Combat in the Transdanubian Hills lasted from 6 to 21 March 1945. The German attacks failed to achieve their objectives and were then eclipsed by the large-scale Soviet offensive from the area of [[Lake Balaton]] to Vienna.
+
+==Deployment==
+{{refimprove|section|date=March 2018}}&lt;!--only one citation in section--&gt;
+German forces south of Lake Balaton were organized into two groups.  The northern group was General de Angelis' [[2nd Panzer Army]] which had the town of [[Kaposvár]] as its objective.  Facing the 2nd Panzer Army's northern flank was General Sharokhin's Soviet [[57th Army (Soviet Union)|57th Army]].  The area in front of the 2nd Panzer Army's southern flank was defended by the III Corps of General Stoychev's [[First Army (Bulgaria)|Bulgarian First Army]].
+
+The other German group was General von Erdmannsdorff's [[LXXXXI Army Corps (Wehrmacht)|LXXXXI Corps]] of [[Army Group E]] in northern Yugoslavia.  LXXXXI Corps had concentrated near [[Donji Miholjac]] and [[Valpovo]].  Across the Drava River at Donji Miholjac, the IV Corps of the Bulgarian Army defended the routes leading to [[Pécs]] and [[Mohács]]. Northeast of Valpovo and across the Drava, General Nađ's [[3rd Army (Yugoslav Partisans)|3rd Army]] of [[Josip Broz Tito]]'s Yugoslav National Liberation Army defended the routes leading to northeast Yugoslavia. Named "Forest Devil" ({{lang-de|Waldteufel}}), the LXXXXI Corps' operation had as its primary objective the town of Mohács.
+
+In tandem with other German attacks that formed a part of Operation Spring Awakening, the German advance south of Lake Balaton aimed to surround and annihilate the 57th Army and [[First Army (Bulgaria)|First Bulgarian Army]] west of the [[Danube]].
+
+The 57th Army was the southernmost unit of the [[Red Army]] on the eastern front.  South of the 57th Army, the Germans of 2nd Panzer Army and Army Group E were confronted by Soviet allies—Bulgarian forces in southern Hungary and Tito's forces in Yugoslavia. An attack in these areas offered the Germans the opportunities of attacking the less well equipped Bulgarians and Yugoslavs as well as potentially rolling up part of the Soviet southern flank. Thus, this region was of particular concern to Soviet Marshal [[Fyodor Tolbukhin]],&lt;ref&gt;''Endkampf'', p. 222&lt;/ref&gt; whose [[3rd Ukrainian Front]] was deployed in southern Hungary and which commanded both the 57th Army and the Bulgarian First Army. (The unit south of the Bulgarians was the Yugoslav 3rd Army which was not subordinated to 3rd Ukrainian Front.) Alerted that a German attack south of Lake Balaton was imminent, Marshal Tolbukhin deployed additional artillery units to reinforce the 57th Army and the Bulgarian III Corps.
+
+==Combat==
+The LXVIII Corps of the 2nd Panzer Army made the main thrust south of Lake Balaton on March 6 with an attack against the Soviet 57th Army and the Bulgarian III Corps' 10th Division.  With three infantry divisions (the 16th was redeployed to assist the IV Corps) aided by a thaw that caused muddy ground, the Bulgarians held as did the 57th Army. Although the LXVIII Corps (also called "Group Konrad" for this operation) attacked across a 10-kilometer wide front, it failed to penetrate the Soviet and Bulgarian defenses and had to be content with pinning down the Soviets and Bulgarians in this region.&lt;ref&gt;''Endkampf'', p. 224&lt;/ref&gt; By March 12, LXVIII Corps had moved the axis of its attack against the 57th Army and managed to penetrate some 10 kilometers into the Soviet defense before bogging down.&lt;ref name="auto2"&gt;''Fremde Heere'', p. 217&lt;/ref&gt;
+
+In the Donji Miholjac area, the German LXXXXI Corps attacked on March 6 with about 35,000 troops.  Two infantry divisions of this corps, the 297th and 104th, crossed the Drava and, pressing the sparsely deployed&lt;ref name="auto3"&gt;''Fremde Heere'', p. 216&lt;/ref&gt; Bulgarian IV Corps' 3rd Infantry Division, occupied an area 18 to 20 kilometers deep and five to six kilometers wide. On March 7, General Stoychev ordered the 16th Infantry Division in the Bulgarian III Corps to reinforce the 3rd Division at Donji Miholjac, but this required a march of 85 kilometers. During March 8–9, some Bulgarian elements began a military evacuation of Pécs. At this, Marshal Tolbukhin ordered the Soviet [[133rd Rifle Corps]] out of reserve to reinforce the Bulgarian IV Corps. During the march to the battlefield, the Soviet troops encountered Bulgarian forces and fired upon them because the Bulgarian helmets resembled those of the Germans.&lt;ref name="auto3"/&gt; The 133rd Rifle Corps, reinforced by Soviet artillery units and supported by ground-attack aircraft, subsequently took up positions at the critical junction of the Bulgarian and Yugoslav forces.&lt;ref&gt;Erickson, p. 514&lt;/ref&gt; Ironically, the German troops found themselves facing [[Panzer IV]] tanks operated by the Bulgarian Army.&lt;ref name="auto4"&gt;Schramm, p. 1159&lt;/ref&gt;
+
+During March 12–19, after fierce fighting in the villages of [[Drávaszabolcs]], [[Drávapalkonya]] and [[Drávacsehi]], the German advance was halted with the help of the 133rd Rifle Corps, the [[84th Rifle Division]]&lt;ref name="auto4"/&gt; from 3rd Ukrainian Front reserves, and the Bulgarian 16th Division. Realizing the 2nd Panzer Army was not going to break through on its front and under pressure from the Soviets and Bulgarians, the Germans evacuated the bridgehead across the Drava at Donji Miholjac during March 18–20, 1945.&lt;ref name="auto2"/&gt;
+
+Near Valpovo, the German 11th [[Luftwaffe Field Division]], supported by two regiments of dismounted Cossacks, crossed the Drava and pushed about two kilometers to the northeast by March 8. In the face of resistance by the Yugoslav 12th Partisan Corps, this attack slowed, and by March 21, the Yugoslav 3rd Army had pushed the Germans away from Valpovo.
+
+==Aftermath==
+The success of the Bulgarians, Soviets, and Yugoslavs during the combat in the Transdanubian Hills led to a failure of the planned German advance in the region and helped prepare the [[Vienna Offensive]] of the [[Red Army]].
+
+The participation in the offensive of the German LXXXXI Corps of Army Group E required a massing of forces that significantly weakened the overall German defense in Yugoslavia – a situation that was rapidly exploited by Tito's Yugoslav National Liberation Army.&lt;ref name="auto1"/&gt;
+
+The overall conduct of Operation Spring Awakening has also been criticized because of the German failure to deploy the stronger units of the 6th SS Panzer Army against the relatively weak Soviet and Bulgarian defenses south of Lake Balaton.{{sfn|Frieser|Schmider|Schönherr|Schreiber|2007|p=932}} The 6th SS Panzer Army was instead deployed north of Lake Balaton in an area the Hungarian military warned was unsuitable for an armored attack.{{sfn|Frieser|Schmider|Schönherr|Schreiber|2007|p=931}}
+
+In Bulgaria the battle is also known as the ''Drava epic'' ({{lang-bg|Дравска епопея}})&lt;ref&gt;An example of this usage can be found [http://pehota.start.bg/article.php?aid=2163 here] {{Webarchive|url=https://web.archive.org/web/20120328051158/http://pehota.start.bg/article.php?aid=2163 |date=2012-03-28 }}&lt;/ref&gt; because of the bravery shown by the Bulgarians in withstanding the attack of a better trained and equipped adversary.
+
+==Notes==
+{{reflist|17em}}
+
+* John Erickson, ''The Road to Berlin'', New Haven: Yale University Press, 1983, {{ISBN|978-0-300-07813-8}}.
+* Peter Gosztony, ''Endkampf an der Donau 1944/45'', Wien-München: Molden-Taschenbuch-Verlag, 1978, {{ISBN|3-217-05126-2}}.
+* Peter Gosztony, ''Stalins Fremde Heere'', Bonn: Bernard &amp; Graefe Verlag, 1991, {{ISBN|3-7637-5889-5}}.
+* {{cite book
+ | last1 = Frieser
+ | first1 = Karl-Heinz
+ | author-link1 = Karl-Heinz Frieser
+ | first2 =Klaus 
+ | last2 = Schmider
+ | first3 =Klaus 
+ | last3 = Schönherr
+ | first4 = Gerhard 
+ | last4 = Schreiber
+ | first5 = Kristián 
+ | last5 = Ungváry
+ | author-link5 = Krisztián Ungváry
+ | first6 =Bernd 
+ | last6=Wegner
+ | work = [[Das Deutsche Reich und der Zweite Weltkrieg]] [Germany and the Second World War]
+ | volume = VIII
+ | title = Die Ostfront 1943/44 – Der Krieg im Osten und an den Nebenfronten
+ | trans-title = The Eastern Front 1943–1944: The War in the East and on the Neighbouring Fronts
+ | publisher = Deutsche Verlags-Anstalt 
+ | location = München
+ | year = 2007
+ | isbn = 978-3-421-06235-2
+ | language = German
+ | ref = harv
+ }}
+* Percy Schramm, ''Kriegstagebuch des Oberkommandos der Wehrmacht 1944-1945'', Vol. II, Herrsching: Manfred Pawlak, 1982, {{ISBN|3-88199-073-9}}.
+
+{{coord missing|Hungary}}
+
+{{DEFAULTSORT:Drava 1945}}
+[[Category:Battles and operations of the Soviet–German War]]
+[[Category:Battles of World War II involving Bulgaria]]
+[[Category:Battles of World War II involving Germany]]
+[[Category:March 1945 events]]</text><sha1>m83sz7ualmgyfced77ts950iu8bumaj</sha1></revision></page>

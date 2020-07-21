@@ -1,0 +1,536 @@
+<page><title>Operation Bagration</title><ns>0</ns><id>476582</id><revision><id>967776067</id><parentid>967746165</parentid><timestamp>2020-07-15T07:04:52Z</timestamp><contributor><username>Denniss</username><id>133598</id></contributor><comment>Reverted to revision 967471948 by [[Special:Contributions/Tomissonneil|Tomissonneil]] ([[User talk:Tomissonneil|talk]]) ([[WP:TW|TW]])</comment><model>wikitext</model><format>text/x-wiki</format><text bytes="61571" xml:space="preserve">{{short description|Large Soviet military offensive in WW2}}
+{{Use dmy dates|date=June 2020}}
+{{Infobox military conflict
+|conflict = Operation Bagration&lt;br/&gt;&lt;small&gt;(Belorussian Strategic Offensive Operation)&lt;/small&gt;
+|partof = the [[Eastern Front (World War II)|Eastern Front]] of [[World War II]]
+| image = BagrationMap2.jpg
+| image_size = 300
+|caption = Deployments during Operation Bagration
+|date  = 23 June – 19 August 1944
+|place = [[Soviet Union]] (present day [[Belarus]], [[Baltic states]]), Ukraine, and eastern [[Poland]]
+|territory = Soviets liberate all of [[Byelorussian Soviet Socialist Republic|Byelorussian SSR]] and gain foothold in eastern Poland.
+|result = Soviet victory&lt;br/&gt;Destruction of Army Group Centre
+|combatant1 = {{flagcountry|Nazi Germany}}
+|combatant2 = {{flag|Soviet Union|1936}}&lt;br/&gt;{{Flag icon|Poland|1928}} [[Polish Armed Forces in the East|Poland]] 
+|commander1 = {{ubl
+  |[[Ernst Busch (military)|Ernst Busch]]
+  |[[Walter Model]]
+  |[[Hans Jordan]]
+  |[[Georg-Hans Reinhardt]]
+  |[[Kurt von Tippelskirch]]
+  |[[Walter Weiss]]
+}}
+|commander2 = {{ubl
+  |[[Konstantin Rokossovsky]]
+  |[[Georgy Zhukov]]
+  |[[Aleksandr Vasilevsky]]
+  |[[Ivan Bagramyan]]
+  |[[Georgiy Zakharov]]
+  |[[Ivan Chernyakhovsky]]
+}}
+|units1={{ubl
+  |[[Army Group Center]]
+}}
+* [[9th Army (Wehrmacht)|9th Army]]
+* [[3rd Panzer Army]]
+* [[4th Army (Wehrmacht)|4th Army]]
+* [[2nd Army (Wehrmacht)|2nd Army]]
+|units2={{ubl
+  |[[1st Baltic Front]]
+  |[[1st Belorussian Front]]
+  |[[2nd Belorussian Front]]
+  |[[3rd Belorussian Front]]
+}}
+|strength1 = '''Initially''':&lt;br/&gt; 486,493 combat personnel,{{sfn|Frieser|2007|p=531}} 849,000 total {{sfn|Citino|2017|p=171}}&lt;br&gt;118 tanks{{sfn|Frieser|2007|p=534}}&lt;br /&gt;452 assault guns{{sfn|Frieser|2007|p=534}}&lt;br /&gt;3,236 field guns and howitzers{{sfn|Frieser|2007|p=534}}&lt;br /&gt;920 aircraft{{sfn|Frieser|2007|p=534}}&lt;br&gt;'''In total:'''&lt;br&gt;'''''Soviet sources:'''''&lt;ref name=GO4&gt;Glantz &amp; Orenstein 2004, p. 4.&lt;/ref&gt;&lt;br /&gt;1,036,760 personnel&lt;br /&gt;800 tanks&lt;br /&gt;530 assault guns&lt;br /&gt;7,760 field guns&lt;br /&gt; 2,320 anti-aircraft guns&lt;br /&gt;1,000–1,300 aircraft
+|strength2 = '''Initially:'''&lt;br&gt;1,670,300 personnel&lt;br /&gt;3,841 tanks and 1,977 assault guns{{sfn|Frieser|2007|p=534}}{{sfn|Glantz|House|1995|p=132}}&lt;br /&gt;32,718 guns, rocket launchers and mortars{{sfn|Frieser|2007|p=534}}&lt;br /&gt;7,799 aircraft{{sfn|Frieser|2007|p=534}}&lt;br /&gt;'''In total:'''&lt;br&gt;'''''Frieser:'''''&lt;br&gt;2,500,000 personnel&lt;br /&gt;6,000 tanks and assault guns{{sfn|Frieser|2007|p=534}}&lt;br /&gt;45,000 guns, rocket launchers and mortars{{sfn|Frieser|2007|p=534}}&lt;br /&gt;8,000 aircraft{{sfn|Frieser|2007|p=534}}{{sfn|Glantz|House|1995|p=201}}&lt;br&gt;
+|casualties1='''''Glantz and House:'''''{{sfn|Glantz|House|1995|p=132}}&lt;br /&gt;450,000 casualties&lt;br /&gt;'''Frieser''':&lt;br&gt; 26,397 killed&lt;br /&gt;109,776 wounded&lt;br /&gt;262,929 missing and captured&lt;br /&gt;399,102 overall&lt;ref&gt;Frieser p. 593–594&lt;/ref&gt;&lt;br&gt;'''Zaloga''':&lt;br&gt;150,000–225,000 killed or missing; 150,000 captured&lt;ref&gt;Zaloga 1996, p. 71&lt;/ref&gt;&lt;br /&gt;'''Isayev:'''&lt;br /&gt;500,000 casualties&lt;ref name = "isayev"&gt;[http://echo.msk.ru/programs/victory/612713-echo/ Алексей Исаев. Цена Победы. Операция «Багратион»] Эхо Москвы. 17.08.2009&lt;/ref&gt;&lt;br&gt;'''Soviet sources:'''&lt;ref name=GO176&gt;Glantz &amp; Orenstein 2004, p. 176.&lt;/ref&gt;&lt;br&gt;381,000 killed&lt;br&gt;158,480 captured
+|casualties2= '''Glantz and House''':{{sfn|Glantz|House|1995|p=298}}&lt;br&gt;770,888
+:180,000 killed or missing
+:340,000–590,848 wounded and sick
+2,957 tanks and assault guns{{sfn|Krivosheev|1997|p=371}}&lt;br /&gt;2,447 guns{{sfn|Krivosheev|1997|p=203}}&lt;br /&gt;822 aircraft{{sfn|Krivosheev|1997|p=203}}
+}}
+'''Operation Bagration''' ({{IPAc-en|b|ʌ|ɡ|r|ʌ|t|i|ˈ|ɒ|n}}; &lt;!-- IPA based on this Russian video: https://www.youtube.com/watch?v=vhBiN-ID564&amp;t=1m05s --&gt; {{lang-ru|Операция Багратио́н}}, Operatsiya Bagration) was the [[codename]] for the [[Soviet Union|Soviet]] 1944 '''Belorussian Strategic Offensive Operation''',&lt;ref&gt;Alternative spellings for ''Belorussian Offensive'' are ''[[Byelorussian SSR|Byelorussian]] Offensive'' and ''[[Belarus]]ian Offensive''&lt;/ref&gt; ({{lang-ru|Белорусская наступательная операция «Багратион»}}, Belorusskaya nastupatelnaya Operatsiya ''Bagration'') a military campaign fought between 23 June and 19 August 1944 in [[Byelorussian Soviet Socialist Republic|Soviet Byelorussia]] in the [[Eastern Front (World War II)|Eastern Front]] of [[World War II]].&lt;ref&gt;Not to be confused with the 1943 [[Belorussian Strategic Offensive Operation (1943)|Belorussian Strategic Offensive Operation]] (3 October – 31 December 1943).&lt;/ref&gt; The Soviet Union inflicted the biggest defeat in German military history by destroying 28 out of 34 divisions of [[Army Group Centre]] and completely shattered the German front line.&lt;ref&gt;Buchner, Alex. Ostfront 1944: The German Defensive Battles on the Russian Front 1944. Schiffer Publishing, Ltd. 1995, p. 212.&lt;/ref&gt; It was the fifth deadliest campaign on the European war scene, killing around 450,000 soldiers.&lt;ref&gt;Norman Davies, "Europe at War", Swedish {{ISBN|978-91-37-13109-2}},chapter 1, p.40 in the Swedish translation (table of killed soldiers in the lagest battles and campaigns)&lt;/ref&gt;
+
+On 23 June 1944, the [[Red Army]] attacked Army Group Centre in Byelorussia, with the objective of encircling and destroying its main component armies. By 28 June, the German [[4th Army (Wehrmacht)|Fourth Army]] had been destroyed, along with most of the [[3rd Panzer Army|Third Panzer]] and [[9th Army (Wehrmacht)|Ninth]] Armies.{{sfn|Willmott|1984|p=154}}{{sfn|Zaloga|1996|p=7}} The Red Army exploited the collapse of the German front line to encircle German formations in the vicinity of [[Minsk]] in the [[Minsk Offensive]] and destroy them, with Minsk liberated on 4 July. With the end of effective German resistance in Byelorussia, the Soviet offensive continued further to [[Lithuania]], [[Poland]] and [[Kingdom of Romania|Romania]] over the course of July and August.
+
+The Red Army successfully used the [[Deep operation|Soviet deep battle]] and [[Russian military deception|maskirovka]] (deception) strategies for the first time to a full extent, albeit with continuing heavy losses. Operation Bagration diverted German mobile reserves to the central sectors, removing them from the [[Lublin]]-[[Brest, Belarus|Brest]] and [[Lviv|Lvov]]–[[Sandomierz]] areas, enabling the Soviets to undertake the [[Lvov–Sandomierz Offensive]]{{sfn|Watt|2008|p=699}} and [[Lublin–Brest Offensive]].{{sfn|Watt|2008|p=669}} This allowed the Red Army to reach the [[Vistula]] river and [[Warsaw]], which in turn put Soviet forces within striking distance of [[Berlin]], conforming to the concept of Soviet deep operations—striking into the enemy's [[strategic depth]]s.{{sfn|Watt|2008|p=670}}
+
+==Background==
+{{Campaignbox Axis-Soviet War}}
+{{Campaignbox Poland 1944-1945}}
+{{Campaignbox Stalin's ten blows}}
+
+Germany's [[Army Group Centre]] had previously proven tough to counter as the Soviet defeat in [[Operation Mars]] had shown. But by June 1944, despite shortening its front line, it had been exposed following the defeats of [[Army Group South]] in the battles that followed the [[Battle of Kursk]], the [[Battle of Kiev (1943)|Battle of Kiev]], the [[Dnieper–Carpathian Offensive|Dnieper-Carpathian Offensive]] and the [[Crimean Offensive]] in the late summer, autumn, and winter of 1943–44. In the north, [[Army Group North]] was also pushed back, leaving Army Group Center's lines protruding towards the east and at risk of losing contact with neighbouring army groups.{{sfn|Citino|2017|pp=160–162}}
+
+The German High Command expected the next Soviet offensive to fall against [[Army Group North Ukraine]] (Field Marshal [[Walter Model]]), while it lacked intelligence capabilities to divine the Soviet intentions.{{sfn|Citino|2017|pp=163–165}} The Wehrmacht had redeployed one-third of Army Group Centre's artillery, half of its [[tank destroyer]]s, and 88 per cent of tanks to the south.{{sfn|Ziemke|1969|p=11}} The entire operational reserve on the Eastern front (18 Panzer and mechanised divisions, stripped from Army Groups North and Centre) was deployed to Model's sector.{{sfn|Citino|2017|p=167}} Army Group Centre had a total of only 580 tanks, tank destroyers, and assault guns. They were opposed by over 4,000 Soviet tanks and self-propelled guns.{{citation needed|date=March 2019}} German lines were thinly held; for example, the 9th Army sector had 143 soldiers per km of the front.{{sfn|Citino|2017|p=171}}
+
+Operation Bagration, in combination with the neighbouring [[Lvov-Sandomierz Offensive]], launched a few weeks later in [[Ukraine]], allowed the Soviet Union to recapture Belorussia and Ukraine within its 1941 borders, advance into German [[East Prussia]], but more importantly, the Lvov-Sandomierz operation allowed the Red Army to reach the outskirts of [[Warsaw]] after gaining control of Poland east of the Vistula river. The campaign enabled the next operation, the [[Vistula–Oder Offensive]], to come within sight of the German capital.{{sfn|Watt|2008|pp=699–700}} The Soviets were initially surprised at the success of the Belorussian operation which had nearly reached Warsaw. The Soviet advance encouraged the [[Warsaw uprising]] against the German occupation forces.
+
+The battle has been described as the triumph of the Soviet theory of the "[[operational art]]" because of the complete coordination of all the strategic front movements and signals traffic to fool the enemy about the target of the offensive. The military tactical operations of the Red Army successfully avoided the mobile reserves of the Wehrmacht and continually "wrong-footed" the German forces. Despite the massive forces involved, Soviet [[Front (Soviet Army)|front]] commanders left their adversaries completely confused about the main axis of attack until it was too late.{{sfn|Watt|2008|pp=673–4}}
+
+==Soviet Plan==
+===Strategic aims and deception===
+{{further|Russian military deception}}
+
+The Russian word ''[[Russian military deception|maskirovka]]'' is roughly equivalent to the English word ''[[camouflage]]'', but it has broader application in military use. During World War II the term was used by Soviet commanders to describe measures to create [[military deception|deception]] with the goal of inflicting surprise on the Wehrmacht forces.{{sfn|Glantz|1989|pp=xxxvii–viii}}
+
+The ''[[Oberkommando des Heeres]]'' expected the Soviets to launch a major [[Eastern Front (World War II)|Eastern Front]] offensive in the summer of 1944. The [[Stavka]] (Soviet High Command) considered a number of options. The timetable of operations between June and August had been decided on by 28 April 1944. The Stavka rejected an offensive in either the L'vov sector or the Yassy-Kishinev sectors owing to the presence of powerful enemy mobile forces equal in strength to the Soviet strategic fronts. Instead they suggested four options: an offensive into Romania and through the [[Carpathian Mountains]], an offensive into the western [[Ukrainian SSR]] aimed at the [[Baltic sea|Baltic coast]], an attack into the Baltic, and an offensive in the [[Belorussian SSR]]. The first two options were rejected as being too ambitious and open to flank attack. The third option was rejected on the grounds the enemy was too well prepared. The only safe option was an offensive into Belorussia which would enable subsequent offensives from Ukraine into Poland and Romania.{{sfn|Watt|2008|p=683}}
+
+[[File:George Dawe - Portrait of General Pyotr Bagration (1765-1812) - Google Art Project.jpg|thumb|left|The Soviet operation was named after the Georgian prince [[Pyotr Bagration]] (1765–1812), a general of the [[Imperial Russian Army]] during the [[Napoleonic Wars]].]]
+
+The Soviet and German High Commands recognised western Ukraine as a staging area for an offensive into Poland. The Soviets, aware that the enemy would anticipate this, engaged in a maskirovka campaign to catch the German armoured forces off guard by creating a crisis in Belorussia that would force the Germans to move their powerful armoured forces, fresh from their victory in the [[First Jassy–Kishinev Offensive]] in April–June 1944, to the central front to support Army Group Centre. This was the primary purpose of Bagration.{{sfn|Watt|2008|p=685}}
+
+In order to maximize the chances of success, the maskirovka was a double bluff. The Soviets left four tank armies in the L'vov-Peremyshl area and allowed the Germans to know it. The attack into Romania in April–June further convinced the Soviets that the Axis forces in Romania needed removing and kept the Germans concerned about their defences there and in southern Poland, while drawing German forces to the L'vov sector.{{sfn|Watt|2008|pp=683–4}} Once the offensive against Army Group Centre, which lacked mobile reserves and support, had been initiated, it would create a crisis in the central sector that would force the German armoured forces north to Belorussia from Poland and Romania, despite the presence of powerful Soviet concentrations threatening German-occupied Poland.{{sfn|Watt|2008|p=684}}
+
+The intent of the Soviets to strike their main blow towards the Vistula can be seen in the Red Army's (albeit fragmented) order of battle. The Soviet general staff studies of both the Belorussian and L'vov-Sandomierz operations reveal that the L'vov-[[Przemyśl]] operation received the overwhelming number of tank and mechanized corps. Six guards tank corps and six tank corps along with three guards mechanized and two mechanized corps were committed to the L'vov operation. This totaled twelve tank and five mechanized corps. In contrast, Operation Bagration{{'}}s Baltic and Belorussian Fronts were allocated just eight tank and two mechanized corps.{{sfn|Watt|2008|p=686}} The 1st Belorussian Front (an important part of the L'vov-Peremshyl operation) is not mentioned on the Soviet battle order for the offensive. It contained a further six armies and was to protect the flank of the [[Lublin–Brest Offensive]] as well as engage in offensive operations in that area.{{sfn|Watt|2008|p=687}}
+
+The bulk of tactical resources, in particular [[Anti-tank warfare|anti-tank artillery]], was allocated to the [[1st Ukrainian Front]], the spearhead of the Vistula, L'vov-Premyshl operation. Thirty-eight of the 54 anti-tank regiments allocated to the Belorussian-Baltic-Ukrainian operations were given to the 1st Ukrainian Front.{{sfn|Watt|2008|p=690}} This demonstrates that the Soviet plans for the L'vov operation were a major consideration and whoever planned the offensive was determined to hold the recently captured territory.{{sfn|Watt|2008|p=690}} The target for this operation was the Vistula bridgehead and the enormous anti-tank artillery forces helped repulse big counter-attacks by German armoured formations in August–October 1944.{{sfn|Watt|2008|p=691}} One American author suggests that these Soviet innovations were enabled, in part, by the provision of over 220,000 Dodge and Studebaker trucks by the United States to motorize the Soviet infantry.{{sfn|Connor|1987}}
+
+Most of the aviation units, [[fighter aircraft]] and assault aviation ([[strike aircraft]]) were given to the L'vov operation and the protection of the 1st Ukrainian Front. Of the 78 fighter and assault aviation divisions committed to Bagration, 32 were allocated to the L'vov operation, nearly fifty per cent of the aviation groups committed to Bagration{{sfn|Watt|2008|p=692}} and contained more than was committed to the Belorussian operation.{{sfn|Watt|2008|p=691}} This concentration of aviation was to protect the Vistula bridgeheads against air attack and to assault German counteroffensives from the air.{{sfn|Watt|2008|pp=691–3}}
+
+===Success of deception===
+Towards the beginning of June 1944, the German High Command, Army Group Center and the army commands had identified a large part of the concentration against Army Group Centre, although they still considered that the main operation would be against Army Group North Ukraine. On 14 June, the Chief of Staff of Army Group Centre told General [[Kurt Zeitzler]], the Chief of the Army General Staff, that "...the Russian concentration here [in front of 9th Army] and at the Autobahn clearly indicates that the enemy attack will be aimed at the wings of the Army Group". On 10 June the [[Oberkommando des Heeres]] (OKH) adopted the opinion of Army Group Centre in its estimate of the enemy situation:
+
+{{quote|When it is still to be considered that the attack against Army Group Centre will be a secondary operation in the framework of the global Soviet offensive operations, it must be taken into account that the enemy will also be capable in front of Army Group Centre to build concentrations of which the force of penetration cannot be underestimated in view of the ratio of forces between the two sides.{{sfn|Niepold|1987|pp=22–3}}}}
+
+On 19 June Army Group Centre noted in its estimate of the enemy situation that the concentration of enemy air forces had become greater (4,500 out of 11,000) and that this left new doubts regarding OKH's estimate. OKH saw no grounds for this supposition.{{sfn|Niepold|1987|p=28}} Shortly before the beginning of the Soviet offensive, the army commands had detected some enemy forces near the front and had identified the places where the main Soviet attacks would take place, with the exception of 6th Guards Army near Vitebsk. The Soviet strategic reserves were not detected.{{sfn|Niepold|1987|pp=31–2}}
+
+===Operations Rail War and Concert===
+The start of Operation Bagration involved many [[Soviet partisan]] formations in the [[Belorussian SSR]], which were instructed to resume their attacks on railways and communications. From 19 June large numbers of explosive charges were placed on rail tracks and though many were cleared, they had a significant disruptive effect. The partisans were also used to mop up encircled German forces once the breakthrough and exploitation phases of the operation were completed.{{sfn|Adair|2004|p=69–80}}
+
+==Disposition of forces==
+The Stavka had committed approximately 1,670,300 combat and support personnel, approximately 32,718 artillery pieces and mortars, 5,818 tanks and assault guns and 7,799 aircraft.{{citation needed|date=March 2019}} Army Group Centre's strength was 486,000 combat personnel (849,000 total, including support personnel).{{sfn|Citino|2017|p=171}} The army group had 3,236 field guns and other artillery pieces (not including mortars) but only 495 operational tanks and assault guns and 920 available aircraft, of which 602 were operational.{{citation needed|date=March 2019}} Army Group Centre was seriously short of mobile reserves: the demotorized [[German 14th Infantry Division|14th Infantry Division]] was the only substantial reserve formation, though the [[20th Panzer Division]], with 56 tanks, was positioned in the south near [[Bobruisk]] and the [[Panzergrenadier Division Feldherrnhalle]], still in the process of forming, was also held in reserve.{{sfn|Citino|2017|pp=171,175–176}} Furthermore, the Germans were supported by [[Collaboration with the Axis Powers|collaborationist troops]] such as the [[Lithuanian Security Police]].{{sfnp|Zimmerman|2015|p=379}} The relatively static lines in Belorussia had enabled the Germans to construct extensive field fortifications, with multiple trench lines to a depth of several kilometres and heavily mined defensive belts.{{citation needed|date=July 2019}}
+
+Besides the pro-German and pro-Soviet forces, some third-party factions were also involved in the fighting during Operation Bagration, most notably several resistance groups of the Polish [[Home Army]]. The latter mostly fought both the German as well as the Soviet-led troops.{{sfnp|Zimmerman|2015|p=379}} Some Home Army partisan factions regarded the Soviet Union as the greater threat, however, and negotiated ceasefires or even ''ad-hoc'' alliances with the German occupation forces. Such deals were condemned by the Home Army's leadership, and several partisan officers who cooperated with the Germans against the Soviets were subsequently court-martialed.{{sfnp|Zimmerman|2015|pp=275–281}} However, many times Polish Home Army fought Soviet troops in self-defence. Most often, Polish Home Army supported approaching Soviet forces and attacked German troops according to a plan of [[Operation Tempest]]. The plan was to cooperate with the advancing Red Army on a tactical level, while Polish civil authorities came out from underground and took power in Allied-controlled Polish territory. The plan failed, as Soviet troops would attack Polish Home Army groups after cooperation against German troops. Many Polish Home Army soldiers were KIA, enlisted to Soviet-controlled [[Polish People's Army]], murdered, imprisoned or deported.
+
+===Order of battle===
+{| class="toccolours collapsible collapsed" style="width:100%; background:transparent;"
+!colspan= | Red Army | Army Group Centre
+|-
+|colspan="2" |
+
+Two special representatives to ''[[Stavka]]'' were appointed to coordinate the operations of the Fronts involved: [[Aleksandr Vasilevsky]] and [[Georgy Zhukov]].{{sfn|Adair|2004|p=175–176}}&lt;!--ref Adair for whole Soviet ORBAT--&gt;
+* [[1st Baltic Front]] ([[Army general (Soviet Union)|Army General]] [[Ivan Bagramyan]])
+** [[4th Shock Army]] ([[Lieutenant general|Lieutenant-General]] Piotr Malyshev)
+** [[6th Guards Army (Soviet Union)|6th Guards Army]] (Lieutenant-General [[Ivan Chistyakov]])
+** [[43rd Army (Soviet Union)|43rd Army]] (Lieutenant-General [[Afanasy Beloborodov]])
+** [[3rd Air Army (Soviet Union)|3rd Air Army]] (Lieutenant-General Nikolai Papivin)
+* [[3rd Belorussian Front]] (Army General [[Ivan Chernyakhovsky]])
+** [[11th Guards Army]] (Lieutenant-General [[Kuzma Galitsky]])
+** [[5th Army (Soviet Union)|5th Army]] (Lieutenant-General [[Nikolai Ivanovich Krylov|Nikolai Krylov]])
+** [[39th Army (Soviet Union)|39th Army]] (Lieutenant-General [[Ivan Lyudnikov]])
+** [[31st Army (Soviet Union)|31st Army]] (Lieutenant-General [[Vasily Glagolev]])
+** [[5th Guards Tank Army]] ([[Chief marshal|Marshal of Armour]] (Army General) [[Pavel Rotmistrov]])
+** [[1st Air Army (Soviet Union)|1st Air Army]] (Lieutenant General [[Mikhail Mikhaylovich Gromov|Mikhail Gromov]])
+** Cavalry-mechanised group under command of Lieutenant-General Nikolai Oslikovsky, including 3rd Guards Cavalry Corps
+* [[2nd Belorussian Front]] ([[Colonel general|Colonel-General]] [[Georgiy Zakharov]])
+** [[33rd Army (Soviet Union)|33rd Army]] (Lieutenant-General [[Vasily Kryuchenkin]])
+** [[49th Army (Soviet Union)|49th Army]] (Lieutenant-General [[Ivan Grishin]])
+** [[50th Army (Soviet Union)|50th Army]] (Lieutenant-General [[Ivan Boldin]])
+** [[4th Air Army]] (Colonel-General [[Konstantin Vershinin]])
+* [[1st Belorussian Front]] (Army General [[Konstantin Rokossovsky]])
+** [[3rd Army (Soviet Union)|3rd Army]] (Colonel-General [[Alexander Gorbatov]])
+** [[Soviet 8th Guards Army|8th Guards Army]] (Lieutenant-General [[Vasily Chuikov]])
+** [[28th Army (Soviet Union)|28th Army]] (Lieutenant-General [[Alexander Luchinsky]])
+** [[48th Army (Soviet Union)|48th Army]] (Lieutenant-General [[Prokofy Romanenko]])
+** [[65th Army (Soviet Union)|65th Army]] (Lieutenant-General [[Pavel Batov]])
+** [[16th Air Army]] (Colonel-General [[Sergei Rudenko (general)|Serhiy Rudenko]])
+** Cavalry-mechanised group under command of Lieutenant-General [[Issa Pliev]], including 1st Mechanised Corps and 4th Guards Cavalry Corps
+* [[1st Ukrainian Front]] ([[Marshal of the Soviet Union]] [[Ivan Konev]])
+** [[3rd Guards Army (Soviet Union)|3rd Guards Army]] (Colonel-General [[Vasily Gordov]])
+** [[13th Army (Soviet Union)|13th Army]] (Colonel-General [[Nikolay Pukhov]])
+** [[60th Army (Soviet Union)|60th Army]] (Colonel-General [[Pavel Kurochkin]])
+** [[38th Army (Soviet Union)|38th Army]] (Colonel-General [[Kirill Moskalenko]]
+** [[1st Guards Army (Soviet Union)|1st Guards Army]] (Colonel-General [[Andrei Antonovich Grechko|Andrei Grechko]]
+** [[18th Army (Soviet Union)|18th Army]] (Lieutenant-General Evgeni Zhuravlyov)
+** [[1st Guards Tank Army]] (Colonel-General [[Mikhail Katukov]])
+** [[3rd Guards Tank Army]] (Colonel-General [[Pavel Rybalko]])
+** [[20th Guards Army|4th Tank Army]] (Lieutenant-General [[Vasily Badanov]])
+** [[5th Guards Army (Soviet Union)|5th Guards Army]] (Lieutenant-General [[Aleksey Semenovich Zhadov|Aleksey Zhadov]])
+** Cavalry-mechanised Group 1 and 2
+
+The 1st Belorussian Front was particularly large and included further units which were only committed during the follow-on [[Lublin-Brest Offensive]].
+----
+[[Army Group Centre]]
+* (''[[Generalfeldmarschall|Feldmarshal]]'' [[Ernst Busch (military)|Ernst Busch]] to 28 June; then ''Feldmarshal'' [[Walter Model]]{{sfn|Adair|2004|p=173–175}}&lt;!--ref Adair for whole of Army Group Centre ORBAT--&gt;
+** [[3rd Panzer Army]] ([[Colonel-General]] [[Georg-Hans Reinhardt]])
+*** [[VI Corps (Germany)|VI Corps]] (General [[Georg Pfeiffer]] to 28 June)
+*** [[IX Army Corps (Wehrmacht)|IX Corps]] (General [[Rolf Wuthmann]])
+*** [[LIII Corps (Germany)|LIII Corps]] (General [[Friedrich Gollwitzer]])
+*** Reserve: [[German 14th Infantry Division|14th Infantry Division]]&lt;!--Adair has 95th I.D., not 14th, under H. Michaelis, captured--&gt;
+** [[4th Army (Wehrmacht)|Fourth Army]] (General [[Kurt von Tippelskirch]])
+*** [[XXVII Corps (Germany)|XXVII Corps]] (General [[Paul Völckers]])
+*** [[XXXIX Panzer Corps (Germany)|XXXIX Panzer Corps]] (General [[Robert Martinek]] to 28 June; then Lieutenant-General [[Otto Schünemann]] to 29 June)
+*** [[XII Corps (Germany)|XII Corps]] (General [[Vincenz Müller]])
+*** Reserve: ''[[Panzergrenadier-Division Feldherrnhalle]]'', [[German 286th Security Division|286th Security Division]]
+** [[9th Army (Wehrmacht)|9th Army]] (General [[Hans Jordan]] to 27 June; then General [[Nikolaus von Vormann]])
+*** [[XXXV Corps (Germany)|XXXV Corps]] (Lieutenant-General [[Kurt-Jürgen Freiherr von Lützow]])
+*** [[XXXXI Panzer Corps (Germany)|XXXXI Panzer Corps]] (Lieutenant-General [[Edmund Hoffmeister]])
+*** [[LV Corps (Germany)|LV Corps]] (General [[Friedrich Herrlein]])
+*** Reserve: [[20th Panzer Division]], [[707th Infantry Division (Wehrmacht)|707th Infantry Division]]
+** [[2nd Army (Wehrmacht)|Second Army]] (Colonel-General [[Walter Weiss]])
+
+2nd Army was not involved in the first or second phases of the German defense, being positioned south of the main axis of Soviet operations.
+|}
+
+===''Feste Plätze''===
+The Wehrmacht's forces were based on logistic lines of communications and centres, which on Hitler's orders were declared ''Feste Plätze'' (fortified towns to be held at all costs) by OKH. General Jordan of 9th Army was very worried at how vulnerable this immobility made the army, correctly predicting that "if a Soviet offensive breaks out the Army will either have to go over to a mobile defence or see its front smashed".{{sfn|Adair|2004|p=66–68}} Because the initial offensive in Belarus was thought to be a feint, the ''Feste Plätze'' spanned the entire length of the Eastern Front. Army Group Centre had ''Feste Plätze'' at [[Vitebsk]], [[Orsha]], [[Mogilev]], [[Baranovichi]], [[Minsk]], [[Babruysk]], [[Slutsk]], [[Vilnius]].{{sfn|Adair|2004|p=67}}
+
+==The battle – first phase: Tactical breakthrough==
+{{more citations needed|section|date=June 2018}}&lt;!--subsections still need citations, see [[WP:Summary style]]--&gt;
+Operation Bagration was launched on a staggered schedule, with partisan attacks in the rear beginning on 19–20 June. On the night of 21–22 June, the Red Army launched probing attacks on German frontline positions, combined with bombing raids on Wehrmacht's lines of communication.{{snf|Citino|2017|pp=172–174}} The main offensive began in the early morning of 23 June, with an artillery bombardment of unprecedented scale against the defensive works.{{sfn|Adair|2004|p=87}} The initial assault achieved breakthroughs almost everywhere.{{snf|Citino|2017|p=177}}
+
+The first phase of Soviet deep operations, the "deep battle", envisaged breaking through the tactical zones and forward German defences. Once these tactical offensives had been successful, fresh operational reserves exploited the breakthrough and the operational depths of the enemy front using powerful mechanized and armoured formations to encircle enemy concentrations on an Army Group Scale.
+
+===Vitebsk-Orsha Offensive===
+[[File:Operation bagration battle wizebsk 1944 june 22-27.png|thumb|Map of the [[Vitebsk–Orsha Offensive]], 23 – 28 June 1944]]
+{{Main|Vitebsk–Orsha Offensive}}
+
+Army Group Centre's northern flank was defended by the [[3rd Panzer Army]] under the command of [[Georg-Hans Reinhardt]]; the lines ran through marshy terrain in the north, through a [[Salients, re-entrants and pockets|salient]] round the city of [[Vitebsk]], to a sector north of the main [[Moscow]]–[[Minsk]] road, held by the [[4th Army (Wehrmacht)|4th Army]]. It was opposed by the [[1st Baltic Front]] of [[Hovhannes Bagramyan]], and [[Ivan Chernyakhovsky]]'s [[3rd Belorussian Front]], which were given the task of breaking through the defences to the north and south of Vitebsk and cutting off the salient.{{sfn|Citino|2017|p=177}}
+
+In the north, the 1st Baltic Front pushed the German [[IX Army Corps (Wehrmacht)|IX corps]] over the Dvina, while encircling the [[LIII Army Corps (Wehrmacht)|LIII Corps]] in the city of Vitebsk by 24 June, opening a gash in the frontline of {{convert|25|mi}} wide. The Soviet command inserted its mobile forces to begin exploitation in the operational depth.{{sfn|Citino|2017|pp=177–178}} To the south, the 3rd Belorussian Front attacked the [[VI Corps (Germany)|VI Corps]], pushing it so far to the south that it came under the command of the 4th Army.{{sfn|Citino|2017|p=181}}
+
+The LIII Corps had received permission to retreat on 24 June with three divisions, while leaving one division behind in the ''fester Platz Vitebsk''. However, by the time the order arrived, the city was already encircled.{{sfn|Citino|2017|pp=178–179}} General [[Friedrich Gollwitzer]], the commander of the Vitebsk "strongpoint", decided to disobey the order and have all units of his corps break out at the same time. Abandoning its heavy equipment, the corps began a breakout attempt in the morning of 26 June but quickly ran into Soviet roadblocks outside the city.{{sfn|Citino|2017|pp=179–180}} Vitebsk was taken by 29 June, the entire LIII Corps of 28,000 men eliminated from the German order of battle.{{sfn|Citino|2017|p=180}}
+
+The 3rd Belorussian Front simultaneously opened operations against the 4th Army's [[XXVII Corps (Germany)|XXVII Corps]] holding [[Orsha]] and the main Moscow-Minsk highway. Despite a tenacious German defense, Orsha was liberated by 26 June, and the 3rd Belorussian Front's mechanized forces were able to penetrate far into the German rear, reaching the [[Berezina River]] by 28 June.
+
+[[File:1944 kapitulation witebsk vasilevsky chernyakovski gollwitzer.jpg|thumb|Field Marshal [[Aleksandr Vasilevsky]] and General [[Ivan Chernyakhovsky]] interrogate General [[Alfons Hitter]] (standing) after the [[Vitebsk–Orsha Offensive|battle of Vitebsk]].&lt;!--and he's said to be asking for a seat!--&gt;]]
+The central sector of Soviet operations was against the long front of 4th Army, under the command of [[Kurt von Tippelskirch]]. Soviet plans envisaged the bulk of it, the [[XXXIX Panzer Corps (Germany)|XXXIX Panzer Corps]] and [[XII Corps (Germany)|XII Corps]], being encircled while pinned down by attacks from the [[2nd Belorussian Front]] in the parallel [[Mogilev Offensive Operation]]. By far the most important Soviet objective, however, was the main Moscow–Minsk road and the town of Orsha, which the southern wing of Chernyakhovsky's 3rd Belorussian Front was ordered to take. A breakthrough in this area, against General [[Paul Völckers]]' XXVII Corps, would form the northern pincer of the encirclement. The Minsk highway was protected by extensive defensive works manned by the [[78th Infantry Division (Wehrmacht)|78th Assault Division]], a specially reinforced unit with extra artillery and [[Sturmgeschutz|assault gun]] support. Orsha itself had been designated a ''Fester Platz'' (stronghold) under 78th Division's commander.{{sfn|Citino|2017|pp=181–182}} &lt;!---- As a result of the strong defenses in this sector, Soviet plans included the commitment of heavily armed engineer units to assist in a breakthrough.---&gt;
+
+The Soviet assault on this sector opened on 23 June with a massive artillery barrage that destroyed defensive positions, flattened bunkers, and detonated ammunition stores. Infantry from the [[11th Guards Army]], 5th Army and 31 Army then attacked the German positions, breaking through the first defensive belt on the same day. The German deployment of its only reserve division was met the next day with the insertion of the massed Soviet tank brigades, which achieved the operational breakthrough. By 25 June, Soviet forces began to advance into the German rear.{{sfn|Citino|2017|pp=182–183}}
+&lt;!-----
+[[Kuzma Galitsky]]'s 11th Guards Army attacked towards Orsha on 23 June but initially made little headway. By the next day, the Soviet [[1st Guards Rifle Division]] was able to break through the German lines in a marshy, thinly-held area to the north of the 78th Sturm Division, which was ordered back to the Hessen Line, the third defence zone. It was now struggling to maintain contact with the 25th Panzergrenadier Division to the south. Chernyakhovsky, encouraged by the 1st Guards Rifle Division's progress, pushed a mixed cavalry and mechanised exploitation force into the breach in the German lines. On 25 June, the German defences began to rupture; a hastily organised counterattack failed.{{sfnp|Zaloga|1996|pp=56-7}}---&gt;
+
+Völckers' position was further threatened by the near-collapse of the 3rd Panzer Army's VI Corps, immediately to the north. By midnight on 25 June, the 11th Guards Army had shattered the remnant of VI Corps, and 26 June saw the German forces in retreat. Soviet tank forces of the [[2nd Guards Tank Corps]] were able to push up the road towards Minsk at speed, with a subsidiary force breaking off to encircle Orsha, which was liberated on the evening of 26 June. The main exploitation force, [[Pavel Rotmistrov]]'s [[5th Guards Tank Army]], was then committed through the gap in the German lines. VI Corps finally crumbled completely; its commander, General [[Georg Pfeiffer]], was killed on 28 June after losing contact with his divisions.{{sfnp|Dunn|2000|pp=149–150}} Achieving complete success, the operation effectively ceased with the arrival of 5th Guards Tank Army's forward units at the Berezina River on 28 June.
+
+===Mogilev Offensive===
+{{Main|Mogilev Offensive}}
+
+[[File:Operation_bagration_battle_mogilev_1944_june_23-28.png|thumb|Map of the [[Mogilev Offensive]], 23–28 June]]
+The centre of the 4th Army was holding the tip of the Byelorussian bulge, with the bulk of its forces on a shallow bridgehead east of the [[Dnieper River]]. The Mogilev Offensive opened with an intense artillery barrage against the German defensive lines on the morning of 23 June. The goal of the 2nd Belorussian Front (Colonel-General [[Gyorgy Zakharov]]) was to pin the 4th Army near [[Mogilev]] while the developing [[Vitebsk-Orsha Offensive|Vitebsk-Orsha]] and [[Bobruysk Offensive]]s encircled it.{{sfn|Citino|2017|pp=181–183}}
+
+East of Mogilev, General [[Robert Martinek]]'s [[XXXIX Panzer Corps (Germany)|XXXIX Panzer Corps]] attempted to hold its lines in the face of an assault by the [[49th Army (Soviet Union)|49th Army]] during which the latter suffered heavy casualties.&lt;ref name=dunn163&gt;Dunn, p.163&lt;/ref&gt; The 4th Army commander, Tippelskirch, requested that the army allowed to withdraw on 25 June. When the permission was not forthcoming, he authorised his units to withdraw to the Dnieper; this was countermanded by the Army Group commander, Busch, who instructed Tippelskirch to order the units to return to their positions. This was however impossible as a cohesive frontline no longer existed.{{sfn|Citino|2017|pp=183–184}} With the front collapsing, Busch met with Hitler on 26 June and received the authorisation to pull the army back to the Berezina River, {{convert|60|mi}} west of Mogilev.{{sfn|Citino|2017|pp=184–185}} The 49th Army forced the Dnieper crossings on the evening of 27 June and fought its way into the city during the night, while mobile units enveloped the garrison from the northwest.&lt;ref name=glantzp95&gt;Glantz, ''Belorussia 1944'', pp. 95-6&lt;/ref&gt;
+[[File:49th Army troops storming Mogilev June 1944.jpg|thumb|Troops of the 49th Army during the capture of Mogilev on 28 June 1944]]
+&lt;!----Mogilev's garrison, along with its town commander, General [[Gottfried von Erdmannsdorff]], (later convicted in the [[Minsk Trial]] for [[War crimes of the Wehrmacht|war crimes]] and executed), fell into Soviet hands on 28 June. ---&gt;During the day both the German XII Corps and XXXIX Panzer Corps began falling back towards the Berezina crossings. Travel was nearly impossible by day, due to the omnipresence of the Soviet air force, while Soviet tanks columns and roadblocks provided constant obstacles. The main body of 4th Army arrived at the crossing on 30 June. It largely completing the crossing by 2 July, under heavy Soviet bombardment, but they were retreating into a trap.{{sfn|Citino|2017|pp=186–187}} The Mogilev Offensive fulfilled all its immediate objectives; not only was the city itself taken, but the 4th Army was successfully prevented from disengaging in time to escape encirclement in the [[Minsk Offensive]], which commenced immediately afterwards.{{sfn|Citino|2017|pp=187–188}}
+&lt;!----The primary aim of the Mogilev Offensive, and of the 2nd Belorussian Front, was to pin down the majority of the 4th Army while the developing Vitebsk-Orsha and Bobruysk Offensives encircled it. The 2nd Belorussian Front's units attacked on 23 June, aiming to force crossings of the [[Dnepr]] against two of Army Group Centre's strongest corps, the XXXIX Panzer Corps and [[XII Corps (Germany)|XII Corps]].
+
+The Dnepr was crossed by the 49th Army by 27 June, and by 28 June it had encircled and taken the town of Mogilev. The XXXIX Panzer Corps and XII Corps began to fall back towards the Berezina River under heavy air attack, but were retreating into a trap.---&gt;
+
+===Bobruysk Offensive===
+{{Main|Bobruysk Offensive}}
+[[File:19440628 destroyed panzer iv 20. panzer division bobruisk.jpg|thumb|Two destroyed [[Panzer IV]] tanks belonging to the [[20th Panzer Division]], June 1944]]
+
+The Bobruysk Offensive, against the German [[9th Army (Wehrmacht)|9th Army]] on the southern flank of Army Group Centre, was opened by the 1st Belorussian Front of Konstantin Rokossovsky on 23 June but suffered heavy losses attempting to penetrate the German defenses. Rokossovsky ordered additional bombing and artillery preparation and launched further attacks the next day.
+
+The [[3rd Army (Soviet Union)|3rd Army]] broke through in the north of the sector, trapping the German [[XXXV Army Corps (Wehrmacht)|XXXV Army Corps]] against the Berezina. The [[65th Army (Soviet Union)|65th Army]] then broke through the [[XXXXI Panzer Corps]] to the south; by 27 June, the two German corps were encircled in a pocket east of [[Bobruysk]] under constant aerial bombardment.
+
+Some elements of the 9th Army managed to break out of Bobruysk on 28 June, but up to 70,000 soldiers were killed or taken prisoner. The 1st Belorussian Front's forces liberated Bobruysk on 29 June after intense street fighting.
+
+==Second phase: Strategic offensive against Army Group Centre==
+The second phase of the operation involved the entire operation's most significant single objective: the retaking of Minsk, capital of the [[Belorussian SSR]]. It would also complete the large-scale encirclement and destruction, set up by the first phase, of much of Army Group Centre.
+
+==Minsk Offensive==
+{{Main|Minsk Offensive}}
+[[File:Minsk civilians return home 1944.jpg|thumb|Civilians carry belongings out of burning houses, early July 1944]]
+From 28 June, the main exploitation units of the 3rd Belorussian Front (the 5th Guards Tank Army and an attached cavalry-mechanised group) began to push on to secure crossings of the Berezina, followed by the 11th Guards Army. In the south, exploitation forces of the [[1st Belorussian Front]] began to close the lower pincer of the trap developing around the German 4th Army.{{sfn|Glantz|House|1995|pp=206–7}}
+The Germans brought back the [[5th Panzer Division (Wehrmacht)|5th Panzer Division]] into Belorussia to cover the approaches to Minsk, while the units of Fourth Army began to withdraw over the Berezina crossings, where they were pounded by heavy air bombardment. After forcing crossings of the Berezina, Soviet forces closed in on Minsk. The 2nd Guards Tank Corps was the first to break into the city in the early hours of 3 July; fighting erupted in the centre, which was finally cleared of German rearguards by the following day. The 5th Guards Tank Army and 65th Army closed the encirclement to the west of Minsk, trapping the entire German Fourth Army, and much of the remnants of the 9th Army.{{sfn|Glantz|House|1995|pp=207–9}}
+
+Over the next few days, the pocket east of Minsk was reduced: only a fraction of the 100,000 soldiers in it escaped. Minsk had been liberated, and Army Group Centre utterly destroyed, in possibly the greatest single defeat suffered by the Wehrmacht in the whole war. Between 22 June and 4 July 1944, Army Group Centre lost 25 divisions and 300,000 men. In the few subsequent weeks, the Germans lost another 100,000 men.{{sfn|Glantz|House|1995|p=209}}
+
+==Polotsk Offensive==
+{{Main|Polotsk Offensive}}
+[[File:Soviet soldiers in Polozk (Belarus), passing by propaganda poster celebrating the reconquest of the city and urging the liberation of the Baltic from Nazi German occupation. July 4, 1944.jpg|thumb|Soviet soldiers in Polotsk, 4 July 1944]]
+The Polotsk Offensive had the dual objective of taking [[Polotsk]] itself, and of screening the northern flank of the main Minsk Offensive against a possible German counter-offensive from Army Group North.
+
+The 1st Baltic Front successfully pursued the retreating remnants of the 3rd Panzer Army back towards Polotsk, which was reached by 1 July. German forces attempted to organise a defense using rear-area support units and several divisions hurriedly transferred from Army Group North.
+
+Units of the 1st Baltic Front's 4th Shock Army and 6th Guards Army fought their way into the city over the next few days, and successfully cleared it of German forces by 4 July.
+
+==Third phase: strategic offensive operations in the north==
+As German resistance had almost completely collapsed, Soviet forces were ordered to push on as far as possible beyond the original objective of Minsk, and new objectives were issued by the Stavka. This resulted in a third phase of offensive operations, which should be regarded as a further part of Operation Bagration.
+
+Field Marshal [[Walter Model]], who had taken over command of Army Group Centre on 28 June when [[Ernst Busch (military)|Ernst Busch]] was dismissed, hoped to reestablish a defensive line running through [[Lida]] using what was left of the 3rd Panzer, 4th and 9th Armies along with new reinforcements.{{note label|Note2|b|b}}
+
+===Šiauliai Offensive===
+{{Main|Šiauliai Offensive}}
+
+The Šiauliai Offensive covered the operations of the 1st Baltic Front between 5 and 31 July against the remnants of the 3rd Panzer Army; its main objective was the [[Lithuania]]n city of [[Šiauliai]] ({{lang-ru|Шяуляй}}; {{lang-de|Schaulen}}).
+
+The 43rd, 51st, and 2nd Guards Armies attacked towards Riga on the Baltic coast with 3rd Guards Mechanised Corps attached. By 31 July, the coast on the [[Gulf of Riga]] had been reached. 6th Guards Army covered [[Riga]] and the extended flank of the penetration towards the north.
+
+A hurriedly organised German counter-attack managed to restore the severed connection between the remnants of Army Group Centre and Army Group North. In August, the Germans attempted to retake Šiauliai in [[Operation Doppelkopf]] and [[Operation Cäsar]], but they failed.
+
+===Vilnius Offensive===
+{{Main|Vilnius Offensive}}
+[[File:19440712 soviet and ak soldiers vilnius.jpg|thumb|Soviet and Polish [[Armia Krajowa]] soldiers in [[Vilnius]], July 1944]]
+
+The Vilnius Offensive was conducted by units of the 3rd Belorussian Front subsequent to their completion of the Minsk Offensive; they were opposed by the remnants of 3rd Panzer Army and the 4th Army.
+
+Units of the 4th Army, principally the 5th Panzer Division, attempted to hold the key rail junction of [[Molodechno]], but failed. It was taken by units of the 11th Guards Army, 5th Guards Tank Army and [[3rd Guards Cavalry Corps (Soviet Union)|3rd Guards Cavalry Corps]] on 5 July. German forces continued a precipitate retreat, and Soviet forces reached [[Vilnius]], held by units of the 3rd Panzer Army, by 7 July.
+
+By 8 July, the city had been encircled, trapping the garrison, who were ordered to hold fast at all costs. Soviet forces then fought their way into the city in intense street-by-street fighting (alongside an [[Armia Krajowa]] uprising, [[Operation Ostra Brama]]). On 12 July, [[6th Panzer Division (Wehrmacht)|6th Panzer Division]] counter-attacked and temporarily opened an escape corridor for the besieged troops, but the majority of them were lost when the city fell on 13 July (this phase of the operation is commonly known as the [[Battle of Vilnius (1944)|Battle of Vilnius]]). On 23 July, the 4th Army commander, Hoßbach, in agreement with Model, committed the newly arrived [[19th Panzer Division]] into a counter-attack with the intention of cutting off the Soviet spearheads in the Augustow Forest. This failed.
+
+===Belostock Offensive===
+{{Main|Belostock Offensive}}
+
+The [[Belostock Offensive]] covered the operations of 2nd Belorussian Front between 5 and 27 July, with the objective of the Polish city of [[Białystok]] (Belostock). The [[40th Rifle Corps (Soviet Union)|40th]] and [[41st Rifle Corps (Soviet Union)|41st Rifle Corps]] of [[3rd Army (Soviet Union)|3rd Army]], on the front's left wing, took Białystok by storm on 27 July, after two days of fighting.
+
+===Lublin–Brest Offensive===
+{{Main|Lublin–Brest Offensive}}
+
+The Lublin-Brest Offensive was carried out by Marshal Rokossovsky's 1st Belorussian Front between 18 July and 2 August, and developed the initial gains of Operation Bagration toward eastern Poland and the [[Vistula]]. The 47th and 8th Guards Armies reached the [[Bug River]] by 21 July, and the latter reached the eastern bank of the Vistula by 25 July. [[Lublin]] was taken on 24 July; the [[2nd Tank Army (Soviet Union)|2nd Tank Army]] was ordered to turn north, towards [[Warsaw]], to cut off the retreat of forces from Army Group Centre in the [[Brest, Belarus|Brest]] area. Brest was taken on 28 July and the Front's left wing seized bridgeheads over the Vistula by 2 August. This effectively completed the operation, the remainder of the summer being given over to defensive efforts against a series of German counter-attacks on the bridgeheads.
+The Operation ended with the defeat of German [[Army Group North Ukraine]] and Soviet bridgeheads over the Vistula river west of Sandomierz.{{sfn|Glantz|2002|p=1}}
+
+===Kaunas Offensive===
+{{Main|Kaunas Offensive}}
+
+The Kaunas Offensive covered the operations of Chernyakhovsky's [[3rd Belorussian Front]] from 28 July to 28 August, towards the Lithuanian city of [[Kaunas]], subsequent to their completion of the offensive against Vilnius. By 30 July all Wehrmacht resistance on the approaches to the Neman River had retreated or been annihilated. Two days later the city of Kaunas was under Soviet control.
+
+===Osovets Offensive===
+{{Main|Osovets Offensive}}
+
+This offensive covered the operations of 2nd Belorussian Front from 6–14 August, after their completion of the Belostock Offensive, with the objective of the fortified area at [[Osowiec-Twierdza|Osowiec]] on one of the tributaries of the [[Narew]] River. The very large fortress complex there secured the approaches to [[East Prussia]] through the region's marshes.
+
+German forces were able to stabilise their line of defense along the Narew, which they held until the [[East Prussian Offensive]] of January 1945.
+
+==Aftermath==
+[[File:194407 abandoned german vehicles belarus (revised).jpg|thumb|Abandoned vehicles of the [[9th Army (Wehrmacht)|German 9th Army]] at a road near Bobruisk]]
+
+This was by far the greatest Soviet victory in numerical terms. The Red Army recaptured a vast amount of Soviet and captured some of Baltic states and Polish territory whose population had suffered greatly under the [[Occupation of Belarus by Nazi Germany|German occupation]]. The advancing Soviets found cities destroyed, villages depopulated, and much of the population killed or deported by the occupiers. In order to show the outside world the magnitude of the victory, some 57,000 German prisoners, taken from the encirclement east of Minsk, were paraded through Moscow: even marching quickly and twenty abreast, they took 90 minutes to pass.&lt;ref&gt;{{cite web|url=https://www.youtube.com/watch?v=6pcMdCkgVAo|title=Проконвоирование немцев через Москву 17 июля 1944|last=Rus Vitulina|date=9 May 2011|via=YouTube}}&lt;/ref&gt;&lt;ref&gt;{{cite web|url=http://englishrussia.com/2014/07/17/germans-walking-across-moscow/|title=German Prisoners Walking Across Moscow - English Russia|website=englishrussia.com}}&lt;/ref&gt;&lt;ref&gt;Adair, 2004. page 157&lt;/ref&gt;
+
+The German army never recovered from the [[materiel]] and manpower losses sustained during this time, having lost about a quarter of its Eastern Front manpower, exceeding even the percentage of [[Battle of Stalingrad|loss at Stalingrad]] (about 17 full divisions). These losses included many experienced soldiers, [[Unteroffizier|NCOs]] and commissioned officers, which at this stage of the war the ''Wehrmacht'' could not replace. An indication of the completeness of the Soviet victory is that 31 of the 47 German divisional or corps commanders involved were killed or captured.&lt;ref&gt;Willmott, p. 138&lt;/ref&gt; Of the German generals lost, nine were killed, including two corps commanders; 22 captured, including four corps commanders; [[Hans Hahne (General)|Major-General Hahne]], commander of 197th Infantry Division disappeared on 24 June, while Lieutenant-Generals Zutavern and Philipp of the [[18th Panzergrenadier Division (Wehrmacht)|18th Panzergrenadier]] and [[134th Infantry Division (Wehrmacht)|134th Infantry Divisions]] committed suicide.
+
+[[File:RIAN archive 129359 German prisoners-of-war in Moscow.jpg|thumb|German [[prisoners of war]] in Moscow, 15 July 1944.]]
+Overall, the near-total destruction of Army Group Centre was very costly for the Germans. Exact German losses are unknown, but newer research indicates around 400,000 overall casualties.{{ref label|A|a|a}} Soviet losses were also substantial, with 180,040 killed and missing, 590,848 wounded and sick, together with 2,957 tanks, 2,447 artillery pieces, and 822 aircraft also lost.{{sfn|Glantz|House|1995|p=298}}
+
+The offensive cut off Army Group North and Army Group North Ukraine from each other, and weakened them as resources were diverted to the central sector. This forced both Army Groups to withdraw from Soviet territory much more quickly when faced with the following Soviet offensives in their sectors.
+
+The end of Operation Bagration coincided with the destruction of many of the strongest units of the ''Wehrmacht'' engaged against the [[Allies of World War II|Allies]] on the [[Western Front (World War II)|Western Front]] in the [[Falaise Pocket]] in [[Normandy]], during [[Operation Overlord]]. After these stunning victories, on both eastern and western fronts, supply problems rather than German resistance slowed the subsequent rapid Allied advance, and it eventually ground to a temporary halt. However, the Germans were able to transfer armoured units from the [[Italian Campaign (World War II)|Italian front]], where they could afford to give ground, to resist the Soviet advance near Warsaw.
+
+This was one of the largest Soviet operations of WWII with 2.3 million troops engaged, three Axis armies eliminated, and vast amounts of Soviet territory recaptured.&lt;ref&gt;{{Cite web|url=http://www.historynet.com/operation-bagration-soviet-offensive-of-1944.htm|title=Operation Bagration: Soviet Offensive of 1944 {{!}} HistoryNet|website=www.historynet.com|language=en-US|access-date=2018-02-12}}&lt;/ref&gt;
+
+==References==
+===Notes===
+* {{note label|A|a|a}}Figures for the exact casualties of the German forces during Operation Bagration vary significantly.  Wartime Soviet estimates claim 540,000 German overall casualties (including 158,480 captured), with material losses listed at 2,375 tanks, 14,397 artillery pieces, 631 aircraft, and 57,152 motor vehicles.&lt;ref&gt;{{cite web|url=http://9may.ru/28.07.1944/inform/m1026|title=День Победы. 70 лет|website=День Победы. 70 лет}}&lt;/ref&gt;&lt;ref name=GO176/&gt; Western estimates put German casualties lower at about 300,000 – 350,000 men.{{sfn|Zaloga|1996|p=71}} Newer research done by the [[German Armed Forces Military History Research Office|MGFA]] and led by historian Karl Heinz Frieser put German casualties at 399,102 soldiers.{{Citation needed|date=June 2019}}
+
+&lt;!-- this material is orphaned, it is not pointed to by any corresponding {{ref.. template
+* {{note label|Note2|e|e}} The German Order of Battle for Army Group Centre in mid-July shows the remnants of the 9th Army incorporated into the 2nd Army; 3rd Panzer Army reduced to ''Korps-Abteilung G'' and fragments of IX and XXVI Corps; and Fourth Army consisting of the battered 5th Panzer and 50th Infantry Divisions along with ''Kampfgruppe Flörke'', some remnants of security divisions and part of the ''[[3rd SS Division Totenkopf|Totenkopf]]'' (all under the command of [[Helmuth Weidling]], who had previously been commanding a corps of the 9th Army at Bobruisk) plus [[7th Panzer Division (Wehrmacht)|7th Panzer]] (see Hinze, ''Ostfrontdrama 1944''). Though Soviet forces were exhausted and their supply lines dangerously extended, the extremely weak forces arrayed against them encouraged commanders to push on as far as possible.
+--&gt;
+
+===Citations===
+{{Reflist}}
+
+===Bibliography===
+{{refbegin}}
+* {{cite book
+| last = Adair
+| first = Paul
+| year = 2004
+| origyear = 1994
+| title = Hitler's Greatest Defeat: The collapse of Army Group Centre, June 1944
+| publisher = Weidenfeld Military
+| isbn = 1-85409-232-4
+| ref = harv}}
+* {{Cite book |last=Citino |first=Robert |authorlink=Robert Citino |title=The Wehrmacht’s Last Stand: The German Campaigns of 1944–1945 |publisher=University Press of Kansas |year=2017 |isbn=9780700624942|ref=harv}}
+* {{cite news
+| last = Connor
+| first = William M.
+| year = 1987
+| title = Analysis of Deep Attack Operations: Operation Bagration, Belorussia, 22 June – 29 August 1944
+| location = Fort Leavenworth, KS
+| publisher = Combat Studies Institute
+| ref = harv
+| url = http://usacac.army.mil/cac2/cgsc/carl/download/csipubs/connor.pdf
+| accessdate =9 May 2017}}
+* {{cite book |last=Dunn |first=Walter S. |year=2000 |title=Soviet Blitzkrieg: The Battle for White Russia, 1944 |publisher=Lynne Riener |isbn=9781555878801 |ref=harv }}
+* {{cite book
+ | last1 = Frieser
+ | first1 = Karl-Heinz
+ | author-link1 = Karl-Heinz Frieser
+ | first2 =Klaus
+ | last2 = Schmider
+ | first3 =Klaus
+ | last3 = Schönherr
+ | first4 = Gerhard
+ | last4 = Schreiber
+ | first5 = Kristián
+ | last5 = Ungváry
+ | author-link5 = Krisztián Ungváry
+ | first6 =Bernd
+ | last6=Wegner
+ | work = [[Das Deutsche Reich und der Zweite Weltkrieg]] [Germany and the Second World War]
+ | volume = VIII
+ | title = Die Ostfront 1943/44 – Der Krieg im Osten und an den Nebenfronten
+ | trans-title = The Eastern Front 1943–1944: The War in the East and on the Neighbouring Fronts
+ | publisher = Deutsche Verlags-Anstalt
+ | location = München
+ | year = 2007
+ | isbn = 978-3-421-06235-2
+ | language = German
+ | ref = {{harvid|Frieser|2007}}
+}}
+* {{cite book
+| last = Glantz
+| first = David M.
+| year = 1989
+| title = Soviet Military Deception in the Second World War
+| location = London
+| publisher = Frank Cass
+| isbn = 0-7146-3347-X
+| ref = harv}}
+* {{cite book
+| last = Glantz
+| first = David M.
+| year = 2002
+| title = The Battle for L'vov, July 1944
+| publisher = Routledge Press
+| isbn = 978-0-7146-5201-6
+| ref = harv}}
+* {{cite book
+| last1 = Glantz
+| first1 = David M.
+| last2 = House
+| first2 = Jonathan
+| year = 1995
+| title = When Titans Clashed: How the Red Army Stopped Hitler
+| location = Lawrence, Kansas
+| publisher = University Press of Kansas
+| isbn = 0-7006-0899-0
+| ref = harv
+| url-access = registration
+| url = https://archive.org/details/whentitansclashe00glan_0
+}}
+* {{cite book
+| last = Krivosheev
+| first = G. F.
+| year = 1997
+| title = Soviet Casualties and Combat Losses in the Twentieth Century
+| location = London
+| publisher = Greenhill Books
+| isbn = 1-85367-280-7
+| ref = harv}}
+* {{cite book
+| last = Niepold
+| first = Gerd
+| translator-last=Simpkin
+| translator-first=R.
+| year = 1987
+| title = Battle for White Russia: The Destruction of Army Group Centre June 1944
+| location = London
+| publisher = Brassey's
+| isbn = 0-08-033606-X
+| ref = harv}}
+* {{cite journal
+| last = Watt
+| first = Robert N.
+| date=December 2008
+| title = Feeling the Full Force of a Four Front Offensive: Re-Interpreting the Red Army's 1944 Belorussian and L'vov-Peremshyl' Operations
+| journal = The Journal of Slavic Military Studies
+| volume = 21
+| issue = 4
+| publisher = Routledge Taylor &amp; Francis Group
+| pages = 669–705
+| doi = 10.1080/13518040802497564
+| ref = harv}}
+* {{cite book |last=Willmott |first=H. P. |year=1984 |title=June, 1944 |publisher=Blandford Press |isbn=0-7137-1446-8 |ref=harv |url-access=registration |url=https://archive.org/details/june194400will }}
+* {{cite book
+| last = Zaloga
+| first = S.
+| year = 1996
+| title = Bagration 1944: The Destruction of Army Group Centre
+| publisher = Osprey
+| isbn = 978-1-85532-478-7
+| ref = harv}}
+* {{cite book
+| last = Ziemke
+| first = Earl F.
+| year = 1969
+| title = Battle For Berlin: End of the Third Reich
+| publisher = Macdonald
+| location=London
+| ref = harv}}
+* {{cite book
+| last = Zimmerman
+| first = Joshua D. 
+| authorlink = Joshua D. Zimmerman
+| year = 2015
+| title = The Polish Underground and the Jews, 1939–1945
+| publisher = Cambridge University Press
+| location=London, New York City
+| isbn = 978-1108432740
+| ref = harv}}
+{{refend}}
+
+==Further reading==
+* {{cite book
+| editor1-last = Beevor
+| editor1-first = Antony
+| editor2-last = Vinogradova
+| editor2-first = Luba
+| year = 2006
+| title = A Writer at War: Vasily Grossman with the Red Army
+| publisher = Pimlico
+| isbn = 978-1-84595-015-6}}
+* {{cite news|last=Bruoygard|first=Terje|year=2013|title=Operation Art in Theory and War: A Comparison of Soviet Theory and the Red Army's Conduct in Operation Bagration 1944|location=Quantico, VA|publisher=USMC Command and Staff College|url=http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA601678|accessdate=29 January 2017}}
+* {{cite book
+| last1 = Glantz
+| first1 = David M.
+| authorlink = David Glantz
+| title = Byelorussia 1944–The Soviet General Staff Study}}
+* {{cite book
+| last = Mazower
+| first = Mark
+| authorlink = Mark Mazower
+| year = 2008
+| title = Hitler's Empire: Nazi Rule in Occupied Europe
+| location = London
+| publisher = Allen Lane
+| isbn = 978-0-713-99681-4}}
+* {{cite book
+| last = Merridale
+| first = C.
+| year = 2006
+| title = Ivan's War: Inside the Red Army, 1939–45
+| publisher = Faber
+| isbn = 978-0-571-21809-7}}
+* {{cite journal
+| last1 = Zetterling
+| first1 = Niklas
+| last2 = Franksson
+| first2 = Anders
+| date=1 March 1998
+| title = Analyzing World War II Eastern Front Battles
+| journal = The Journal of Slavic Military Studies
+| volume = 11
+| issue = 1
+| publisher = Routledge Taylor &amp; Francis Group
+| pages = 176–203
+| doi = 10.1080/13518049808430334}}
+
+==External links==
+{{commons category-inline}}
+* [http://www.historynet.com/operation-bagration-soviet-offensive-of-1944.htm Operation Bagration: Soviet Offensive of 1944]
+* [http://livestream.com/nww2m/events/3632330/videos/70403585 Operation Bagration (video)]: lecture by the military historian [[Robert Citino]] at the 2014 International Conference on World War II, via the official Livestream channel of [[The National WWII Museum]].
+
+{{Subject bar
+| portal1=Military of Germany
+| portal2=Soviet Union
+| portal3=World War II
+| commons=y
+| commons-search=Category:Operation Bagration
+}}
+{{World War II}}
+{{Authority control}}
+
+{{coord missing|Europe}}
+
+{{DEFAULTSORT:Bagration, Operation}}
+[[Category:Operation Bagration| ]]
+[[Category:Belarus in World War II]]
+[[Category:1944 in Belarus]]
+[[Category:Conflicts in 1944]]
+[[Category:Battles and operations of the Eastern Front of World War II]]
+[[Category:Battles and operations of the Soviet–German War]]
+[[Category:Military operations of World War II involving Germany]]
+[[Category:Strategic operations of the Red Army in World War II]]
+[[Category:World War II aerial operations and battles of the Eastern Front]]</text><sha1>63bpxq6lllyoncuxcc2ecyehxtq0jw1</sha1></revision></page>
