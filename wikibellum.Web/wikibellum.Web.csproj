@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\wikibellum.Common\wikibellum.Common.csproj" />
     <ProjectReference Include="..\wikibellum.Data\wikibellum.Data.csproj" />
     <ProjectReference Include="..\wikibellum.Entities\wikibellum.Entities.csproj" />
     <ProjectReference Include="..\wikibellun.Data\wikibellum.Data.csproj" />

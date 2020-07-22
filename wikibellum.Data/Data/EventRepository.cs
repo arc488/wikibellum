@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,12 @@ namespace wikibellum.Data
     {
         public EventRepository(WikiContext context) : base(context)
         {
+        }
+
+        public override IEnumerable<Event> GetAll()
+        {
+            var entries = _entries.Include(e => e.Location).ToList();
+            return entries;
         }
     }
 }

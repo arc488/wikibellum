@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using wikibellum.Data;
 using wikiparser;
+using wikibellum.Common;
 
 namespace wikibellum
 {
@@ -40,6 +41,7 @@ namespace wikibellum
             services.AddSingleton(new MapperConfiguration(mc => mc.AddProfile(new MappingProfile())).CreateMapper());
 
             services.AddSingleton(new wikiparser.Starter());
+            services.AddSingleton(new GeocodingService(Configuration.GetSection("BingMaps").GetValue<string>("ApiKey")));
 
         }
 

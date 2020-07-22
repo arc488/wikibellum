@@ -9,8 +9,8 @@ namespace wikibellum.Data
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly WikiContext _context;
-        private readonly DbSet<TEntity> _entries;
+        protected readonly WikiContext _context;
+        protected readonly DbSet<TEntity> _entries;
 
         public Repository(WikiContext context)
         {
@@ -18,7 +18,7 @@ namespace wikibellum.Data
             _entries = _context.Set<TEntity>();
         }
 
-        public EntityState Create(TEntity entity)
+        public virtual EntityState Create(TEntity entity)
         {
             var state = _entries.Add(entity).State;
             _context.SaveChanges();
@@ -26,23 +26,29 @@ namespace wikibellum.Data
 
         }
 
-        public EntityState Delete(TEntity entity)
+        public virtual EntityState Delete(TEntity entity)
         {
             var state = _entries.Remove(entity).State;
             _context.SaveChanges();
             return state;
         }
 
-        public TEntity Get(int id)
+        public virtual TEntity Get(int id)
         {
             return _entries.Find(id);
         }
 
-        public EntityState Update(TEntity entity)
+        public virtual IEnumerable<TEntity> GetAll()
         {
-            var state = _entries.Update(entity).State;
+            var entities = _entries.ToList();
+            return entities;
+        }
+
+        public virtual EntityState Update(TEntity entity)
+        {
+            var entry = _entries.Update(entity);
             _context.SaveChanges();
-            return state;
+            return entry.State;
         }
     }
 }

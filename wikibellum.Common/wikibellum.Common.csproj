@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Geocoding.net" Version="3.6.1" />
+  </ItemGroup>
+
 </Project>

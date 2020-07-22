@@ -1,6 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model IEnumerable<MapItemViewModel>
+
+<script type="text/javascript">
+        var modelData = @Html.Raw(Json.Serialize(Model));
+        console.log(modelData);
+</script>
 
 <div id="details">
     <div class="container">
