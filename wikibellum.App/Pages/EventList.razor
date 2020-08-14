@@ -1,0 +1,27 @@
+﻿@page "/events"
+
+<h3>EventList</h3>
+
+@if (Events == null)
+{
+    <h4>Loading...</h4>
+}
+else
+{
+<table style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Location</th>
+    </tr>
+    @foreach (var item in Events)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Title</td>
+            <td>@item.Location.Name</td>
+        </tr>
+    }
+
+</table>
+}

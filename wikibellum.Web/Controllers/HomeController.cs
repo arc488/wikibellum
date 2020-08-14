@@ -36,7 +36,7 @@ namespace wikibellum.Controllers
             {
                 var viewModel = new MapItemViewModel()
                 {
-                    Name = item.Title,
+                    Title = item.Title,
                     Lat = item.Location.Lat,
                     Long = item.Location.Long,
 

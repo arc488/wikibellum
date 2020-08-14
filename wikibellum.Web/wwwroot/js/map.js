@@ -7,21 +7,23 @@ var map = new mapboxgl.Map({
     zoom: 8
 });
 
-modelData.foreach
 
 for (var i in modelData) {
-    console.log(modelData[i]);
-    var lat = parseFloat(modelData[i].lat);
-    var long = parseFloat(modelData[i].long);
-    var coords = [lat, long];
-    console.log(coords)
+    var mapItem = modelData[i];
+    var lat = parseFloat(mapItem.lat);
+    var long = parseFloat(mapItem.long);
+    var title = "<h6>" + mapItem.title + "</h6>";
+    var coords = [long, lat];
+
     try {
         var marker = new mapboxgl.Marker()
             .setLngLat(coords)
+            .setPopup(new mapboxgl.Popup().setHTML(title))
             .addTo(map);
     }
     catch (err) {
         console.log(err);
     }
+    marker.togglePopup();
 
 }

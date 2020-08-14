@@ -8,6 +8,11 @@ namespace wikibellum.Entities
 {
     public class EventParticipant
     {
+        public EventParticipant()
+        {
+            Strength = new UnitStrength();
+            Losses = new UnitLosses();
+        }
 
         [Key]
         public int Id { get; set; }
