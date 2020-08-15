@@ -10,6 +10,6 @@ namespace wikibellum.Entities
     {
         [Key]
         public int Id { get; set; }
-        public List<Loss> Losses { get; set; }
+        public List<IBelligerentUnit> Losses { get; set; }
     }
 }

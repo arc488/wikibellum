@@ -5,7 +5,7 @@ using wikibellum.Entities.Enums;
 
 namespace wikibellum.Entities.Models.Units
 {
-    public class Loss
+    public class Loss : IBelligerentUnit
     {
         public string Classification { get; set; }
         public Condition Condition { get; set; }

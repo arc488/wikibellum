@@ -5,7 +5,7 @@ using wikibellum.Entities.Enums;
 
 namespace wikibellum.Entities.Models.Units
 {
-    public class Asset : IBelligerentUnit
+    public interface IBelligerentUnit
     {
         public string Classification { get; set; }
         public Condition Condition { get; set; }

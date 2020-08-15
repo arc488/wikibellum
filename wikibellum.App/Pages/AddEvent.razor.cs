@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using wikibellum.App.Components;
 using wikibellum.App.Services;
 using wikibellum.Entities;
+using wikibellum.Entities.Enums;
 using wikibellum.Entities.Models.Units;
 
 namespace wikibellum.App.Pages
@@ -39,15 +40,24 @@ namespace wikibellum.App.Pages
                     {
                         Name = "",
                         Losses = new UnitLosses(){
-                            Losses = new List<Loss>()
+                            Losses = new List<IBelligerentUnit>()
                         },
                         Strength = new UnitStrength(){ 
-                            Assets = new List<Asset>()
+                            Assets = new List<IBelligerentUnit>()
+                            {
+                                new Asset()
+                                {
+                                    Classification = "Test",
+                                    Condition = Condition.Destroyed,
+                                    Amount = 20000
+                                }
+                            }
                         },
                     }
                 }
                 
             };
+            
         }
 
         protected void AddParticipant()
@@ -57,11 +67,11 @@ namespace wikibellum.App.Pages
                 Name = "",
                 Losses = new UnitLosses()
                 {
-                    Losses = new List<Loss>()
+                    Losses = new List<IBelligerentUnit>()
                 },
                 Strength = new UnitStrength()
                 {
-                    Assets = new List<Asset>()
+                    Assets = new List<IBelligerentUnit>()
                 },
             });
             TempCount++;

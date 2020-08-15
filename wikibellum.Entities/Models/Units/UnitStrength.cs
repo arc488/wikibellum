@@ -8,6 +8,6 @@ namespace wikibellum.Entities
     {
         [Key]
         public int Id { get; set; }
-        public List<Asset> Assets { get; set; }
+        public List<IBelligerentUnit> Assets { get; set; }
     }
 }
