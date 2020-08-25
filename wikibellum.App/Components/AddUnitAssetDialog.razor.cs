@@ -8,13 +8,14 @@ using wikibellum.Entities.Models.Units;
 
 namespace wikibellum.App.Components
 {
-    public partial class AddUnitAssetDialog : ComponentBase
+    public partial class AddUnitAssetDialog
     {
         [Inject]
         public IEventDataService EventDataService { get; set; }
 
         public Asset Asset { get; set; }
         public bool ShowDialog { get; set; }
+        public ForceType SelectedForceType { get; set; } = ForceType.Land;
 
         [Parameter]
         public EventCallback<bool> CloseEventCallback { get; set; }
@@ -24,9 +25,15 @@ namespace wikibellum.App.Components
 
         public int participantId { get; set; }
 
-        public void Show()
+        public void SetForceType(ForceType forceType)
         {
-            ResetDialog();
+            SelectedForceType = forceType;
+            StateHasChanged();
+        }
+
+        public void Show(AssetType assetType)
+        {
+            ResetDialog(assetType);
             ShowDialog = true;
             StateHasChanged();
         }
@@ -37,9 +44,12 @@ namespace wikibellum.App.Components
             StateHasChanged();
         }
 
-        private void ResetDialog()
+        private void ResetDialog(AssetType assetType)
         {
-            Asset = new Asset();
+            Asset = new Asset()
+            {
+                AssetType = assetType
+            };
         }
 
         protected async Task HandleValidSubmit()
@@ -50,5 +60,12 @@ namespace wikibellum.App.Components
             await CloseEventCallback.InvokeAsync(true);
             StateHasChanged();
         }
+    }
+
+    public enum ForceType
+    {
+        Land,
+        Naval,
+        Air
     }
 }

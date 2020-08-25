@@ -33,8 +33,6 @@ namespace wikibellum.Api
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IEventParticipantRepository, EventParticipantRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
-            services.AddScoped<IUnitLossesRepository, UnitLossesRepository>();
-            services.AddScoped<IUnitStrengthRepository, UnitStrengthRepository>();
             services.AddCors(options =>
             {
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());

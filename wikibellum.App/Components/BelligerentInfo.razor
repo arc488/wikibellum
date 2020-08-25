@@ -1,0 +1,105 @@
+﻿@using wikibellum.Entities.Models.Units
+
+<div class="unit-component">
+    <div class="input-group input-group-sm mt-1">
+        <div class="input-group-prepend">
+            <i class="input-group-text fa fa-flag"></i>
+        </div>
+        <input id="participantName" class="form-control" placeholder="Ex. Germany">
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <span class="d-inline-block align-middle">Strength</span>
+        </div>
+        <div class="col-md-6 text-center">
+            <button @onclick="@(e => AddAsset(AssetType.Strength))" class="btn btn-primary w-100 btn-sm">Add</button>
+        </div>
+        <div class="unit-data">
+            <div class="unit-data-header">
+                <div class="row bg-info">
+                    <div class="col">Type</div>
+                    <div class="col">Condition</div>
+                    <div class="col">Amount</div>
+                </div>
+            </div>
+            <div class="unit-data-body">
+                @foreach (var item in Belligerent.Strength)
+                {
+                    <div class="row">
+                        <div class="col">@item.Classification</div>
+                        <div class="col">@item.Condition</div>
+                        <div class="col">@item.Amount</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <span class="d-inline-block align-middle">Losses</span>
+        </div>
+        <div class="col-md-6 text-center">
+            <button @onclick="@(e => AddAsset(AssetType.Loss))" class="btn btn-primary w-100 btn-sm">Add</button>
+        </div>
+        <div class="unit-data">
+            <div class="unit-data-header">
+                <div class="row bg-info">
+                    <div class="col">Type</div>
+                    <div class="col">Condition</div>
+                    <div class="col">Amount</div>
+                </div>
+            </div>
+            <div class="unit-data-body">
+                @foreach (var item in Belligerent.Losses)
+                {
+                    <div class="row">
+                        <div class="col">@item.Classification</div>
+                        <div class="col">@item.Condition</div>
+                        <div class="col">@item.Amount</div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<wikibellum.App.Components.AddUnitAssetDialog @ref="Dialog" AddAssetEventCallback="@AddUnitAssetDialog_OnAssetAdded" CloseEventCallback="@AddUnitAssetDialog_OnDialogClose"></wikibellum.App.Components.AddUnitAssetDialog>
+<style>
+    .unit-component {
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        padding-top: 0.2rem;
+        padding-bottom: 1rem;
+    }
+
+        .unit-component span {
+            font-weight: bold;
+        }
+
+    .unit-data {
+        width: 100%;
+        margin-top: 0.2rem;
+        text-align: center;
+    }
+
+        .unit-data .col {
+            border: 1px solid grey;
+        }
+
+        .unit-data .row {
+            margin-left: 15px;
+            margin-right: 0px;
+        }
+
+        .unit-data .unit-data-header {
+            font-weight: bold;
+            overflow-y: scroll;
+        }
+
+        .unit-data .unit-data-body {
+            max-height: 50px;
+            overflow-y: scroll;
+        }
+</style>

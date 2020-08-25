@@ -5,11 +5,10 @@ using wikibellum.Entities.Enums;
 
 namespace wikibellum.Entities.Models.Units
 {
-    public class Loss : IBelligerentUnit
+    public interface IBelligerentAsset
     {
         public string Classification { get; set; }
         public Condition Condition { get; set; }
         public int Amount { get; set; }
-
     }
 }

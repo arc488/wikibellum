@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace wikibellum.Data.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,35 +72,6 @@ namespace wikibellum.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Locations", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UnitLosses",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Dead = table.Column<int>(nullable: false),
-                    Wounded = table.Column<int>(nullable: false),
-                    Captured = table.Column<int>(nullable: false),
-                    Missing = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UnitLosses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UnitStrengths",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Personnel = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_UnitStrengths", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,7 +192,8 @@ namespace wikibellum.Data.Migrations
                     Result = table.Column<string>(nullable: true),
                     LocationId = table.Column<int>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    ReccomendationId = table.Column<int>(nullable: true)
+                    ReccomendationId = table.Column<int>(nullable: true),
+                    FileName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -247,8 +219,6 @@ namespace wikibellum.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
-                    StrengthId = table.Column<int>(nullable: true),
-                    LossesId = table.Column<int>(nullable: true),
                     EventId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -260,16 +230,33 @@ namespace wikibellum.Data.Migrations
                         principalTable: "Events",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Asset",
+                columns: table => new
+                {
+                    AssetId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Classification = table.Column<string>(nullable: true),
+                    Condition = table.Column<int>(nullable: false),
+                    Amount = table.Column<int>(nullable: false),
+                    EventParticipantId = table.Column<int>(nullable: true),
+                    EventParticipantId1 = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Asset", x => x.AssetId);
                     table.ForeignKey(
-                        name: "FK_EventParticipants_UnitLosses_LossesId",
-                        column: x => x.LossesId,
-                        principalTable: "UnitLosses",
+                        name: "FK_Asset_EventParticipants_EventParticipantId",
+                        column: x => x.EventParticipantId,
+                        principalTable: "EventParticipants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_EventParticipants_UnitStrengths_StrengthId",
-                        column: x => x.StrengthId,
-                        principalTable: "UnitStrengths",
+                        name: "FK_Asset_EventParticipants_EventParticipantId1",
+                        column: x => x.EventParticipantId1,
+                        principalTable: "EventParticipants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -314,19 +301,19 @@ namespace wikibellum.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Asset_EventParticipantId",
+                table: "Asset",
+                column: "EventParticipantId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Asset_EventParticipantId1",
+                table: "Asset",
+                column: "EventParticipantId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_EventParticipants_EventId",
                 table: "EventParticipants",
                 column: "EventId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventParticipants_LossesId",
-                table: "EventParticipants",
-                column: "LossesId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_EventParticipants_StrengthId",
-                table: "EventParticipants",
-                column: "StrengthId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_LocationId",
@@ -357,7 +344,7 @@ namespace wikibellum.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "EventParticipants");
+                name: "Asset");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -366,13 +353,10 @@ namespace wikibellum.Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "EventParticipants");
+
+            migrationBuilder.DropTable(
                 name: "Events");
-
-            migrationBuilder.DropTable(
-                name: "UnitLosses");
-
-            migrationBuilder.DropTable(
-                name: "UnitStrengths");
 
             migrationBuilder.DropTable(
                 name: "Locations");

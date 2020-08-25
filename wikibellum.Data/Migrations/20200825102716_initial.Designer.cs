@@ -10,8 +10,8 @@ using wikibellum.Data;
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    [Migration("20200721031441_addedFileNamePropToEvent")]
-    partial class addedFileNamePropToEvent
+    [Migration("20200825102716_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -282,22 +282,12 @@ namespace wikibellum.Data.Migrations
                     b.Property<int?>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LossesId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("StrengthId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("EventId");
-
-                    b.HasIndex("LossesId");
-
-                    b.HasIndex("StrengthId");
 
                     b.ToTable("EventParticipants");
                 });
@@ -323,43 +313,35 @@ namespace wikibellum.Data.Migrations
                     b.ToTable("Locations");
                 });
 
-            modelBuilder.Entity("wikibellum.Entities.UnitLosses", b =>
+            modelBuilder.Entity("wikibellum.Entities.Models.Units.Asset", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("AssetId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Captured")
+                    b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("Dead")
+                    b.Property<string>("Classification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Condition")
                         .HasColumnType("int");
 
-                    b.Property<int>("Missing")
+                    b.Property<int?>("EventParticipantId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Wounded")
+                    b.Property<int?>("EventParticipantId1")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("AssetId");
 
-                    b.ToTable("UnitLosses");
-                });
+                    b.HasIndex("EventParticipantId");
 
-            modelBuilder.Entity("wikibellum.Entities.UnitStrength", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.HasIndex("EventParticipantId1");
 
-                    b.Property<int>("Personnel")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UnitStrengths");
+                    b.ToTable("Asset");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -429,14 +411,17 @@ namespace wikibellum.Data.Migrations
                     b.HasOne("wikibellum.Entities.Event", null)
                         .WithMany("Participants")
                         .HasForeignKey("EventId");
+                });
 
-                    b.HasOne("wikibellum.Entities.UnitLosses", "Losses")
-                        .WithMany()
-                        .HasForeignKey("LossesId");
+            modelBuilder.Entity("wikibellum.Entities.Models.Units.Asset", b =>
+                {
+                    b.HasOne("wikibellum.Entities.EventParticipant", null)
+                        .WithMany("Losses")
+                        .HasForeignKey("EventParticipantId");
 
-                    b.HasOne("wikibellum.Entities.UnitStrength", "Strength")
-                        .WithMany()
-                        .HasForeignKey("StrengthId");
+                    b.HasOne("wikibellum.Entities.EventParticipant", null)
+                        .WithMany("Strength")
+                        .HasForeignKey("EventParticipantId1");
                 });
 #pragma warning restore 612, 618
         }

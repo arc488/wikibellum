@@ -14,8 +14,6 @@ else
 {
     <div id="details">
         <div class="container">
-            <MatButton>Test</MatButton>
-
             <EditForm Model="@Event" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
                 <div class="row">
                     <div id="overview" class="col-md-5 border rounded overflow-auto">
@@ -105,76 +103,12 @@ else
                     <div id="belligerents" class="col-md-5 border rounded overflow-auto">
                         <h4>Belligerents</h4>
                         <button @onclick="AddParticipant" class="btn btn-primary mx-auto d-block my-2">Add</button>
+                        @foreach (var item in Event.Participants)
+                        {
+                            <BelligerentInfo Belligerent="item"></BelligerentInfo>
 
-                        <div class="form-row text-center">
-                            @foreach (var item in Event.Participants)
-                            {
-                                <div class="col border">
-                                    <div class="form-group">
-                                        <label id="participantName">Belligerent</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <i class="input-group-text fa fa-flag"></i>
-                                            </div>
-                                            <input id="participantName" @bind="item.Name" class="form-control" placeholder="Ex. Germany" />
+                        }
 
-                                        </div>
-                                        <div><ValidationMessage class="text-danger" For="@(() => item.Name)" /></div>
-                                    </div>
-                                    <div>
-                                        <UnitList Units="@item.Strength.Assets"></UnitList>
-                                    </div>
-
-                                    @*<div class="form-group">
-                                    <label id="strength">Strength</label>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Type</th>
-                                                <th scope="col">Condition</th>
-                                                <th scope="col">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var asset in item.Strength.Assets)
-                                            {
-                                                <tr>
-                                                    <td>@asset.Classification</td>
-                                                    <td>@asset.Condition</td>
-                                                    <td>@asset.Amount</td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                    <button @onclick="() => AddAsset(item.Id)" class="btn btn-primary mx-auto d-block">Add new</button>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="Strength">Losses</label>
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Type</th>
-                                                <th scope="col">Condition</th>
-                                                <th scope="col">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var loss in item.Losses.Losses)
-                                            {
-                                                <tr>
-                                                    <td>@loss.Classification</td>
-                                                    <td>@loss.Condition</td>
-                                                    <td>@loss.Amount</td>
-                                                </tr>
-
-                                            }
-                                        </tbody>
-                                    </table>
-                                    <button @onclick="AddLoss" class="btn btn-primary mx-auto d-block">Add new</button>
-                                </div>*@
-                                </div>
-                            }
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -199,4 +133,4 @@ else
     </div>
 }
 
-<AddUnitAssetDialog @ref="AddUnitAssetDialog" AddAssetEventCallback="@AddUnitAssetDialog_OnAssetAdded" CloseEventCallback="@AddUnitAssetDialog_OnDialogClose"></AddUnitAssetDialog>
+@*<AddUnitAssetDialog @ref="this.AddUnitAssetDialog" AddAssetEventCallback="@AddUnitAssetDialog_OnAssetAdded" CloseEventCallback="@AddUnitAssetDialog_OnDialogClose"></AddUnitAssetDialog>*@

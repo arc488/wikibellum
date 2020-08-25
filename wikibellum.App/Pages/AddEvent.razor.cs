@@ -21,8 +21,6 @@ namespace wikibellum.App.Pages
 
         public Event Event { get; set; }
 
-        public AddUnitAssetDialog AddUnitAssetDialog { get; set; }
-
         public int ParticipantIndex { get; set; }
 
         public int TempCount { get; set; } 
@@ -31,30 +29,11 @@ namespace wikibellum.App.Pages
         {
 
             Event = new Event()
-            {               
+            {
                 End = DateTime.Now,
                 Start = DateTime.Now,
                 Location = new Location(),
-                Participants = new List<EventParticipant> {
-                    new EventParticipant()
-                    {
-                        Name = "",
-                        Losses = new UnitLosses(){
-                            Losses = new List<IBelligerentUnit>()
-                        },
-                        Strength = new UnitStrength(){ 
-                            Assets = new List<IBelligerentUnit>()
-                            {
-                                new Asset()
-                                {
-                                    Classification = "Test",
-                                    Condition = Condition.Destroyed,
-                                    Amount = 20000
-                                }
-                            }
-                        },
-                    }
-                }
+                Participants = new List<EventParticipant>() { new EventParticipant() }
                 
             };
             
@@ -62,18 +41,7 @@ namespace wikibellum.App.Pages
 
         protected void AddParticipant()
         {
-            Event.Participants.Add(new EventParticipant()
-            {
-                Name = "",
-                Losses = new UnitLosses()
-                {
-                    Losses = new List<IBelligerentUnit>()
-                },
-                Strength = new UnitStrength()
-                {
-                    Assets = new List<IBelligerentUnit>()
-                },
-            });
+            Event.Participants.Add(new EventParticipant());
             TempCount++;
             StateHasChanged();
         }
@@ -86,9 +54,7 @@ namespace wikibellum.App.Pages
 
         protected void AddAsset(int participantIndex)
         {
-            Debug.WriteLine("Reached AddAsset function with participantId = " + participantIndex);
             ParticipantIndex = participantIndex;
-            AddUnitAssetDialog.Show();
         }
 
         public async void AddUnitAssetDialog_OnDialogClose()
@@ -98,7 +64,6 @@ namespace wikibellum.App.Pages
 
         public async void AddUnitAssetDialog_OnAssetAdded(Asset asset)
         {
-            Event.Participants[ParticipantIndex].Strength.Assets.Add(asset); 
         }
         protected void HandleValidSubmit()
         {
