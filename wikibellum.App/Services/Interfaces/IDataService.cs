@@ -9,5 +9,9 @@ namespace wikibellum.App.Services
     {
         Task<IEnumerable<TEntity>> GetAll();
         Task<TEntity> GetById(int id);
+        Task Update(int id, TEntity entity);
+        Task<TEntity> Add(TEntity entity);
+        Task Delete(int entityId);
+
     }
 }

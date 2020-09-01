@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace wikiparser.Enums
+namespace wikibellum.Entities.Enums
 {
-    enum Allies
+    public enum Allies
     {
         Soviet_Union,
         United_States,

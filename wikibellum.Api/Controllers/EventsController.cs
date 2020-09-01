@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using wikibellum.Data;
+using wikibellum.Entities;
 
 namespace wikibellum.Api.Controllers
 {
@@ -12,27 +14,96 @@ namespace wikibellum.Api.Controllers
     [ApiController]
     public class EventsController : ControllerBase
     {
-        private readonly IEventRepository _eventRepository;
+        private readonly WikiContext _context;
 
-        public EventsController(IEventRepository eventRepository)
+        public EventsController(WikiContext context)
         {
-            _eventRepository = eventRepository;
+            _context = context;
         }
 
-        // GET: api/<controller>
+        // GET: api/Events
         [HttpGet]
-        public IActionResult GetEvents()
+        public async Task<ActionResult<IEnumerable<Event>>> GetEvents()
         {
-            var entries = _eventRepository.GetAll();
-            return Ok(entries);
+            return await _context.Events.ToListAsync();
         }
 
-        // GET api/<controller>/5
+        // GET: api/Events/5
         [HttpGet("{id}")]
-        public IActionResult GetEventById(int id)
+        public async Task<ActionResult<Event>> GetEvent(int id)
         {
-            var entry = _eventRepository.Get(id);
-            return Ok(entry);
+            var @event = await _context.Events.FindAsync(id);
+
+            if (@event == null)
+            {
+                return NotFound();
+            }
+
+            return @event;
+        }
+
+        // PUT: api/Events/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutEvent(int id, Event @event)
+        {
+            if (id != @event.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(@event).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EventExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // POST: api/Events
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<Event>> PostEvent(Event @event)
+        {
+            var createdEntity = _context.Events.Add(@event);
+            await _context.SaveChangesAsync();
+            return Created("event", createdEntity);
+        }
+
+        // DELETE: api/Events/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Event>> DeleteEvent(int id)
+        {
+            var @event = await _context.Events.FindAsync(id);
+            if (@event == null)
+            {
+                return NotFound();
+            }
+
+            _context.Events.Remove(@event);
+            await _context.SaveChangesAsync();
+
+            return @event;
+        }
+
+        private bool EventExists(int id)
+        {
+            return _context.Events.Any(e => e.Id == id);
         }
     }
 }

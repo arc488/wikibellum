@@ -32,7 +32,7 @@ namespace wikibellum.Data
             _context.SaveChanges();
             return state;
         }
-
+         
         public virtual TEntity Get(int id)
         {
             return _entries.Find(id);

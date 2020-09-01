@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using wikibellum.App.Services;
 using wikibellum.App.Services.Implementation;
-
+using wikibellum.App.Services.Interfaces;
 
 namespace wikibellum.App
 {
@@ -22,6 +22,8 @@ namespace wikibellum.App
 
             //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddHttpClient<IEventDataService, EventDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IClassificationDataService, ClassificationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IBranchDataService, BranchDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
 
             await builder.Build().RunAsync();
         }

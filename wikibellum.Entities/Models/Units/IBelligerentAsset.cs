@@ -8,7 +8,7 @@ namespace wikibellum.Entities.Models.Units
     public interface IBelligerentAsset
     {
         public string Classification { get; set; }
-        public Condition Condition { get; set; }
+        public Condition? Condition { get; set; }
         public int Amount { get; set; }
     }
 }

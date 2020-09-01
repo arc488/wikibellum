@@ -1,37 +1,45 @@
-﻿@using wikibellum.Entities.Models.Units
-
-<div class="unit-component">
-    <div class="input-group input-group-sm mt-1">
-        <div class="input-group-prepend">
-            <i class="input-group-text fa fa-flag"></i>
+﻿<div class="unit-component">
+    <div class="side-selection border-bottom py-1 px-3">
+        <div class="btn-group w-100" role="group">
+            <button @onclick="@(e => SetAlliance(Alliance.Allies))" type="button" class="btn btn-secondary btn-sm @(((Alliance == Alliance.Allies)) ? "active" : "")">Allies</button>
+            <button @onclick="@(e => SetAlliance(Alliance.Axis))" type="button" class="btn btn-secondary btn-sm @(((Alliance == Alliance.Axis)) ? "active" : "")">Axis</button>
         </div>
-        <input id="participantName" class="form-control" placeholder="Ex. Germany">
+    </div>
+    <div class="input-group input-group-sm my-1 px-3">
+        <InputSelect id="classification" class="form-control" @bind-Value="@Belligerent.Name">
+            @switch (Alliance)
+            {
+                case Alliance.Allies:
+                    @foreach (Enum item in Enum.GetValues(typeof(Allies)))
+                    {
+                        <option value="@item">@item.ToString()</option>
+                    }
+                    break;
+                case Alliance.Axis:
+                    @foreach (Enum item in Enum.GetValues(typeof(Axis)))
+                    {
+                        <option value="@item">@item.ToString()</option>
+                    }
+                    break;
+            }
+        </InputSelect>
     </div>
     <div class="row">
         <div class="col-md-6 text-center">
             <span class="d-inline-block align-middle">Strength</span>
         </div>
         <div class="col-md-6 text-center">
-            <button @onclick="@(e => AddAsset(AssetType.Strength))" class="btn btn-primary w-100 btn-sm">Add</button>
+            <button @onclick="@(e => AddAsset(AssetType.Strength))" type="button" class="btn btn-success btn-circle">
+                <i class="fa fa-plus"></i>
+            </button>
         </div>
-        <div class="unit-data">
-            <div class="unit-data-header">
-                <div class="row bg-info">
-                    <div class="col">Type</div>
-                    <div class="col">Condition</div>
-                    <div class="col">Amount</div>
-                </div>
-            </div>
-            <div class="unit-data-body">
-                @foreach (var item in Belligerent.Strength)
-                {
-                    <div class="row">
-                        <div class="col">@item.Classification</div>
-                        <div class="col">@item.Condition</div>
-                        <div class="col">@item.Amount</div>
-                    </div>
-                }
-            </div>
+        <div class="col mx-3 my-1">
+            @foreach (var item in Belligerent.Strength)
+            {
+                @item.Amount 
+                @:&nbsp;
+                @item.Classification.FullName <br>
+            }
         </div>
     </div>
     <div class="row">
@@ -39,26 +47,19 @@
             <span class="d-inline-block align-middle">Losses</span>
         </div>
         <div class="col-md-6 text-center">
-            <button @onclick="@(e => AddAsset(AssetType.Loss))" class="btn btn-primary w-100 btn-sm">Add</button>
+            <button @onclick="@(e => AddAsset(AssetType.Loss))" type="button" class="btn btn-success btn-circle">
+                <i class="fa fa-plus"></i>
+            </button>
         </div>
-        <div class="unit-data">
-            <div class="unit-data-header">
-                <div class="row bg-info">
-                    <div class="col">Type</div>
-                    <div class="col">Condition</div>
-                    <div class="col">Amount</div>
-                </div>
-            </div>
-            <div class="unit-data-body">
-                @foreach (var item in Belligerent.Losses)
-                {
-                    <div class="row">
-                        <div class="col">@item.Classification</div>
-                        <div class="col">@item.Condition</div>
-                        <div class="col">@item.Amount</div>
-                    </div>
-                }
-            </div>
+        <div class="col mx-3 my-1">
+            @foreach (var item in Belligerent.Losses)
+            {
+                @item.Amount
+                @:&nbsp;
+                @item.Classification.FullName
+                @:&nbsp;
+                @item.Condition<br>
+            }
         </div>
     </div>
 </div>
@@ -72,34 +73,21 @@
         margin-bottom: 1rem;
         padding-top: 0.2rem;
         padding-bottom: 1rem;
+        background: #e1e1e1
     }
 
         .unit-component span {
             font-weight: bold;
         }
 
-    .unit-data {
-        width: 100%;
-        margin-top: 0.2rem;
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+        padding: 0px 0px;
+        border-radius: 15px;
         text-align: center;
+        font-size: 20px;
+        font-weight: 1000;
+        line-height: 1.42857;
     }
-
-        .unit-data .col {
-            border: 1px solid grey;
-        }
-
-        .unit-data .row {
-            margin-left: 15px;
-            margin-right: 0px;
-        }
-
-        .unit-data .unit-data-header {
-            font-weight: bold;
-            overflow-y: scroll;
-        }
-
-        .unit-data .unit-data-body {
-            max-height: 50px;
-            overflow-y: scroll;
-        }
 </style>

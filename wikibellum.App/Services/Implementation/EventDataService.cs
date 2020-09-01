@@ -11,6 +11,7 @@ namespace wikibellum.App.Services.Implementation
     {
         public EventDataService(HttpClient httpClient) : base(httpClient)
         {
+            ControllerName = "Events";
         }
     }
 }

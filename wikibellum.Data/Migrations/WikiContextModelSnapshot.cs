@@ -321,10 +321,16 @@ namespace wikibellum.Data.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Classification")
+                    b.Property<int>("AssetType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ClassificationId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Condition")
+                    b.Property<int?>("ClassificationId1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Condition")
                         .HasColumnType("int");
 
                     b.Property<int?>("EventParticipantId")
@@ -335,11 +341,292 @@ namespace wikibellum.Data.Migrations
 
                     b.HasKey("AssetId");
 
+                    b.HasIndex("ClassificationId1");
+
                     b.HasIndex("EventParticipantId");
 
                     b.HasIndex("EventParticipantId1");
 
                     b.ToTable("Asset");
+                });
+
+            modelBuilder.Entity("wikibellum.Entities.Models.Units.Branch", b =>
+                {
+                    b.Property<int>("BranchId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BranchId");
+
+                    b.ToTable("Branches");
+
+                    b.HasData(
+                        new
+                        {
+                            BranchId = 1,
+                            Name = "Naval"
+                        },
+                        new
+                        {
+                            BranchId = 2,
+                            Name = "Air"
+                        },
+                        new
+                        {
+                            BranchId = 3,
+                            Name = "Land"
+                        });
+                });
+
+            modelBuilder.Entity("wikibellum.Entities.Models.Units.Classification", b =>
+                {
+                    b.Property<int>("ClassificationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AbbrName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ClassificationId");
+
+                    b.HasIndex("BranchId");
+
+                    b.ToTable("Classifications");
+
+                    b.HasData(
+                        new
+                        {
+                            ClassificationId = 1,
+                            BranchId = 2,
+                            FullName = "Fighter"
+                        },
+                        new
+                        {
+                            ClassificationId = 2,
+                            BranchId = 2,
+                            FullName = "Medium_bomber"
+                        },
+                        new
+                        {
+                            ClassificationId = 3,
+                            BranchId = 2,
+                            FullName = "Heavy_bomber"
+                        },
+                        new
+                        {
+                            ClassificationId = 4,
+                            BranchId = 2,
+                            FullName = "Other"
+                        },
+                        new
+                        {
+                            ClassificationId = 5,
+                            BranchId = 3,
+                            FullName = "Infantry"
+                        },
+                        new
+                        {
+                            ClassificationId = 6,
+                            BranchId = 3,
+                            FullName = "Tank"
+                        },
+                        new
+                        {
+                            ClassificationId = 7,
+                            BranchId = 3,
+                            FullName = "Tankette"
+                        },
+                        new
+                        {
+                            ClassificationId = 8,
+                            BranchId = 3,
+                            FullName = "Light_tank"
+                        },
+                        new
+                        {
+                            ClassificationId = 9,
+                            BranchId = 3,
+                            FullName = "Medium_tank"
+                        },
+                        new
+                        {
+                            ClassificationId = 10,
+                            BranchId = 3,
+                            FullName = "Heavy_tank"
+                        },
+                        new
+                        {
+                            ClassificationId = 11,
+                            BranchId = 3,
+                            FullName = "Tank_destroyer"
+                        },
+                        new
+                        {
+                            ClassificationId = 12,
+                            BranchId = 3,
+                            FullName = "Self_propelled_artillery"
+                        },
+                        new
+                        {
+                            ClassificationId = 13,
+                            BranchId = 3,
+                            FullName = "Self_propelled_anti_aircraft_gun"
+                        },
+                        new
+                        {
+                            ClassificationId = 14,
+                            BranchId = 3,
+                            FullName = "Armoured_personnel_carrier"
+                        },
+                        new
+                        {
+                            ClassificationId = 15,
+                            BranchId = 3,
+                            FullName = "Armoured_car"
+                        },
+                        new
+                        {
+                            ClassificationId = 16,
+                            BranchId = 3,
+                            FullName = "Artillery_tractor"
+                        },
+                        new
+                        {
+                            ClassificationId = 17,
+                            BranchId = 3,
+                            FullName = "Amphibious"
+                        },
+                        new
+                        {
+                            ClassificationId = 18,
+                            BranchId = 3,
+                            FullName = "Utility_vehicle"
+                        },
+                        new
+                        {
+                            ClassificationId = 19,
+                            BranchId = 3,
+                            FullName = "Rocket_artillery"
+                        },
+                        new
+                        {
+                            ClassificationId = 20,
+                            BranchId = 3,
+                            FullName = "Other"
+                        },
+                        new
+                        {
+                            ClassificationId = 21,
+                            BranchId = 1,
+                            FullName = "Sailors"
+                        },
+                        new
+                        {
+                            ClassificationId = 22,
+                            BranchId = 1,
+                            FullName = "Aircraft_carrier"
+                        },
+                        new
+                        {
+                            ClassificationId = 23,
+                            BranchId = 1,
+                            FullName = "Battleship"
+                        },
+                        new
+                        {
+                            ClassificationId = 24,
+                            BranchId = 1,
+                            FullName = "Battlecruiser"
+                        },
+                        new
+                        {
+                            ClassificationId = 25,
+                            BranchId = 1,
+                            FullName = "Coastal_defence_ship"
+                        },
+                        new
+                        {
+                            ClassificationId = 26,
+                            BranchId = 1,
+                            FullName = "Monitor"
+                        },
+                        new
+                        {
+                            ClassificationId = 27,
+                            BranchId = 1,
+                            FullName = "Destroyer"
+                        },
+                        new
+                        {
+                            ClassificationId = 28,
+                            BranchId = 1,
+                            FullName = "Frigate"
+                        },
+                        new
+                        {
+                            ClassificationId = 29,
+                            BranchId = 1,
+                            FullName = "Corvette"
+                        },
+                        new
+                        {
+                            ClassificationId = 30,
+                            BranchId = 1,
+                            FullName = "Cruiser"
+                        },
+                        new
+                        {
+                            ClassificationId = 31,
+                            BranchId = 1,
+                            FullName = "Heavy_cruiser"
+                        },
+                        new
+                        {
+                            ClassificationId = 32,
+                            BranchId = 1,
+                            FullName = "Light_cruiser"
+                        },
+                        new
+                        {
+                            ClassificationId = 33,
+                            BranchId = 1,
+                            FullName = "Submarine"
+                        },
+                        new
+                        {
+                            ClassificationId = 34,
+                            BranchId = 1,
+                            FullName = "Mine_layer"
+                        },
+                        new
+                        {
+                            ClassificationId = 35,
+                            BranchId = 1,
+                            FullName = "Patrol_boat"
+                        },
+                        new
+                        {
+                            ClassificationId = 36,
+                            BranchId = 1,
+                            FullName = "Torpedo_boat"
+                        },
+                        new
+                        {
+                            ClassificationId = 37,
+                            BranchId = 1,
+                            FullName = "Landing_craft"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -413,6 +700,10 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.Models.Units.Asset", b =>
                 {
+                    b.HasOne("wikibellum.Entities.Models.Units.Classification", "Classification")
+                        .WithMany()
+                        .HasForeignKey("ClassificationId1");
+
                     b.HasOne("wikibellum.Entities.EventParticipant", null)
                         .WithMany("Losses")
                         .HasForeignKey("EventParticipantId");
@@ -420,6 +711,15 @@ namespace wikibellum.Data.Migrations
                     b.HasOne("wikibellum.Entities.EventParticipant", null)
                         .WithMany("Strength")
                         .HasForeignKey("EventParticipantId1");
+                });
+
+            modelBuilder.Entity("wikibellum.Entities.Models.Units.Classification", b =>
+                {
+                    b.HasOne("wikibellum.Entities.Models.Units.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

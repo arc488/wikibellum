@@ -23,48 +23,34 @@ namespace wikibellum.App.Pages
 
         public int ParticipantIndex { get; set; }
 
-        public int TempCount { get; set; } 
-
         protected async override Task OnInitializedAsync()
         {
-
-            Event = new Event()
+            var newEvent = new Event()
             {
+                Title = DateTime.Today.ToShortDateString(),
                 End = DateTime.Now,
                 Start = DateTime.Now,
                 Location = new Location(),
-                Participants = new List<EventParticipant>() { new EventParticipant() }
+                Participants = new List<EventParticipant>()
                 
             };
-            
+
+            Event = await EventDataService.Add(newEvent);
+            Debug.WriteLine("Initlialized Event: " + Event);
+            Debug.WriteLine("EventId on initialized: " + Event.Id);
+            Debug.WriteLine("Title on initialized: " + Event.Title);
+            Debug.WriteLine("EventId on initialized: " + Event.Id);
+
         }
 
-        protected void AddParticipant()
+        protected async void AddParticipant()
         {
             Event.Participants.Add(new EventParticipant());
-            TempCount++;
+            Debug.Write("EventId is: " + Event.Id);
+            await EventDataService.Update(Event.Id, Event);
             StateHasChanged();
         }
 
-        protected void AddLoss()
-        {
-            StateHasChanged();
-
-        }
-
-        protected void AddAsset(int participantIndex)
-        {
-            ParticipantIndex = participantIndex;
-        }
-
-        public async void AddUnitAssetDialog_OnDialogClose()
-        {        
-            StateHasChanged();
-        }
-
-        public async void AddUnitAssetDialog_OnAssetAdded(Asset asset)
-        {
-        }
         protected void HandleValidSubmit()
         {
 

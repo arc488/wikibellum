@@ -12,6 +12,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using wikibellum.Data;
+using wikibellum.Data.Data;
+using wikibellum.Data.Data.IRepositiories;
 
 namespace wikibellum.Api
 {
@@ -33,6 +35,8 @@ namespace wikibellum.Api
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IEventParticipantRepository, EventParticipantRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IBranchRepository, BranchRepository>();
+            services.AddScoped<IClassificationRepository, ClassificationRepository>();
             services.AddCors(options =>
             {
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
