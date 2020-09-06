@@ -46,10 +46,10 @@
 							{
 								<div class="form-group">
 									<label for="condition">Condition: </label>
-									<InputSelect id="condition" class="form-control" @bind-Value="@Asset.Condition">
-										@foreach (Enum item in Enum.GetValues(typeof(Condition)))
+									<InputSelect id="condition" class="form-control" @bind-Value="@Asset.ConditionId">
+										@foreach (var item in _conditions)
 										{
-											<option value="@item">@item.ToString()</option>
+											<option value="@item.ConditionId">@item.Name</option>
 
 										}
 									</InputSelect>

@@ -48,7 +48,7 @@ namespace wikibellum.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEventParticipant(int id, EventParticipant eventParticipant)
         {
-            if (id != eventParticipant.Id)
+            if (id != eventParticipant.EventParticipantId)
             {
                 return BadRequest();
             }
@@ -83,7 +83,7 @@ namespace wikibellum.Api.Controllers
             _context.EventParticipants.Add(eventParticipant);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEventParticipant", new { id = eventParticipant.Id }, eventParticipant);
+            return CreatedAtAction("GetEventParticipant", new { id = eventParticipant.EventParticipantId }, eventParticipant);
         }
 
         // DELETE: api/EventParticipants/5
@@ -104,7 +104,7 @@ namespace wikibellum.Api.Controllers
 
         private bool EventParticipantExists(int id)
         {
-            return _context.EventParticipants.Any(e => e.Id == id);
+            return _context.EventParticipants.Any(e => e.EventParticipantId == id);
         }
     }
 }

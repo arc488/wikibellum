@@ -24,6 +24,10 @@ namespace wikibellum.App
             builder.Services.AddHttpClient<IEventDataService, EventDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
             builder.Services.AddHttpClient<IClassificationDataService, ClassificationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
             builder.Services.AddHttpClient<IBranchDataService, BranchDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IEventParticipantDataService, EventParticipantDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IConditionDataService, ConditionDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<INationDataService, NationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IAllianceDataService, AllianceDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
 
             await builder.Build().RunAsync();
         }

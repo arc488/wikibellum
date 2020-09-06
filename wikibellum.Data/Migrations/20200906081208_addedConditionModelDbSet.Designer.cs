@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wikibellum.Data;
 
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    partial class WikiContextModelSnapshot : ModelSnapshot
+    [Migration("20200906081208_addedConditionModelDbSet")]
+    partial class addedConditionModelDbSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -633,13 +635,13 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.Models.Units.Condition", b =>
                 {
-                    b.Property<string>("ConditionId")
+                    b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ConditionId");
+                    b.HasKey("Id");
 
                     b.ToTable("Conditions");
                 });

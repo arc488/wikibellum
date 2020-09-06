@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using wikibellum.Data;
 using wikibellum.Entities;
@@ -15,10 +17,12 @@ namespace wikibellum.Api.Controllers
     public class EventsController : ControllerBase
     {
         private readonly WikiContext _context;
+        private readonly LinkGenerator _linkGenerator;
 
-        public EventsController(WikiContext context)
+        public EventsController(WikiContext context, LinkGenerator linkGenerator)
         {
             _context = context;
+            _linkGenerator = linkGenerator;
         }
 
         // GET: api/Events
@@ -48,7 +52,7 @@ namespace wikibellum.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEvent(int id, Event @event)
         {
-            if (id != @event.Id)
+            if (id != @event.EventId)
             {
                 return BadRequest();
             }
@@ -80,9 +84,9 @@ namespace wikibellum.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Event>> PostEvent(Event @event)
         {
-            var createdEntity = _context.Events.Add(@event);
+            var createdEntity = _context.Events.Add(@event).Entity;
             await _context.SaveChangesAsync();
-            return Created("event", createdEntity);
+            return Created($"api/Events/{createdEntity.EventId}", createdEntity);
         }
 
         // DELETE: api/Events/5
@@ -103,7 +107,7 @@ namespace wikibellum.Api.Controllers
 
         private bool EventExists(int id)
         {
-            return _context.Events.Any(e => e.Id == id);
+            return _context.Events.Any(e => e.EventId == id);
         }
     }
 }

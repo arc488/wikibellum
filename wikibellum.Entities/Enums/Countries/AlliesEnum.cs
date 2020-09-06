@@ -4,7 +4,7 @@ using System.Text;
 
 namespace wikibellum.Entities.Enums
 {
-    public enum Allies
+    public enum AlliesEnum
     {
         Soviet_Union,
         United_States,

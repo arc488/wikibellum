@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web.Http;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace wikibellum.App.Services
 {
@@ -48,15 +50,10 @@ namespace wikibellum.App.Services
         {
             var entityJson =
                 new StringContent(JsonSerializer.Serialize(entity), Encoding.UTF8, "application/json");
-
             var response = await _httpClient.PostAsync("api/" + ControllerName, entityJson);
-            Debug.WriteLine("Response success: " + response.IsSuccessStatusCode.ToString());
-            if (response.IsSuccessStatusCode)
-            {
-                return await JsonSerializer.DeserializeAsync<TEntity>(await response.Content.ReadAsStreamAsync());
-            }
-
-            return null;
+            var content = await response.Content.ReadAsStringAsync();
+            var entityObject = JsonConvert.DeserializeObject<TEntity>(content);
+            return entityObject;
         }
 
         public async Task Delete(int entityId)

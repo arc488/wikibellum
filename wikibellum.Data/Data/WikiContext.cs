@@ -12,6 +12,8 @@ using wikibellum.Entities;
 using Microsoft.Extensions.Configuration.FileExtensions;
 using wikibellum.Entities.Models.Units;
 using wikibellum.Entities.Enums;
+using Condition = wikibellum.Entities.Models.Units.Condition;
+using wikibellum.Entities.Models;
 
 namespace wikibellum.Data
 {
@@ -26,6 +28,9 @@ namespace wikibellum.Data
         public DbSet<EventParticipant> EventParticipants { get; set; }
         public DbSet<Classification> Classifications { get; set; }
         public DbSet<Branch> Branches { get; set; }
+        public DbSet<Condition> Conditions { get; set; }
+        public DbSet<Nation> Nations { get; set; }
+        public DbSet<Alliance> Alliances { get; set; }
 
         public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<WikiContext>
         {
@@ -45,65 +50,65 @@ namespace wikibellum.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            List<Branch> branches = new List<Branch>()
-            {
-                new Branch()
-                {
-                    BranchId = 1,
-                    Name = "Naval"
-                },
-                new Branch()
-                {
-                    BranchId = 2,
-                    Name = "Air"
-                },
-                new Branch()
-                {
-                    BranchId = 3,
-                    Name = "Land"
-                }
-            };
-            modelBuilder.Entity<Branch>().HasData(branches);
+            //List<Branch> branches = new List<Branch>()
+            //{
+            //    new Branch()
+            //    {
+            //        BranchId = 1,
+            //        Name = "Naval"
+            //    },
+            //    new Branch()
+            //    {
+            //        BranchId = 2,
+            //        Name = "Air"
+            //    },
+            //    new Branch()
+            //    {
+            //        BranchId = 3,
+            //        Name = "Land"
+            //    }
+            //};
+            //modelBuilder.Entity<Branch>().HasData(branches);
 
-            List<Classification> classifications = new List<Classification>();
+            //List<Classification> classifications = new List<Classification>();
 
 
-            var classId = 1;
-            foreach (var item in Enum.GetValues(typeof(Air)))
-            {
-                var newClass = new Classification()
-                {
-                    ClassificationId = classId,
-                    FullName = item.ToString(),
-                    BranchId = 2,
-                };
-                classId++;
-                classifications.Add(newClass);
-            }
-            foreach (var item in Enum.GetValues(typeof(Land)))
-            {
-                var newClass = new Classification()
-                {
-                    ClassificationId = classId,
-                    FullName = item.ToString(),
-                    BranchId = 3,
-                };
-                classId++;
-                classifications.Add(newClass);
-            }
-            foreach (var item in Enum.GetValues(typeof(Naval)))
-            {
-                var newClass = new Classification()
-                {
-                    ClassificationId = classId,
-                    FullName = item.ToString(),
-                    BranchId = 1,
-                };
-                classId++;
-                classifications.Add(newClass);
-            }
+            //var classId = 1;
+            //foreach (var item in Enum.GetValues(typeof(Air)))
+            //{
+            //    var newClass = new Classification()
+            //    {
+            //        ClassificationId = classId,
+            //        FullName = item.ToString(),
+            //        BranchId = 2,
+            //    };
+            //    classId++;
+            //    classifications.Add(newClass);
+            //}
+            //foreach (var item in Enum.GetValues(typeof(Land)))
+            //{
+            //    var newClass = new Classification()
+            //    {
+            //        ClassificationId = classId,
+            //        FullName = item.ToString(),
+            //        BranchId = 3,
+            //    };
+            //    classId++;
+            //    classifications.Add(newClass);
+            //}
+            //foreach (var item in Enum.GetValues(typeof(Naval)))
+            //{
+            //    var newClass = new Classification()
+            //    {
+            //        ClassificationId = classId,
+            //        FullName = item.ToString(),
+            //        BranchId = 1,
+            //    };
+            //    classId++;
+            //    classifications.Add(newClass);
+            //}
 
-            modelBuilder.Entity<Classification>().HasData(classifications);
+            //modelBuilder.Entity<Classification>().HasData(classifications);
 
             //var land = Classifications.Where(c => c.BranchId == 3);
             //Branches.Find(3).Classifications.AddRange(land);

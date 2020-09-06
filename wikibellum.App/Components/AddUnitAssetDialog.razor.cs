@@ -16,6 +16,8 @@ namespace wikibellum.App.Components
         public IClassificationDataService ClassificationDataService { get; set; }
         [Inject]
         public IBranchDataService BranchDataService { get; set; }
+        [Inject]
+        public IConditionDataService ConditionDataService { get; set; }
 
         public Asset Asset { get; set; }
         public bool ShowDialog { get; set; }
@@ -32,10 +34,12 @@ namespace wikibellum.App.Components
         public int participantId { get; set; }
         private List<Classification> _classifications;
         private List<Branch> _branches;
+        private List<Condition> _conditions;
 
         protected async override Task OnInitializedAsync()
         {
             _classifications = (await ClassificationDataService.GetAll()).ToList();
+            _conditions = (await ConditionDataService.GetAll()).ToList();
             _branches = (await BranchDataService.GetAll()).ToList();
             _branches.Reverse();
             CurrentBranch = _branches[0];
@@ -81,6 +85,7 @@ namespace wikibellum.App.Components
         protected async Task HandleValidSubmit()
         {
             Asset.Classification = await ClassificationDataService.GetById(Int32.Parse(Asset.ClassificationId));
+            Asset.Condition = await ConditionDataService.GetById(Int32.Parse(Asset.ConditionId));
             ShowDialog = false;
             await AddAssetEventCallback.InvokeAsync(Asset);
             await CloseEventCallback.InvokeAsync(true);

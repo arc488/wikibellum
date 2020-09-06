@@ -1,27 +1,28 @@
 ﻿<div class="unit-component">
     <div class="side-selection border-bottom py-1 px-3">
         <div class="btn-group w-100" role="group">
-            <button @onclick="@(e => SetAlliance(Alliance.Allies))" type="button" class="btn btn-secondary btn-sm @(((Alliance == Alliance.Allies)) ? "active" : "")">Allies</button>
-            <button @onclick="@(e => SetAlliance(Alliance.Axis))" type="button" class="btn btn-secondary btn-sm @(((Alliance == Alliance.Axis)) ? "active" : "")">Axis</button>
+            <button @onclick="@(e => SetAlliance(_allies))" type="button" class="btn btn-secondary btn-sm @(((Alliance == _allies)) ? "active" : "")">Allies</button>
+            <button @onclick="@(e => SetAlliance(_axis))" type="button" class="btn btn-secondary btn-sm @(((Alliance == _axis)) ? "active" : "")">Axis</button>
         </div>
     </div>
     <div class="input-group input-group-sm my-1 px-3">
-        <InputSelect id="classification" class="form-control" @bind-Value="@Belligerent.Name">
-            @switch (Alliance)
+        <InputSelect id="classification" class="form-control" @bind-Value="@Belligerent.NationId">
+            @if (Alliance == _allies)
             {
-                case Alliance.Allies:
-                    @foreach (Enum item in Enum.GetValues(typeof(Allies)))
-                    {
-                        <option value="@item">@item.ToString()</option>
-                    }
-                    break;
-                case Alliance.Axis:
-                    @foreach (Enum item in Enum.GetValues(typeof(Axis)))
-                    {
-                        <option value="@item">@item.ToString()</option>
-                    }
-                    break;
+
+                @foreach (var item in _nations.Where(n => n.Alliance == _allies))
+                {
+                    <option value="@item.NationId">@item.Name</option>
+                }
             }
+            else if (Alliance == _axis)
+            {
+                @foreach (var item in _nations.Where(n => n.Alliance == _axis))
+                {
+                    <option value="@item.NationId">@item.Name</option>
+                }
+            }
+
         </InputSelect>
     </div>
     <div class="row">
@@ -58,7 +59,7 @@
                 @:&nbsp;
                 @item.Classification.FullName
                 @:&nbsp;
-                @item.Condition<br>
+                @item.Condition.Name<br>
             }
         </div>
     </div>

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace wikibellum.Entities.Enums
 {
-    public enum Axis
+    public enum AxisEnum
     {
         Germany,
         Italy,

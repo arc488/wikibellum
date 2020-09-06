@@ -32,13 +32,9 @@ namespace wikibellum.App.Pages
                 Start = DateTime.Now,
                 Location = new Location(),
                 Participants = new List<EventParticipant>()
-                
-            };
 
+            };
             Event = await EventDataService.Add(newEvent);
-            Debug.WriteLine("Initlialized Event: " + Event);
-            Debug.WriteLine("EventId on initialized: " + Event.Id);
-            Debug.WriteLine("Title on initialized: " + Event.Title);
             Debug.WriteLine("EventId on initialized: " + Event.Id);
 
         }
