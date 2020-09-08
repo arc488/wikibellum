@@ -35,15 +35,15 @@ namespace wikibellum.App.Pages
 
             };
             Event = await EventDataService.Add(newEvent);
-            Debug.WriteLine("EventId on initialized: " + Event.Id);
+            Debug.WriteLine("EventId on initialized: " + Event.EventId);
 
         }
 
         protected async void AddParticipant()
         {
             Event.Participants.Add(new EventParticipant());
-            Debug.Write("EventId is: " + Event.Id);
-            await EventDataService.Update(Event.Id, Event);
+            Debug.Write("EventId is: " + Event.EventId);
+            await EventDataService.Update(Event.EventId, Event);
             StateHasChanged();
         }
 
