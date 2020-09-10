@@ -12,16 +12,16 @@ namespace wikibellum.Entities
     {
         public EventParticipant()
         {
-            Strength = new List<Asset>();
-            Losses = new List<Asset>();
+            Assets = new List<Asset>();
         }
 
         [Key]
         public int EventParticipantId { get; set; }
         public Nation Nation { get; set; }
         public string NationId { get; set; } = "0";
-        public List<Asset> Strength { get; set; }
-        public List<Asset> Losses { get; set; }
+        public List<Asset> Assets { get; set; }
+        public string EventId { get; set; }
+        public Event Event { get; set; }
 
     }
 }

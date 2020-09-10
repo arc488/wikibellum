@@ -10,8 +10,8 @@ using wikibellum.Data;
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    [Migration("20200906131038_addedNationAndAllianceTables")]
-    partial class addedNationAndAllianceTables
+    [Migration("20200908025937_populateAlliancesAndNationsFromRelatedEnumsViaCustomMigrationCode")]
+    partial class populateAlliancesAndNationsFromRelatedEnumsViaCustomMigrationCode
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

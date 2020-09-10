@@ -10,7 +10,7 @@ using wikibellum.Entities.Models.Units;
 
 namespace wikibellum.App.Components
 {
-    public partial class AddUnitAssetDialog
+    public partial class AddUnitAssetDialog : ComponentBase
     {
         [Inject]
         public IClassificationDataService ClassificationDataService { get; set; }
@@ -84,8 +84,8 @@ namespace wikibellum.App.Components
 
         protected async Task HandleValidSubmit()
         {
-            Asset.Classification = await ClassificationDataService.GetById(Int32.Parse(Asset.ClassificationId));
-            Asset.Condition = await ConditionDataService.GetById(Int32.Parse(Asset.ConditionId));
+            Asset.Classification = _classifications.FirstOrDefault(c => c.ClassificationId.ToString() == Asset.ClassificationId);
+            Asset.Condition = _conditions.FirstOrDefault(c => c.ConditionId == Asset.ConditionId);
             ShowDialog = false;
             await AddAssetEventCallback.InvokeAsync(Asset);
             await CloseEventCallback.InvokeAsync(true);

@@ -1,27 +1,35 @@
 ﻿<div class="unit-component">
     <div class="side-selection border-bottom py-1 px-3">
         <div class="btn-group w-100" role="group">
-            <button @onclick="@(e => SetAlliance(_allies))" type="button" class="btn btn-secondary btn-sm @(((Alliance == _allies)) ? "active" : "")">Allies</button>
-            <button @onclick="@(e => SetAlliance(_axis))" type="button" class="btn btn-secondary btn-sm @(((Alliance == _axis)) ? "active" : "")">Axis</button>
+            <button @onclick="@(e => SetAlliance(_alliesAlliance))" type="button" class="btn btn-secondary btn-sm @(((Alliance == _alliesAlliance)) ? "active" : "")">Allies</button>
+            <button @onclick="@(e => SetAlliance(_axisAlliance))" type="button" class="btn btn-secondary btn-sm @(((Alliance == _axisAlliance)) ? "active" : "")">Axis</button>
         </div>
     </div>
     <div class="input-group input-group-sm my-1 px-3">
-        <InputSelect id="classification" class="form-control" @bind-Value="@Belligerent.NationId">
-            @if (Alliance == _allies)
+        <InputSelect @onfocusout="@(e => SetNation())" id="classification" class="form-control" @bind-Value="@Belligerent.NationId">
+            @if (_alliedNations == null || _axisNations == null)
             {
+            <h6>Loading...</h6>
+            }
+            else
+            {
+                @if (Alliance == _alliesAlliance)
+                {
 
-                @foreach (var item in _nations.Where(n => n.Alliance == _allies))
+                    @foreach (var item in _alliedNations)
+                    {
+                        <option value="@item.NationId">@item.Name</option>
+                    }
+                }
+                else if (Alliance == _axisAlliance)
                 {
-                    <option value="@item.NationId">@item.Name</option>
+                    @foreach (var item in _axisNations)
+                    {
+                        <option value="@item.NationId">@item.Name</option>
+                    }
                 }
             }
-            else if (Alliance == _axis)
-            {
-                @foreach (var item in _nations.Where(n => n.Alliance == _axis))
-                {
-                    <option value="@item.NationId">@item.Name</option>
-                }
-            }
+
 
         </InputSelect>
     </div>
@@ -35,7 +43,7 @@
             </button>
         </div>
         <div class="col mx-3 my-1">
-            @foreach (var item in Belligerent.Strength)
+            @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Strength))
             {
                 @item.Amount 
                 @:&nbsp;
@@ -53,7 +61,7 @@
             </button>
         </div>
         <div class="col mx-3 my-1">
-            @foreach (var item in Belligerent.Losses)
+            @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Loss))
             {
                 @item.Amount
                 @:&nbsp;

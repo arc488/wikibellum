@@ -25,6 +25,7 @@ namespace wikibellum.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Alliance>>> GetAlliances()
         {
+
             return await _context.Alliances.ToListAsync();
         }
 

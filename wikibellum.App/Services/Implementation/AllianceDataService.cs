@@ -12,7 +12,7 @@ namespace wikibellum.App.Services.Implementation
     {
         public AllianceDataService(HttpClient httpClient) : base(httpClient)
         {
-            ControllerName = "Nations";
+            ControllerName = "Alliances";
         }
     }
 }

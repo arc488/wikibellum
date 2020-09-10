@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wikibellum.Data;
 
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    partial class WikiContextModelSnapshot : ModelSnapshot
+    [Migration("20200908072119_populateAlliancesAndNationsAgain")]
+    partial class populateAlliancesAndNationsAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -277,10 +279,7 @@ namespace wikibellum.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("EventId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("EventId1")
+                    b.Property<int?>("EventId")
                         .HasColumnType("int");
 
                     b.Property<string>("NationId")
@@ -288,7 +287,7 @@ namespace wikibellum.Data.Migrations
 
                     b.HasKey("EventParticipantId");
 
-                    b.HasIndex("EventId1");
+                    b.HasIndex("EventId");
 
                     b.HasIndex("NationId");
 
@@ -369,8 +368,8 @@ namespace wikibellum.Data.Migrations
                     b.Property<string>("ConditionId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("EventParticipantId")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("EventParticipantId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("EventParticipantId1")
                         .HasColumnType("int");
@@ -380,6 +379,8 @@ namespace wikibellum.Data.Migrations
                     b.HasIndex("ClassificationId1");
 
                     b.HasIndex("ConditionId");
+
+                    b.HasIndex("EventParticipantId");
 
                     b.HasIndex("EventParticipantId1");
 
@@ -501,9 +502,9 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.EventParticipant", b =>
                 {
-                    b.HasOne("wikibellum.Entities.Event", "Event")
+                    b.HasOne("wikibellum.Entities.Event", null)
                         .WithMany("Participants")
-                        .HasForeignKey("EventId1");
+                        .HasForeignKey("EventId");
 
                     b.HasOne("wikibellum.Entities.Models.Nation", "Nation")
                         .WithMany()
@@ -528,7 +529,11 @@ namespace wikibellum.Data.Migrations
                         .HasForeignKey("ConditionId");
 
                     b.HasOne("wikibellum.Entities.EventParticipant", null)
-                        .WithMany("Assets")
+                        .WithMany("Losses")
+                        .HasForeignKey("EventParticipantId");
+
+                    b.HasOne("wikibellum.Entities.EventParticipant", null)
+                        .WithMany("Strength")
                         .HasForeignKey("EventParticipantId1");
                 });
 

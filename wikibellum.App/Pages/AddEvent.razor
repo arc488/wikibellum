@@ -19,31 +19,22 @@ else
                     <div id="overview" class="col-md-5 border rounded overflow-auto">
                         <div class="form-group">
                             <label asp-for="title">Title</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <i class="input-group-text fa fa-star"></i>
-                                </div>
-                                <input id="title" @bind="Event.Title" class="form-control" placeholder="Title" />
+                            <div class="input-group input-group-sm">
+                                <input id="title" @bind-value="Event.Title" @onfocusout="@(e => UpdateChanges())" class="form-control" placeholder="Title" />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Title)" /></div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col">
                                 <label id="startDate">Start</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <i class="input-group-text fa fa-calendar"></i>
-                                    </div>
+                                <div class="input-group input-group-sm">
                                     <input id="startDate" @bind="Event.Start" class="form-control" placeholder="Start" />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.Start)" /></div>
                             </div>
                             <div class="form-group col">
                                 <label id="endDate">End</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <i class="input-group-text fa fa-calendar"></i>
-                                    </div>
+                                <div class="input-group input-group-sm">
                                     <input id="endDate" @bind="Event.End" class="form-control" placeholder="End" />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.End)" /></div>
@@ -52,10 +43,7 @@ else
 
                         <div class="form-group">
                             <label id="result">Result</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <i class="input-group-text fa fa-gavel"></i>
-                                </div>
+                            <div class="input-group input-group-sm">
                                 <input id="result" @bind="Event.Result" class="form-control" placeholder="Ex. Axis victory" />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Result)" /></div>
@@ -65,10 +53,7 @@ else
                         <div class="location">
                             <div class="form-group">
                                 <label id="locationName">Location name</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <i class="input-group-text fa fa-map"></i>
-                                    </div>
+                                <div class="input-group input-group-sm">
                                     <input id="locationName" @bind="Event.Location.Name" class="form-control" placeholder="Stalingrad" />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Name)" /></div>
@@ -77,20 +62,14 @@ else
                             <div class="form-row">
                                 <div class="form-group col">
                                     <label id="locationLat">Latitude</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <i class="input-group-text fa fa-map-marker"></i>
-                                        </div>
+                                    <div class="input-group input-group-sm">
                                         <input id="locationLat" @bind="Event.Location.Lat" class="form-control" placeholder="51.1657" />
                                     </div>
                                     <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Lat)" /></div>
                                 </div>
                                 <div class="form-group col">
                                     <label id="locationLong">Longitude</label>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <i class="input-group-text fa fa-map-marker"></i>
-                                        </div>
+                                    <div class="input-group input-group-sm">
                                         <input id="locationLong" @bind="Event.Location.Long" class="form-control" placeholder="10.4515" />
                                     </div>
                                     <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Long)" /></div>
@@ -115,7 +94,7 @@ else
                     <div class="border col-md-10 text-center">
                         <div class="form-group">
                             <label id="description">description</label>
-                            <div class="input-group">
+                            <div class="input-group input-group-sm">
                                 <textarea id="description" @bind="Event.Description" type="text" asp-for="title" class="form-control" placeholder="the battle of stalingrad was..." />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Description)" /></div>

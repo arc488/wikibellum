@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using wikibellum.App.Components;
@@ -30,17 +31,25 @@ namespace wikibellum.App.Components
         public Alliance Alliance { get; set; }
 
         private IEnumerable<Alliance> _alliances;
-        private Alliance _allies;
-        private Alliance _axis;
+        private Alliance _alliesAlliance;
+        private Alliance _axisAlliance;
         private IEnumerable<Nation> _nations;
+        private IEnumerable<Nation> _alliedNations;
+        private IEnumerable<Nation> _axisNations;
 
         protected async override Task OnInitializedAsync()
         {
             _alliances = await AllianceDataService.GetAll();
             _nations = await NationDataService.GetAll();
 
-            _allies = _alliances.FirstOrDefault(a => a.Name == "Allies");
-            _axis = _alliances.FirstOrDefault(a => a.Name == "Axis");
+            _alliesAlliance = _alliances.FirstOrDefault(a => a.Name == "Allies");
+            _axisAlliance = _alliances.FirstOrDefault(a => a.Name == "Axis");
+
+            _alliedNations = _nations.Where(n => n.AllianceId == _alliesAlliance.AllianceId).ToList();
+            _axisNations = _nations.Where(n => n.AllianceId == _axisAlliance.AllianceId).ToList();
+
+            Alliance = _alliesAlliance;
+
             await base.OnInitializedAsync();
         }
 
@@ -51,16 +60,8 @@ namespace wikibellum.App.Components
 
         public void AddUnitAssetDialog_OnAssetAdded(Asset asset)
         {
-            if (asset.AssetType == AssetType.Loss)
-            {
-                Belligerent.Losses.Add(asset);
-            }
 
-            if (asset.AssetType == AssetType.Strength)
-            {
-                Belligerent.Strength.Add(asset);
-            }
-            Belligerent.Nation = _nations.FirstOrDefault(n => n.NationId == Belligerent.NationId);
+            Belligerent.Assets.Add(asset);
             EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
 
             StateHasChanged();
@@ -74,6 +75,14 @@ namespace wikibellum.App.Components
 
         public void AddUnitAssetDialog_OnDialogClose()
         {
+
+        }
+
+        public void SetNation()
+        {
+            Belligerent.Nation = _nations.FirstOrDefault(n => n.NationId == Belligerent.NationId);
+            EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
+            StateHasChanged();
 
         }
     }

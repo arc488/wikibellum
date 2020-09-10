@@ -8,8 +8,6 @@ namespace wikibellum.Entities.Models.Units
 {
     public class Asset
     {
-        private int _classificationId;
-
         [Key]
         public int AssetId { get; set; }
         public Classification Classification { get; set; }
@@ -18,6 +16,7 @@ namespace wikibellum.Entities.Models.Units
         public string ConditionId { get; set; } = "0";
         public int Amount { get; set; }
         public AssetType AssetType { get; set; }
+        public string EventParticipantId { get; set; }
     }
 
     public enum AssetType

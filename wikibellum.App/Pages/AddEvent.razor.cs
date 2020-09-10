@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using wikibellum.App.Components;
 using wikibellum.App.Services;
+using wikibellum.App.Services.Interfaces;
 using wikibellum.Entities;
 using wikibellum.Entities.Enums;
 using wikibellum.Entities.Models.Units;
@@ -18,6 +19,9 @@ namespace wikibellum.App.Pages
     {
         [Inject]
         public IEventDataService EventDataService { get; set; }
+
+        [Inject]
+        public IEventParticipantDataService EventParticipantDataService { get; set; }
 
         public Event Event { get; set; }
 
@@ -35,14 +39,14 @@ namespace wikibellum.App.Pages
 
             };
             Event = await EventDataService.Add(newEvent);
-            Debug.WriteLine("EventId on initialized: " + Event.EventId);
 
         }
 
         protected async void AddParticipant()
         {
-            Event.Participants.Add(new EventParticipant());
-            Debug.Write("EventId is: " + Event.EventId);
+            var newParticipant = await EventParticipantDataService.Add(new EventParticipant() { EventId = Event.EventId.ToString() }  );
+            Event.Participants.Add(newParticipant);
+
             await EventDataService.Update(Event.EventId, Event);
             StateHasChanged();
         }
@@ -56,7 +60,10 @@ namespace wikibellum.App.Pages
         {
 
         }
-
+        protected void UpdateChanges()
+        {
+            EventDataService.Update(Event.EventId, Event);
+        }
         protected override void OnAfterRender(bool firstRender)
         {
             JSRuntime.InvokeVoidAsync("setBelligerentsHeight");

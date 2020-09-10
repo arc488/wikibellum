@@ -2,7 +2,7 @@
 
 namespace wikibellum.Data.Migrations
 {
-    public partial class addedNationAndAllianceTables : Migration
+    public partial class addedAllianesAndNations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
