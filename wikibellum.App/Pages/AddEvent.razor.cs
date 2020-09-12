@@ -29,22 +29,13 @@ namespace wikibellum.App.Pages
 
         protected async override Task OnInitializedAsync()
         {
-            var newEvent = new Event()
-            {
-                Title = DateTime.Today.ToShortDateString(),
-                End = DateTime.Now,
-                Start = DateTime.Now,
-                Location = new Location(),
-                Participants = new List<EventParticipant>()
-
-            };
-            Event = await EventDataService.Add(newEvent);
+            Event = await EventDataService.Add(new Event());
 
         }
 
         protected async void AddParticipant()
         {
-            var newParticipant = await EventParticipantDataService.Add(new EventParticipant() { EventId = Event.EventId.ToString() }  );
+            var newParticipant = await EventParticipantDataService.Add(new EventParticipant() { EventId = Event.EventId }  );
             Event.Participants.Add(newParticipant);
 
             await EventDataService.Update(Event.EventId, Event);

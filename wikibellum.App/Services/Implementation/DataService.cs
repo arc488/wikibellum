@@ -38,12 +38,13 @@ namespace wikibellum.App.Services
             return response;
         }
         
-        public async Task Update(int id, TEntity entity)
+        public async Task<HttpResponseMessage> Update(int id, TEntity entity)
         {
             var entityJson =
                 new StringContent(JsonSerializer.Serialize(entity), Encoding.UTF8, "application/json");
 
-            await _httpClient.PutAsync("api/" + ControllerName, entityJson);
+            var response = await _httpClient.PutAsync("api/" + ControllerName + $"/{id}", entityJson);
+            return response;
         }
 
         public async Task<TEntity> Add(TEntity entity)

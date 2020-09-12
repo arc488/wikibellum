@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace wikibellum.App.Services
@@ -9,7 +10,7 @@ namespace wikibellum.App.Services
     {
         Task<IEnumerable<TEntity>> GetAll();
         Task<TEntity> GetById(int id);
-        Task Update(int id, TEntity entity);
+        Task<HttpResponseMessage> Update(int id, TEntity entity);
         Task<TEntity> Add(TEntity entity);
         Task Delete(int entityId);
 

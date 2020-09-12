@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="input-group input-group-sm my-1 px-3">
-        <InputSelect @onfocusout="@(e => SetNation())" id="classification" class="form-control" @bind-Value="@Belligerent.NationId">
+        <InputSelect @onfocusout="@(e => SetNation())" id="classification" class="form-control" @bind-Value="@Belligerent.NationIdString">
             @if (_alliedNations == null || _axisNations == null)
             {
             <h6>Loading...</h6>

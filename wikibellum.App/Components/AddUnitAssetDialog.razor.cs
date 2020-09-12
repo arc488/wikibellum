@@ -13,17 +13,16 @@ namespace wikibellum.App.Components
     public partial class AddUnitAssetDialog : ComponentBase
     {
         [Inject]
-        public IClassificationDataService ClassificationDataService { get; set; }
+        private IClassificationDataService ClassificationDataService { get; set; }
         [Inject]
-        public IBranchDataService BranchDataService { get; set; }
+        private IBranchDataService BranchDataService { get; set; }
         [Inject]
-        public IConditionDataService ConditionDataService { get; set; }
+        private IConditionDataService ConditionDataService { get; set; }
 
-        public Asset Asset { get; set; }
-        public bool ShowDialog { get; set; }
-        public ForceType SelectedForceType { get; set; } = ForceType.Land;
-        public Branch CurrentBranch { get; set; }
-        public List<Classification> CurrentBranchClassifications { get; set; }
+        private Asset Asset { get; set; }
+        private bool ShowDialog { get; set; }
+        private Branch CurrentBranch { get; set; }
+        private List<Classification> CurrentBranchClassifications { get; set; }
 
         [Parameter]
         public EventCallback<bool> CloseEventCallback { get; set; }
@@ -31,7 +30,6 @@ namespace wikibellum.App.Components
         [Parameter]
         public EventCallback<Asset> AddAssetEventCallback { get; set; }
 
-        public int participantId { get; set; }
         private List<Classification> _classifications;
         private List<Branch> _branches;
         private List<Condition> _conditions;
@@ -41,18 +39,12 @@ namespace wikibellum.App.Components
             _classifications = (await ClassificationDataService.GetAll()).ToList();
             _conditions = (await ConditionDataService.GetAll()).ToList();
             _branches = (await BranchDataService.GetAll()).ToList();
-            _branches.Reverse();
             CurrentBranch = _branches[0];
             CurrentBranchClassifications = _classifications.Where(c => c.BranchId == CurrentBranch.BranchId).ToList();
 
             await base.OnInitializedAsync();
         }
 
-        public void SetForceType(ForceType forceType)
-        {
-            SelectedForceType = forceType;
-            StateHasChanged();
-        }
 
         public void SetBranch(Branch branch)
         {
@@ -84,8 +76,13 @@ namespace wikibellum.App.Components
 
         protected async Task HandleValidSubmit()
         {
-            Asset.Classification = _classifications.FirstOrDefault(c => c.ClassificationId.ToString() == Asset.ClassificationId);
-            Asset.Condition = _conditions.FirstOrDefault(c => c.ConditionId == Asset.ConditionId);
+            Asset.ClassificationId = Int32.Parse(Asset.ClassificationIdString);
+            if (Asset.AssetType == AssetType.Loss)
+            {
+                Asset.ConditionId = Int32.Parse(Asset.ConditionIdString);
+                Asset.Condition = _conditions.FirstOrDefault(c => c.ConditionId == Asset.ConditionId);
+            }
+            Asset.Classification = _classifications.FirstOrDefault(c => c.ClassificationId == Asset.ClassificationId);
             ShowDialog = false;
             await AddAssetEventCallback.InvokeAsync(Asset);
             await CloseEventCallback.InvokeAsync(true);
@@ -93,10 +90,4 @@ namespace wikibellum.App.Components
         }
     }
 
-    public enum ForceType
-    {
-        Land,
-        Naval,
-        Air
-    }
 }

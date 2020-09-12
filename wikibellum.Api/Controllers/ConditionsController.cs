@@ -30,7 +30,7 @@ namespace wikibellum.Api.Controllers
 
         // GET: api/Conditions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Condition>> GetCondition(string id)
+        public async Task<ActionResult<Condition>> GetCondition(int id)
         {
             var condition = await _context.Conditions.FindAsync(id);
 
@@ -46,7 +46,7 @@ namespace wikibellum.Api.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCondition(string id, Condition condition)
+        public async Task<IActionResult> PutCondition(int id, Condition condition)
         {
             if (id != condition.ConditionId)
             {
@@ -102,7 +102,7 @@ namespace wikibellum.Api.Controllers
 
         // DELETE: api/Conditions/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Condition>> DeleteCondition(string id)
+        public async Task<ActionResult<Condition>> DeleteCondition(int id)
         {
             var condition = await _context.Conditions.FindAsync(id);
             if (condition == null)
@@ -116,7 +116,7 @@ namespace wikibellum.Api.Controllers
             return condition;
         }
 
-        private bool ConditionExists(string id)
+        private bool ConditionExists(int id)
         {
             return _context.Conditions.Any(e => e.ConditionId == id);
         }

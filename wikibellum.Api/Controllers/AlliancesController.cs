@@ -31,7 +31,7 @@ namespace wikibellum.Api.Controllers
 
         // GET: api/Alliances/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Alliance>> GetAlliance(string id)
+        public async Task<ActionResult<Alliance>> GetAlliance(int id)
         {
             var alliance = await _context.Alliances.FindAsync(id);
 
@@ -47,7 +47,7 @@ namespace wikibellum.Api.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAlliance(string id, Alliance alliance)
+        public async Task<IActionResult> PutAlliance(int id, Alliance alliance)
         {
             if (id != alliance.AllianceId)
             {
@@ -103,7 +103,7 @@ namespace wikibellum.Api.Controllers
 
         // DELETE: api/Alliances/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Alliance>> DeleteAlliance(string id)
+        public async Task<ActionResult<Alliance>> DeleteAlliance(int id)
         {
             var alliance = await _context.Alliances.FindAsync(id);
             if (alliance == null)
@@ -117,7 +117,7 @@ namespace wikibellum.Api.Controllers
             return alliance;
         }
 
-        private bool AllianceExists(string id)
+        private bool AllianceExists(int id)
         {
             return _context.Alliances.Any(e => e.AllianceId == id);
         }

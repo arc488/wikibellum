@@ -6,9 +6,9 @@ namespace wikibellum.Entities.Models
 {
     public class Nation
     {
-        public string NationId { get; set; }
+        public int NationId { get; set; }
         public string Name { get; set; }
         public Alliance Alliance { get; set; }
-        public string AllianceId { get; set; }
+        public int AllianceId { get; set; }
     }
 }

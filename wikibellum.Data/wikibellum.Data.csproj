@@ -5,14 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200906131038_addedNationAndAllianceTables.cs" />
-    <Compile Remove="Migrations\20200906131038_addedNationAndAllianceTables.Designer.cs" />
-    <Compile Remove="Migrations\20200908024144_addedLocationIdPropToEvent.cs" />
-    <Compile Remove="Migrations\20200908024144_addedLocationIdPropToEvent.Designer.cs" />
-    <Compile Remove="Migrations\20200908024718_addedAllianesAndNations.cs" />
-    <Compile Remove="Migrations\20200908024718_addedAllianesAndNations.Designer.cs" />
-    <Compile Remove="Migrations\20200910110254_addedForeignIdKeysToEventPartAndAsset.cs" />
-    <Compile Remove="Migrations\20200910110254_addedForeignIdKeysToEventPartAndAsset.Designer.cs" />
+    <None Remove="populate.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="populate.txt" />
   </ItemGroup>
 
   <ItemGroup>

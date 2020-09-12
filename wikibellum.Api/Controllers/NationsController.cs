@@ -30,7 +30,7 @@ namespace wikibellum.Api.Controllers
 
         // GET: api/Nations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Nation>> GetNation(string id)
+        public async Task<ActionResult<Nation>> GetNation(int id)
         {
             var nation = await _context.Nations.FindAsync(id);
 
@@ -46,7 +46,7 @@ namespace wikibellum.Api.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutNation(string id, Nation nation)
+        public async Task<IActionResult> PutNation(int id, Nation nation)
         {
             if (id != nation.NationId)
             {
@@ -102,7 +102,7 @@ namespace wikibellum.Api.Controllers
 
         // DELETE: api/Nations/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Nation>> DeleteNation(string id)
+        public async Task<ActionResult<Nation>> DeleteNation(int id)
         {
             var nation = await _context.Nations.FindAsync(id);
             if (nation == null)
@@ -116,7 +116,7 @@ namespace wikibellum.Api.Controllers
             return nation;
         }
 
-        private bool NationExists(string id)
+        private bool NationExists(int id)
         {
             return _context.Nations.Any(e => e.NationId == id);
         }

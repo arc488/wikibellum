@@ -10,6 +10,8 @@ namespace wikibellum.Entities.Models.Units
     {
         [Key]
         public int ClassificationId { get; set; }
+        [NotMapped]
+        public string ClassificationIdString { get; set; }
         public string FullName { get; set; }
         public string AbbrName { get; set; }
         public int BranchId { get; set; }

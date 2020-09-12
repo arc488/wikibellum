@@ -10,8 +10,8 @@ using wikibellum.Data;
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    [Migration("20200908025937_populateAlliancesAndNationsFromRelatedEnumsViaCustomMigrationCode")]
-    partial class populateAlliancesAndNationsFromRelatedEnumsViaCustomMigrationCode
+    [Migration("20200910164452_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -224,8 +224,8 @@ namespace wikibellum.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -248,7 +248,7 @@ namespace wikibellum.Data.Migrations
                     b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LocationId")
+                    b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ReccomendationId")
@@ -279,11 +279,11 @@ namespace wikibellum.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("EventId")
+                    b.Property<int>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<string>("NationId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("NationId")
+                        .HasColumnType("int");
 
                     b.HasKey("EventParticipantId");
 
@@ -317,8 +317,10 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.Models.Alliance", b =>
                 {
-                    b.Property<string>("AllianceId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("AllianceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -330,11 +332,13 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.Models.Nation", b =>
                 {
-                    b.Property<string>("NationId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("NationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AllianceId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("AllianceId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -359,30 +363,22 @@ namespace wikibellum.Data.Migrations
                     b.Property<int>("AssetType")
                         .HasColumnType("int");
 
-                    b.Property<string>("ClassificationId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ClassificationId1")
+                    b.Property<int>("ClassificationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ConditionId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int?>("EventParticipantId")
+                    b.Property<int>("ConditionId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EventParticipantId1")
+                    b.Property<int>("EventParticipantId")
                         .HasColumnType("int");
 
                     b.HasKey("AssetId");
 
-                    b.HasIndex("ClassificationId1");
+                    b.HasIndex("ClassificationId");
 
                     b.HasIndex("ConditionId");
 
                     b.HasIndex("EventParticipantId");
-
-                    b.HasIndex("EventParticipantId1");
 
                     b.ToTable("Asset");
                 });
@@ -427,8 +423,10 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.Models.Units.Condition", b =>
                 {
-                    b.Property<string>("ConditionId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ConditionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -493,7 +491,9 @@ namespace wikibellum.Data.Migrations
                 {
                     b.HasOne("wikibellum.Entities.Location", "Location")
                         .WithMany()
-                        .HasForeignKey("LocationId");
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("wikibellum.Entities.BookRecommendation", "Reccomendation")
                         .WithMany()
@@ -502,39 +502,47 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.EventParticipant", b =>
                 {
-                    b.HasOne("wikibellum.Entities.Event", null)
+                    b.HasOne("wikibellum.Entities.Event", "Event")
                         .WithMany("Participants")
-                        .HasForeignKey("EventId");
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("wikibellum.Entities.Models.Nation", "Nation")
                         .WithMany()
-                        .HasForeignKey("NationId");
+                        .HasForeignKey("NationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("wikibellum.Entities.Models.Nation", b =>
                 {
                     b.HasOne("wikibellum.Entities.Models.Alliance", "Alliance")
                         .WithMany()
-                        .HasForeignKey("AllianceId");
+                        .HasForeignKey("AllianceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("wikibellum.Entities.Models.Units.Asset", b =>
                 {
                     b.HasOne("wikibellum.Entities.Models.Units.Classification", "Classification")
                         .WithMany()
-                        .HasForeignKey("ClassificationId1");
+                        .HasForeignKey("ClassificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("wikibellum.Entities.Models.Units.Condition", "Condition")
                         .WithMany()
-                        .HasForeignKey("ConditionId");
+                        .HasForeignKey("ConditionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("wikibellum.Entities.EventParticipant", null)
-                        .WithMany("Losses")
-                        .HasForeignKey("EventParticipantId");
-
-                    b.HasOne("wikibellum.Entities.EventParticipant", null)
-                        .WithMany("Strength")
-                        .HasForeignKey("EventParticipantId1");
+                        .WithMany("Assets")
+                        .HasForeignKey("EventParticipantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("wikibellum.Entities.Models.Units.Classification", b =>

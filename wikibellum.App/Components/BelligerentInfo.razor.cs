@@ -20,15 +20,15 @@ namespace wikibellum.App.Components
         public EventParticipant Belligerent { get; set; }
 
         [Inject]
-        public IEventParticipantDataService EventParticipantDataService { get; set; }
+        private IEventParticipantDataService EventParticipantDataService { get; set; }
         [Inject]
-        public IAllianceDataService AllianceDataService { get; set; }
+        private IAllianceDataService AllianceDataService { get; set; }
         [Inject]
-        public INationDataService NationDataService { get; set; }
+        private INationDataService NationDataService { get; set; }
 
-        public AddUnitAssetDialog Dialog { get; set; }
+        private AddUnitAssetDialog Dialog { get; set; }
 
-        public Alliance Alliance { get; set; }
+        private Alliance Alliance { get; set; }
 
         private IEnumerable<Alliance> _alliances;
         private Alliance _alliesAlliance;
@@ -80,6 +80,7 @@ namespace wikibellum.App.Components
 
         public void SetNation()
         {
+            Belligerent.NationId = Int32.Parse(Belligerent.NationIdString);
             Belligerent.Nation = _nations.FirstOrDefault(n => n.NationId == Belligerent.NationId);
             EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
             StateHasChanged();

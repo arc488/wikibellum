@@ -4,11 +4,12 @@ using System.Text;
 
 namespace wikibellum.Entities.Enums.Countries
 {
-    public enum AlliancesEnum
+    public enum BranchEnum
     {
-        Allies,
-        Axis,
-        Comintern,
-        Other,
+        Unknown,
+        Land,
+        Naval,
+        Air,
+        Other
     }
 }

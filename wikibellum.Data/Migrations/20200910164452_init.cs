@@ -3,10 +3,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace wikibellum.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Alliances",
+                columns: table => new
+                {
+                    AllianceId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Alliances", x => x.AllianceId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -52,7 +65,7 @@ namespace wikibellum.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -60,10 +73,36 @@ namespace wikibellum.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Branches",
+                columns: table => new
+                {
+                    BranchId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Branches", x => x.BranchId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Conditions",
+                columns: table => new
+                {
+                    ConditionId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Conditions", x => x.ConditionId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Locations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    LocationId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Lat = table.Column<double>(nullable: false),
@@ -71,7 +110,27 @@ namespace wikibellum.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Locations", x => x.Id);
+                    table.PrimaryKey("PK_Locations", x => x.LocationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Nations",
+                columns: table => new
+                {
+                    NationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    AllianceId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Nations", x => x.NationId);
+                    table.ForeignKey(
+                        name: "FK_Nations_Alliances_AllianceId",
+                        column: x => x.AllianceId,
+                        principalTable: "Alliances",
+                        principalColumn: "AllianceId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -181,29 +240,50 @@ namespace wikibellum.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Classifications",
+                columns: table => new
+                {
+                    ClassificationId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(nullable: true),
+                    AbbrName = table.Column<string>(nullable: true),
+                    BranchId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Classifications", x => x.ClassificationId);
+                    table.ForeignKey(
+                        name: "FK_Classifications_Branches_BranchId",
+                        column: x => x.BranchId,
+                        principalTable: "Branches",
+                        principalColumn: "BranchId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Events",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    EventId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: true),
                     Start = table.Column<DateTime>(nullable: false),
                     End = table.Column<DateTime>(nullable: false),
                     Result = table.Column<string>(nullable: true),
-                    LocationId = table.Column<int>(nullable: true),
+                    LocationId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     ReccomendationId = table.Column<int>(nullable: true),
                     FileName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Events", x => x.Id);
+                    table.PrimaryKey("PK_Events", x => x.EventId);
                     table.ForeignKey(
                         name: "FK_Events_Locations_LocationId",
                         column: x => x.LocationId,
                         principalTable: "Locations",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "LocationId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Events_BookRecommendation_ReccomendationId",
                         column: x => x.ReccomendationId,
@@ -216,20 +296,26 @@ namespace wikibellum.Data.Migrations
                 name: "EventParticipants",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    EventParticipantId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    EventId = table.Column<int>(nullable: true)
+                    NationId = table.Column<int>(nullable: false),
+                    EventId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EventParticipants", x => x.Id);
+                    table.PrimaryKey("PK_EventParticipants", x => x.EventParticipantId);
                     table.ForeignKey(
                         name: "FK_EventParticipants_Events_EventId",
                         column: x => x.EventId,
                         principalTable: "Events",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "EventId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EventParticipants_Nations_NationId",
+                        column: x => x.NationId,
+                        principalTable: "Nations",
+                        principalColumn: "NationId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -238,27 +324,33 @@ namespace wikibellum.Data.Migrations
                 {
                     AssetId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Classification = table.Column<string>(nullable: true),
-                    Condition = table.Column<int>(nullable: false),
+                    ClassificationId = table.Column<int>(nullable: false),
+                    ConditionId = table.Column<int>(nullable: false),
                     Amount = table.Column<int>(nullable: false),
-                    EventParticipantId = table.Column<int>(nullable: true),
-                    EventParticipantId1 = table.Column<int>(nullable: true)
+                    AssetType = table.Column<int>(nullable: false),
+                    EventParticipantId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Asset", x => x.AssetId);
                     table.ForeignKey(
+                        name: "FK_Asset_Classifications_ClassificationId",
+                        column: x => x.ClassificationId,
+                        principalTable: "Classifications",
+                        principalColumn: "ClassificationId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Asset_Conditions_ConditionId",
+                        column: x => x.ConditionId,
+                        principalTable: "Conditions",
+                        principalColumn: "ConditionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Asset_EventParticipants_EventParticipantId",
                         column: x => x.EventParticipantId,
                         principalTable: "EventParticipants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Asset_EventParticipants_EventParticipantId1",
-                        column: x => x.EventParticipantId1,
-                        principalTable: "EventParticipants",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "EventParticipantId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -301,19 +393,34 @@ namespace wikibellum.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Asset_ClassificationId",
+                table: "Asset",
+                column: "ClassificationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Asset_ConditionId",
+                table: "Asset",
+                column: "ConditionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Asset_EventParticipantId",
                 table: "Asset",
                 column: "EventParticipantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Asset_EventParticipantId1",
-                table: "Asset",
-                column: "EventParticipantId1");
+                name: "IX_Classifications_BranchId",
+                table: "Classifications",
+                column: "BranchId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventParticipants_EventId",
                 table: "EventParticipants",
                 column: "EventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EventParticipants_NationId",
+                table: "EventParticipants",
+                column: "NationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Events_LocationId",
@@ -324,6 +431,11 @@ namespace wikibellum.Data.Migrations
                 name: "IX_Events_ReccomendationId",
                 table: "Events",
                 column: "ReccomendationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Nations_AllianceId",
+                table: "Nations",
+                column: "AllianceId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -353,16 +465,31 @@ namespace wikibellum.Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Classifications");
+
+            migrationBuilder.DropTable(
+                name: "Conditions");
+
+            migrationBuilder.DropTable(
                 name: "EventParticipants");
 
             migrationBuilder.DropTable(
+                name: "Branches");
+
+            migrationBuilder.DropTable(
                 name: "Events");
+
+            migrationBuilder.DropTable(
+                name: "Nations");
 
             migrationBuilder.DropTable(
                 name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "BookRecommendation");
+
+            migrationBuilder.DropTable(
+                name: "Alliances");
         }
     }
 }

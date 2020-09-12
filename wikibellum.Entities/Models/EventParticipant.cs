@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using wikibellum.Entities.Models;
@@ -18,9 +19,11 @@ namespace wikibellum.Entities
         [Key]
         public int EventParticipantId { get; set; }
         public Nation Nation { get; set; }
-        public string NationId { get; set; } = "0";
+        public int NationId { get; set; } = 0;
+        [NotMapped]
+        public string NationIdString { get; set; }
         public List<Asset> Assets { get; set; }
-        public string EventId { get; set; }
+        public int EventId { get; set; }
         public Event Event { get; set; }
 
     }

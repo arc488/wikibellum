@@ -9,6 +9,12 @@ namespace wikibellum.Entities
 {
     public class Event
     {
+        public Event()
+        {
+            Location = new Location();
+            Participants = new List<EventParticipant>();
+        }
+
         [Key]
         public int EventId { get; set; }
         public string Title { get; set; }
@@ -17,7 +23,7 @@ namespace wikibellum.Entities
         public string Result { get; set; }
         public Location? Location { get; set; }
         [ForeignKey("Location")]
-        public int? LocationId { get; set; }
+        public int LocationId { get; set; }
         public List<EventParticipant> Participants { get; set; }
         public string Description { get; set; }
         public BookRecommendation Reccomendation { get; set; }

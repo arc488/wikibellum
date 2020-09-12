@@ -33,7 +33,7 @@
 
 							<div class="form-group">
 								<label for="classification">Classification</label>
-								<CustomInputSelect id="classification" class="form-control" @bind-Value="@Asset.ClassificationId">
+								<CustomInputSelect id="classification" class="form-control" @bind-Value="@Asset.ClassificationIdString">
 									@foreach (var item in CurrentBranchClassifications)
 									{
 										<option value="@item.ClassificationId">@item.FullName</option>
@@ -46,7 +46,7 @@
 							{
 								<div class="form-group">
 									<label for="condition">Condition: </label>
-									<InputSelect id="condition" class="form-control" @bind-Value="@Asset.ConditionId">
+									<InputSelect id="condition" class="form-control" @bind-Value="@Asset.ConditionIdString">
 										@foreach (var item in _conditions)
 										{
 											<option value="@item.ConditionId">@item.Name</option>
@@ -55,7 +55,7 @@
 									</InputSelect>
 									<ValidationMessage For="@(() => Asset.Condition)" />
 								</div>
-							}
+                            }
 
 							<div class="form-group">
 								<label for="amount">Amount: </label>
