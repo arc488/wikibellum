@@ -11,12 +11,14 @@ namespace wikibellum.Entities.Models.Units
     {
         [Key]
         public int AssetId { get; set; }
-        public Classification Classification { get; set; }
         public int ClassificationId { get; set; }
+        [ForeignKey("ClassificationId")]
+        public Classification Classification { get; set; }
         [NotMapped]
         public string ClassificationIdString { get; set; }
+        [ForeignKey("ConditionId")]
         public Condition? Condition { get; set; }
-        public int ConditionId { get; set; } = 0;
+        public int ConditionId { get; set; }
         [NotMapped]
         public string ConditionIdString { get; set; }
         public int Amount { get; set; }

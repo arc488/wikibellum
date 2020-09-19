@@ -43,12 +43,25 @@
             </button>
         </div>
         <div class="col mx-3 my-1">
-            @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Strength))
+            @if (Belligerent.Assets.Where(i => i.AssetType == AssetType.Strength).ToList() == null)
             {
-                @item.Amount 
-                @:&nbsp;
-                @item.Classification.FullName <br>
+                <h6>Loading...</h6>
             }
+            else
+            {
+                @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Strength).ToList())
+                {
+                    @item.Amount
+                    @:&nbsp;
+                    @item.Classification.FullName
+                    @:&nbsp;
+                    <button @onclick="@(e => DeleteAsset(item.AssetId))" type="button" class="btn btn-danger btn-circle">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <br>
+                }
+            }
+
         </div>
     </div>
     <div class="row">
@@ -61,14 +74,27 @@
             </button>
         </div>
         <div class="col mx-3 my-1">
-            @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Loss))
+            @if (Belligerent.Assets.Where(i => i.AssetType == AssetType.Loss).ToList() == null)
             {
-                @item.Amount
-                @:&nbsp;
-                @item.Classification.FullName
-                @:&nbsp;
-                @item.Condition.Name<br>
+                <h6>Loading...</h6>
             }
+            else
+            {
+                @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Loss).ToList())
+                {
+                    @item.Amount
+                    @:&nbsp;
+                    @item.Classification.FullName
+                    @:&nbsp;
+                    @item.Condition.Name
+                    @:&nbsp;
+                    <button @onclick="@(e => DeleteAsset(item.AssetId))" type="button" class="btn btn-danger btn-circle">
+                        <i class="fa fa-times"></i>
+                    </button>
+                    <br>
+                }
+            }
+
         </div>
     </div>
 </div>

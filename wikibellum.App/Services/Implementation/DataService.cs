@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -24,17 +25,20 @@ namespace wikibellum.App.Services
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll()
+        public async Task<List<TEntity>> GetAll()
         {
+            var stream = await _httpClient.GetStreamAsync($"api/" + ControllerName);
+
             var response = await JsonSerializer.DeserializeAsync<IEnumerable<TEntity>>
                 (await _httpClient.GetStreamAsync($"api/" + ControllerName), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            return response;
+            return response.ToList();
         }
 
         public async Task<TEntity> GetById(int id)
         {
             var response = await JsonSerializer.DeserializeAsync<TEntity>
                 (await _httpClient.GetStreamAsync($"api/" + ControllerName + $"/{id}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            var stream = await _httpClient.GetStreamAsync($"api/" + ControllerName + $"/{id}");
             return response;
         }
         

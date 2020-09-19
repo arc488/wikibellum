@@ -15,7 +15,7 @@ using wikibellum.Entities.Models.Units;
 
 namespace wikibellum.App.Pages
 {
-    public partial class AddEvent : ComponentBase
+    public partial class ModifyEvent : ComponentBase
     {
         [Inject]
         public IEventDataService EventDataService { get; set; }
@@ -23,13 +23,29 @@ namespace wikibellum.App.Pages
         [Inject]
         public IEventParticipantDataService EventParticipantDataService { get; set; }
 
+        [Inject]
+        public ILocationDataService LocationDataService { get; set; }
+
+        [Parameter]
+        public int EventId { get; set; }
+
         public Event Event { get; set; }
 
         public int ParticipantIndex { get; set; }
 
+        private List<Event> _events;
+
         protected async override Task OnInitializedAsync()
         {
-            Event = await EventDataService.Add(new Event());
+            _events = await EventDataService.GetAll();
+            if (EventId == 0)
+            {
+                Event = await EventDataService.Add(new Event());
+            }
+            else
+            {
+                Event = _events.FirstOrDefault(e => e.EventId == EventId);
+            }
 
         }
 
@@ -51,7 +67,12 @@ namespace wikibellum.App.Pages
         {
 
         }
-        protected void UpdateChanges()
+
+        protected void UpdateLocationChanges()
+        {
+            LocationDataService.Update(Event.LocationId, Event.Location);
+        }
+        protected void UpdateEventChanges()
         {
             EventDataService.Update(Event.EventId, Event);
         }

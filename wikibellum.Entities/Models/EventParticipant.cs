@@ -19,12 +19,11 @@ namespace wikibellum.Entities
         [Key]
         public int EventParticipantId { get; set; }
         public Nation Nation { get; set; }
-        public int NationId { get; set; } = 0;
+        public int NationId { get; set; }
         [NotMapped]
         public string NationIdString { get; set; }
         public List<Asset> Assets { get; set; }
         public int EventId { get; set; }
-        public Event Event { get; set; }
 
     }
 }

@@ -9,6 +9,7 @@ namespace wikibellum.Entities.Models.Units
     public class Classification
     {
         [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int ClassificationId { get; set; }
         [NotMapped]
         public string ClassificationIdString { get; set; }

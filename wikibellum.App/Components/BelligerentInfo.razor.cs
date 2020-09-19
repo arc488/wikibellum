@@ -25,6 +25,8 @@ namespace wikibellum.App.Components
         private IAllianceDataService AllianceDataService { get; set; }
         [Inject]
         private INationDataService NationDataService { get; set; }
+        [Inject]
+        private IAssetDataService AssetDataService { get; set; }
 
         private AddUnitAssetDialog Dialog { get; set; }
 
@@ -36,6 +38,7 @@ namespace wikibellum.App.Components
         private IEnumerable<Nation> _nations;
         private IEnumerable<Nation> _alliedNations;
         private IEnumerable<Nation> _axisNations;
+
 
         protected async override Task OnInitializedAsync()
         {
@@ -58,11 +61,12 @@ namespace wikibellum.App.Components
             Dialog.Show(assetType);
         }
 
-        public void AddUnitAssetDialog_OnAssetAdded(Asset asset)
+        public async void AddUnitAssetDialog_OnAssetAdded(Asset asset)
         {
-
-            Belligerent.Assets.Add(asset);
-            EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
+            asset.EventParticipantId = Belligerent.EventParticipantId;
+            var entry = await AssetDataService.Add(asset);
+            Belligerent.Assets.Add(entry);
+            await EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
 
             StateHasChanged();
         }
@@ -76,6 +80,13 @@ namespace wikibellum.App.Components
         public void AddUnitAssetDialog_OnDialogClose()
         {
 
+        }
+
+        private void DeleteAsset(int id)
+        {
+            Belligerent.Assets.Remove(Belligerent.Assets.FirstOrDefault(b => b.AssetId == id));
+            AssetDataService.Delete(id);
+            StateHasChanged();
         }
 
         public void SetNation()

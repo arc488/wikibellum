@@ -13,10 +13,30 @@ namespace wikibellum.Data
         {
         }
 
-        public override IEnumerable<Event> GetAll()
+        public async override Task<IEnumerable<Event>> GetAll()
         {
-            var entries = _entries.Include(e => e.Location).ToList();
+            var entries = _entries.Include(e => e.Location)
+                .Include(e => e.Participants)
+                .ThenInclude(ep => ep.Assets)
+                .ThenInclude(a => a.Classification)
+                .Include(e => e.Participants)
+                .ThenInclude(e => e.Assets)
+                .ThenInclude(a => a.Condition)
+                .ToList();
             return entries;
+        }
+
+        public async override Task<Event> Get(int id)
+        {
+            var entry = _entries.Include(e => e.Location)
+                .Include(e => e.Participants)
+                .ThenInclude(ep => ep.Assets)
+                .ThenInclude(a => a.Classification)
+                .Include(e => e.Participants)
+                .ThenInclude(e => e.Assets)
+                .ThenInclude(a => a.Condition)
+                .FirstOrDefault(e => e.EventId == id);
+            return entry;
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using wikibellum.Data;
 using wikibellum.Entities;
@@ -14,53 +12,48 @@ namespace wikibellum.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EventsController : ControllerBase
+    public class LocationsController : ControllerBase
     {
         private readonly WikiContext _context;
-        private readonly LinkGenerator _linkGenerator;
-        private readonly IEventRepository _eventRepository;
 
-        public EventsController(WikiContext context, IEventRepository eventRepository, LinkGenerator linkGenerator)
+        public LocationsController(WikiContext context)
         {
             _context = context;
-            _linkGenerator = linkGenerator;
-            _eventRepository = eventRepository;
         }
 
-        // GET: api/Events
+        // GET: api/Locations
         [HttpGet]
-        public async Task<IEnumerable<Event>> GetEvents()
+        public async Task<ActionResult<IEnumerable<Location>>> GetLocations()
         {
-            var events = await _eventRepository.GetAll();
-            return events;
+            return await _context.Locations.ToListAsync();
         }
 
-        // GET: api/Events/5
+        // GET: api/Locations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Event>> GetEvent(int id)
+        public async Task<ActionResult<Location>> GetLocation(int id)
         {
-            var @event = await _eventRepository.Get(id);
+            var location = await _context.Locations.FindAsync(id);
 
-            if (@event == null)
+            if (location == null)
             {
                 return NotFound();
             }
 
-            return @event;
+            return location;
         }
 
-        // PUT: api/Events/5
+        // PUT: api/Locations/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEvent(int id, Event @event)
+        public async Task<IActionResult> PutLocation(int id, Location location)
         {
-            if (id != @event.EventId)
+            if (id != location.LocationId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(@event).State = EntityState.Modified;
+            _context.Entry(location).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +61,7 @@ namespace wikibellum.Api.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EventExists(id))
+                if (!LocationExists(id))
                 {
                     return NotFound();
                 }
@@ -81,36 +74,37 @@ namespace wikibellum.Api.Controllers
             return NoContent();
         }
 
-        // POST: api/Events
+        // POST: api/Locations
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Event>> PostEvent(Event @event)
+        public async Task<ActionResult<Location>> PostLocation(Location location)
         {
-            var createdEntity = _context.Events.Add(@event).Entity;
+            _context.Locations.Add(location);
             await _context.SaveChangesAsync();
-            return Created($"api/Events/{createdEntity.EventId}", createdEntity);
+
+            return CreatedAtAction("GetLocation", new { id = location.LocationId }, location);
         }
 
-        // DELETE: api/Events/5
+        // DELETE: api/Locations/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Event>> DeleteEvent(int id)
+        public async Task<ActionResult<Location>> DeleteLocation(int id)
         {
-            var @event = await _context.Events.FindAsync(id);
-            if (@event == null)
+            var location = await _context.Locations.FindAsync(id);
+            if (location == null)
             {
                 return NotFound();
             }
 
-            _context.Events.Remove(@event);
+            _context.Locations.Remove(location);
             await _context.SaveChangesAsync();
 
-            return @event;
+            return location;
         }
 
-        private bool EventExists(int id)
+        private bool LocationExists(int id)
         {
-            return _context.Events.Any(e => e.EventId == id);
+            return _context.Locations.Any(e => e.LocationId == id);
         }
     }
 }

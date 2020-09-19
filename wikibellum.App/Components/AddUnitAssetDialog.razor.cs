@@ -77,12 +77,6 @@ namespace wikibellum.App.Components
         protected async Task HandleValidSubmit()
         {
             Asset.ClassificationId = Int32.Parse(Asset.ClassificationIdString);
-            if (Asset.AssetType == AssetType.Loss)
-            {
-                Asset.ConditionId = Int32.Parse(Asset.ConditionIdString);
-                Asset.Condition = _conditions.FirstOrDefault(c => c.ConditionId == Asset.ConditionId);
-            }
-            Asset.Classification = _classifications.FirstOrDefault(c => c.ClassificationId == Asset.ClassificationId);
             ShowDialog = false;
             await AddAssetEventCallback.InvokeAsync(Asset);
             await CloseEventCallback.InvokeAsync(true);

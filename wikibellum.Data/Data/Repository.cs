@@ -18,11 +18,11 @@ namespace wikibellum.Data
             _entries = _context.Set<TEntity>();
         }
 
-        public virtual EntityState Create(TEntity entity)
+        public async virtual Task<EntityState> Create(TEntity entity)
         {
-            var state = _entries.Add(entity).State;
+            var newEntity = await _entries.AddAsync(entity);
             _context.SaveChanges();
-            return state;
+            return newEntity.State;
 
         }
 
@@ -33,14 +33,15 @@ namespace wikibellum.Data
             return state;
         }
          
-        public virtual TEntity Get(int id)
+        public async virtual Task<TEntity> Get(int id)
         {
-            return _entries.Find(id);
+            var entity = await _entries.FindAsync(id);
+            return entity;
         }
 
-        public virtual IEnumerable<TEntity> GetAll()
+        public async virtual Task<IEnumerable<TEntity>> GetAll()
         {
-            var entities = _entries.ToList();
+            var entities = await _entries.ToListAsync();
             return entities;
         }
 

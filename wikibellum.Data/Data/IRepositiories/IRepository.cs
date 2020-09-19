@@ -9,9 +9,9 @@ namespace wikibellum.Data
     public interface IRepository<TEntity> where TEntity : class
     {
         //Create, read, update and delete
-        EntityState Create(TEntity entity);
-        TEntity Get(int id);
-        IEnumerable<TEntity> GetAll();
+        Task<EntityState> Create(TEntity entity);
+        Task<TEntity> Get(int id);
+        Task<IEnumerable<TEntity>> GetAll();
         EntityState Update(TEntity entity);
         EntityState Delete(TEntity entity);
     }

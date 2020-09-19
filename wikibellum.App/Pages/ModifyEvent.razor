@@ -1,4 +1,5 @@
-﻿@page "/addevent"
+﻿@page "/modifyevent"
+@page "/modifyevent/{EventId:int}"
 @inject IJSRuntime JSRuntime
 
 @code{
@@ -20,7 +21,7 @@ else
                         <div class="form-group">
                             <label asp-for="title">Title</label>
                             <div class="input-group input-group-sm">
-                                <input id="title" @bind-value="Event.Title" @onfocusout="@(e => UpdateChanges())" class="form-control" placeholder="Title" />
+                                <input id="title" @bind-value="Event.Title" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="Title" />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Title)" /></div>
                         </div>
@@ -28,14 +29,14 @@ else
                             <div class="form-group col">
                                 <label id="startDate">Start</label>
                                 <div class="input-group input-group-sm">
-                                    <input id="startDate" @bind="Event.Start" class="form-control" placeholder="Start" />
+                                    <input id="startDate" @bind="Event.Start" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="Start" />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.Start)" /></div>
                             </div>
                             <div class="form-group col">
                                 <label id="endDate">End</label>
                                 <div class="input-group input-group-sm">
-                                    <input id="endDate" @bind="Event.End" class="form-control" placeholder="End" />
+                                    <input id="endDate" @bind="Event.End" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="End" />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.End)" /></div>
                             </div>
@@ -44,7 +45,7 @@ else
                         <div class="form-group">
                             <label id="result">Result</label>
                             <div class="input-group input-group-sm">
-                                <input id="result" @bind="Event.Result" class="form-control" placeholder="Ex. Axis victory" />
+                                <input id="result" @bind="Event.Result" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="Ex. Axis victory" />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Result)" /></div>
                         </div>
@@ -54,7 +55,7 @@ else
                             <div class="form-group">
                                 <label id="locationName">Location name</label>
                                 <div class="input-group input-group-sm">
-                                    <input id="locationName" @bind="Event.Location.Name" class="form-control" placeholder="Stalingrad" />
+                                    <input id="locationName" @bind="Event.Location.Name" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" placeholder="Stalingrad" />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Name)" /></div>
                             </div>
@@ -63,14 +64,14 @@ else
                                 <div class="form-group col">
                                     <label id="locationLat">Latitude</label>
                                     <div class="input-group input-group-sm">
-                                        <input id="locationLat" @bind="Event.Location.Lat" class="form-control" placeholder="51.1657" />
+                                        <input id="locationLat" @bind="Event.Location.Lat" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" placeholder="51.1657" />
                                     </div>
                                     <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Lat)" /></div>
                                 </div>
                                 <div class="form-group col">
                                     <label id="locationLong">Longitude</label>
                                     <div class="input-group input-group-sm">
-                                        <input id="locationLong" @bind="Event.Location.Long" class="form-control" placeholder="10.4515" />
+                                        <input id="locationLong" @bind="Event.Location.Long" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" placeholder="10.4515" />
                                     </div>
                                     <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Long)" /></div>
                                 </div>
@@ -95,7 +96,7 @@ else
                         <div class="form-group">
                             <label id="description">description</label>
                             <div class="input-group input-group-sm">
-                                <textarea id="description" @bind="Event.Description" type="text" asp-for="title" class="form-control" placeholder="the battle of stalingrad was..." />
+                                <textarea id="description" @bind="Event.Description" @onfocusout="@(e => UpdateEventChanges())" type="text" asp-for="title" class="form-control" placeholder="the battle of stalingrad was..." />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Description)" /></div>
                         </div>
