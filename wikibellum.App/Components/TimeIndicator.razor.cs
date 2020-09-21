@@ -14,7 +14,6 @@ namespace wikibellum.App.Components
             get
             {
                 _totalMonths = _currentYear * 12 + _currentMonth;
-                DateChangeEventCallback.InvokeAsync(_totalMonths);
                 return _totalMonths;
             }
             set 
@@ -25,14 +24,43 @@ namespace wikibellum.App.Components
                 DateChangeEventCallback.InvokeAsync(value);
             }
         }
+
+        private int _currentYear;
+        public int CurrentYear 
+        {
+            get 
+            {
+                return _currentYear;
+            }
+            set 
+            {
+
+                _currentYear = value == 0 ? 12 : value;
+                DateChangeEventCallback.InvokeAsync(TotalMonths);
+            }
+        }
+        private int _currentMonth;
+        public int CurrentMonth 
+        {
+            get
+            {
+                return _currentMonth;
+            }
+            set
+            {
+                _currentMonth = value;
+                DateChangeEventCallback.InvokeAsync(TotalMonths);
+            }
+        }
         private readonly int _yearRangeStart = 1939;
         private readonly int _yearRangeEnd = 1945;
-        private int _currentYear = 1;
-        private int _currentMonth = 1;
+
         [Parameter]
         public EventCallback<int> DateChangeEventCallback { get; set; }
         protected override void OnInitialized()
         {
+            _currentMonth = 1;
+            _currentYear = 1;
             base.OnInitialized();
         }
 

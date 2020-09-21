@@ -1,50 +1,42 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using wikibellum.Entities.Enums;
-using wikibellum.Entities.Enums.Countries;
-
-namespace wikibellum.Data.Migrations
-{
-    public partial class populateAlliancesAndNationsAgain : Migration
-    {
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            var allianceCount = 1;
-            var alliances = Enum.GetValues(typeof(AlliancesEnum));
-            foreach (var item in alliances)
+﻿            int conditionId = 0;
+            foreach (var item in Enum.GetValues(typeof(ConditionEnum)))
             {
+                migrationBuilder.InsertData(
+                    table: "Conditions",
+                    columns: new[] { "ConditionId", "Name" },
+                    values: new object[] { conditionId, item.ToString() });
+                conditionId++;
+            }
+
+            int allianceId = 0;
+            foreach (var item in Enum.GetValues(typeof(AlliancesEnum)))
+            {
+                var fullName = item.ToString().Replace(" ", "_");
                 migrationBuilder.InsertData(
                     table: "Alliances",
                     columns: new[] { "AllianceId", "Name" },
-                    values: new object[] { allianceCount.ToString(), item.ToString() });
-                allianceCount++;
+                    values: new object[] { allianceId, fullName });
+                allianceId++;
             }
 
-            var nationCount = 1;
-            var allies = Enum.GetValues(typeof(AlliesEnum));
-            foreach (var item in allies)
+            int nationId = 0;
+            foreach (var item in Enum.GetValues(typeof(AlliesEnum)))
             {
+                var fullName = item.ToString().Replace(" ", "_");
                 migrationBuilder.InsertData(
                     table: "Nations",
                     columns: new[] { "NationId", "Name", "AllianceId" },
-                    values: new object[] { nationCount.ToString(), item.ToString(), 1.ToString() });
-                nationCount++;
+                    values: new object[] { nationId, fullName, 0 });
+                nationId++;
             }
 
-            var axises = Enum.GetValues(typeof(AxisEnum));
-            foreach (var item in axises)
+            foreach (var item in Enum.GetValues(typeof(AxisEnum)))
             {
+                var fullName = item.ToString().Replace(" ", "_");
                 migrationBuilder.InsertData(
                     table: "Nations",
                     columns: new[] { "NationId", "Name", "AllianceId" },
-                    values: new object[] { nationCount.ToString(), item.ToString(), 2.ToString() });
-                nationCount++;
+                    values: new object[] { nationId, fullName, 1 });
+                nationId++;
             }
         }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-
-        }
-    }
-}

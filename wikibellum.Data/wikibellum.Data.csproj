@@ -16,11 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="branches.txt" />
     <None Remove="populate.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="populate.txt" />
   </ItemGroup>
 
   <ItemGroup>
