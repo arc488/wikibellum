@@ -60,7 +60,7 @@ namespace wikibellum.App.Components
             if (_events != null)
             {
                 JSRuntime.InvokeVoidAsync("map");
-                JSRuntime.InvokeVoidAsync("addMarkers", _events);
+                //JSRuntime.InvokeVoidAsync("addMarkers", _events);
                 _shouldRender = false;
             }
         }
@@ -81,8 +81,10 @@ namespace wikibellum.App.Components
                 }
             }
 
-            JSRuntime.InvokeVoidAsync("setHidden");
-            JSRuntime.InvokeVoidAsync("setVisible", currentEvents);
+            //JSRuntime.InvokeVoidAsync("setHidden");
+            //JSRuntime.InvokeVoidAsync("setVisible", currentEvents);
+            JSRuntime.InvokeVoidAsync("removeAllMarkers");
+            JSRuntime.InvokeVoidAsync("addCurrentEvents", currentEvents);
 
         }
     }
