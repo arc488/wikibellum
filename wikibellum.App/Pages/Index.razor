@@ -1,12 +1,23 @@
 ﻿@page "/"
-
-<TimeIndicator></TimeIndicator>
+@inject IJSRuntime JSRuntime
+<TimeIndicator DateChangeEventCallback="@TimeIndicator_OnDateChanged"></TimeIndicator>
 <div id="details">
     <div class="container">
         <div class="row">
-        
+            @if (_events == null)
+            {
+                <h4>Loading...</h4>
+            }
+            else
+            {
                 <hr>
-                <div class="h-100" id="map"></div>
+                <div style="height: 400px">
+                    <div id="map"></div>
+                </div>
+            }
+
         </div>
     </div>
 </div>
+
+

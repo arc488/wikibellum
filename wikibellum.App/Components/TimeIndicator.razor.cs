@@ -14,21 +14,23 @@ namespace wikibellum.App.Components
             get
             {
                 _totalMonths = _currentYear * 12 + _currentMonth;
-                TotalMonthsChangeEventCallBack.InvokeAsync(_totalMonths);
+                DateChangeEventCallback.InvokeAsync(_totalMonths);
                 return _totalMonths;
             }
             set 
             {
-                TotalMonthsChangeEventCallBack.InvokeAsync(value);
-                _currentYear = (int)Math.Floor(Convert.ToDouble(value / 12));
-                _currentMonth = value % 12;
+                _currentYear = (int)Math.Floor(Convert.ToDouble((value - 1) / 12));
+                var _calculatedMonth = value % 12;
+                _currentMonth = _calculatedMonth == 0 ? 12 : _calculatedMonth;
+                DateChangeEventCallback.InvokeAsync(value);
             }
         }
         private readonly int _yearRangeStart = 1939;
         private readonly int _yearRangeEnd = 1945;
         private int _currentYear = 1;
         private int _currentMonth = 1;
-        public EventCallback<int> TotalMonthsChangeEventCallBack { get; set; }
+        [Parameter]
+        public EventCallback<int> DateChangeEventCallback { get; set; }
         protected override void OnInitialized()
         {
             base.OnInitialized();
