@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,17 @@ namespace wikibellum.Api
             services.AddControllers();
             services.AddDbContext<WikiContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<WikiContext>();
+
+            services.AddIdentityServer()
+                .AddApiAuthorization<ApplicationUser, WikiContext>();
+
+            services.AddAuthentication()
+                .AddIdentityServerJwt();
+
+
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IEventParticipantRepository, EventParticipantRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
@@ -61,9 +73,16 @@ namespace wikibellum.Api
 
             app.UseCors("Open");
 
+            app.UseIdentityServer();
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapFallbackToFile("index.html");
+
             });
         }
     }

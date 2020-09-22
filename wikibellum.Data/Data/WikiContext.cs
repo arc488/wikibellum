@@ -14,13 +14,19 @@ using wikibellum.Entities.Models.Units;
 using wikibellum.Entities.Enums;
 using Condition = wikibellum.Entities.Models.Units.Condition;
 using wikibellum.Entities.Models;
+using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
+using IdentityServer4.EntityFramework.Options;
+using Microsoft.Extensions.Options;
 
 namespace wikibellum.Data
 {
-    public class WikiContext : IdentityDbContext<IdentityUser>
+    public class WikiContext : ApiAuthorizationDbContext<ApplicationUser>
     {
-        public WikiContext(DbContextOptions options) : base(options)
+        public WikiContext(DbContextOptions options,
+            IOptions<OperationalStoreOptions> operationalStoreOptions) 
+            : base(options, operationalStoreOptions)
         {
+
         }
 
         public DbSet<Event> Events { get; set; }
@@ -34,20 +40,20 @@ namespace wikibellum.Data
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Result> Result { get; set; }
 
-        public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<WikiContext>
-        {
-            public WikiContext CreateDbContext(string[] args)
-            {
-                IConfigurationRoot configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile(@Directory.GetCurrentDirectory() + "/../wikibellum.Api/appsettings.json")
-                    .Build();
-                var builder = new DbContextOptionsBuilder<WikiContext>();
-                var connectionString = configuration.GetConnectionString("DefaultConnection");
-                builder.UseSqlServer(connectionString);
-                return new WikiContext(builder.Options);
-            }
-        }
+        //public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<WikiContext>
+        //{
+        //    public WikiContext CreateDbContext(string[] args)
+        //    {
+        //        IConfigurationRoot configuration = new ConfigurationBuilder()
+        //            .SetBasePath(Directory.GetCurrentDirectory())
+        //            .AddJsonFile(@Directory.GetCurrentDirectory() + "/../wikibellum.Api/appsettings.json")
+        //            .Build();
+        //        var builder = new DbContextOptionsBuilder<WikiContext>();
+        //        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        //        builder.UseSqlServer(connectionString);
+        //        return new WikiContext(builder.Options);
+        //    }
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
