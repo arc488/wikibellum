@@ -31,6 +31,7 @@ namespace wikibellum.App
             builder.Services.AddHttpClient<IAllianceDataService, AllianceDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
             builder.Services.AddHttpClient<IAssetDataService, AssetDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
             builder.Services.AddHttpClient<ILocationDataService, LocationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IResultDataService, ResultDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
             builder.Services.AddSingleton<DateHelpers>();
             await builder.Build().RunAsync();
         }

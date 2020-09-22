@@ -1,4 +1,6 @@
-﻿window.map = () => {
+﻿
+
+window.map = () => {
     mapboxgl.accessToken =
         "pk.eyJ1IjoiYXJjNDg4IiwiYSI6ImNrY2EzZjdkcTBmeW4ycW95b3c2MnRoZjQifQ.c_Fdcmu1Eu6k0Lqger642Q";
     map = new mapboxgl.Map({
@@ -8,29 +10,51 @@
         zoom: 4
     });
     currentMarkers = [];
+
+    eventId = 0;
 }
 
+window.broadcastEventId = (dotNetObject) => {
+    console.log("Inside broadcast");
+    dotNetObject.invokeMethodAsync('SetEvent', eventId.toString());
+}
 
 window.removeAllMarkers = () => {
-    console.log("Remove all markers");
     for (var i = 0; i < currentMarkers.length; i++) {
-        console.log("Removing marker: " + i);
         currentMarkers[i].remove();
         currentMarkers.splice(i, 1);
     }
 }
 
+window.setEventJs = (id) => {
+    console.log("setEventJs called with id: " + id);
+    var el = document.getElementById("_currentEventIdInput");
+    el.value = id;
+    var event = new Event('change');
+    el.dispatchEvent(event);
+}
+
 window.addCurrentEvents = (currentEvents) => {
     try {
         for (var i in currentEvents) {
-            var mapItem = currentEvents[i];
-            var lat = parseFloat(mapItem.location.lat);
-            var long = parseFloat(mapItem.location.long);
-            var title = "<p>" + mapItem.title + "</p>";
+            var event = currentEvents[i];
+            var lat = parseFloat(event.location.lat);
+            var long = parseFloat(event.location.long);
+            var title = "<p>" + event.title + "</p>";
             var coords = [long, lat];
 
+            var el = document.createElement('div');
+            el.classList.add("wiki-marker");
+            el.id = event.eventId;
+
+            el.addEventListener('click', () => {
+                console.log("Marker clicked");
+                setEventJs(el.id);
+                console.log("Id: " + el.id);
+            }); 
+
             try {
-                var marker = new mapboxgl.Marker()
+                var marker = new mapboxgl.Marker(el)
                     .setLngLat(coords)
                     .setPopup(new mapboxgl.Popup().setHTML(title))
                     .addTo(map);

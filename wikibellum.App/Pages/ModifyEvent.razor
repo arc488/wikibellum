@@ -43,19 +43,34 @@ else
                         </div>
 
                         <div class="form-group">
-                            <label id="result">Result</label>
-                            <div class="input-group input-group-sm">
-                                <input id="result" @bind="Event.Result" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="Ex. Axis victory" />
-                            </div>
-                            <div><ValidationMessage class="text-danger" For="@(() => Event.Result)" /></div>
+                            <h6>Results</h6>
+                            <button @onclick="AddResult" class="btn btn-primary mx-auto d-block my-2">Add</button>
+                            @if (Event.Results.Count < 1)
+                            {
+                                <p>No results</p>
+                            }
+                            else
+                            {
+                                @foreach (var result in Event.Results)
+                                {
+                                    {
+                                        <div class="input-group input-group-sm">
+
+                                            <input @bind="@result.Description" @onfocusout="@(e => UpdateResultChanges(result))" class="form-control" />
+                                        </div>
+
+                                    }
+                                }
+                            }
                         </div>
+
                         <hr>
 
                         <div class="location">
                             <div class="form-group">
                                 <label id="locationName">Location name</label>
                                 <div class="input-group input-group-sm">
-                                    <input id="locationName" @bind="Event.Location.Name" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" placeholder="Stalingrad" />
+                                    <input id="locationName" @bind="Event.Location.Name" @onfocusout="@(e => UpdateLocationChanges())" class="form-control"  />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Name)" /></div>
                             </div>
@@ -64,14 +79,14 @@ else
                                 <div class="form-group col">
                                     <label id="locationLat">Latitude</label>
                                     <div class="input-group input-group-sm">
-                                        <input id="locationLat" @bind="Event.Location.Lat" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" placeholder="51.1657" />
+                                        <input id="locationLat" @bind="Event.Location.Lat" @onfocusout="@(e => UpdateLocationChanges())" class="form-control"  />
                                     </div>
                                     <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Lat)" /></div>
                                 </div>
                                 <div class="form-group col">
                                     <label id="locationLong">Longitude</label>
                                     <div class="input-group input-group-sm">
-                                        <input id="locationLong" @bind="Event.Location.Long" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" placeholder="10.4515" />
+                                        <input id="locationLong" @bind="Event.Location.Long" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" />
                                     </div>
                                     <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Long)" /></div>
                                 </div>
@@ -96,7 +111,7 @@ else
                         <div class="form-group">
                             <label id="description">description</label>
                             <div class="input-group input-group-sm">
-                                <textarea id="description" @bind="Event.Description" @onfocusout="@(e => UpdateEventChanges())" type="text" asp-for="title" class="form-control" placeholder="the battle of stalingrad was..." />
+                                <textarea id="description" @bind="Event.Description" @onfocusout="@(e => UpdateEventChanges())" type="text" asp-for="title" class="form-control"  />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Description)" /></div>
                         </div>

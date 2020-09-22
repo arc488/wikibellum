@@ -11,15 +11,17 @@ namespace wikibellum.Data
     {
         public EventParticipantRepository(WikiContext context) : base(context)
         {
+
         }
 
         public async override Task<EventParticipant> Get(int id)
         {
             var entry = _entries
                 .Include(e => e.Assets)
-                .ThenInclude(a => a.Classification)
+                    .ThenInclude(a => a.Classification)
                 .Include(e => e.Assets)
-                .ThenInclude(a => a.Condition)
+                    .ThenInclude(a => a.Condition)
+                .Include(e => e.Nation)
                 .FirstOrDefault(e => e.EventParticipantId == id);
             return entry;
         }
@@ -28,9 +30,10 @@ namespace wikibellum.Data
         {
             var entries = _entries
                 .Include(e => e.Assets)
-                .ThenInclude(a => a.Classification)
+                    .ThenInclude(a => a.Classification)
                 .Include(e => e.Assets)
-                .ThenInclude(a => a.Condition)
+                    .ThenInclude(a => a.Condition)
+                .Include(e => e.Nation)
                 .ToList();
             return entries;
         }

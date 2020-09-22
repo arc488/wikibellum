@@ -252,9 +252,6 @@ namespace wikibellum.Data.Migrations
                     b.Property<int?>("ReccomendationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Result")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("Start")
                         .HasColumnType("datetime2");
 
@@ -434,6 +431,26 @@ namespace wikibellum.Data.Migrations
                     b.ToTable("Conditions");
                 });
 
+            modelBuilder.Entity("wikibellum.Entities.Result", b =>
+                {
+                    b.Property<int>("ResultId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EventId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ResultId");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Result");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -500,7 +517,7 @@ namespace wikibellum.Data.Migrations
 
             modelBuilder.Entity("wikibellum.Entities.EventParticipant", b =>
                 {
-                    b.HasOne("wikibellum.Entities.Event", "Event")
+                    b.HasOne("wikibellum.Entities.Event", null)
                         .WithMany("Participants")
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -550,6 +567,13 @@ namespace wikibellum.Data.Migrations
                         .HasForeignKey("BranchId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("wikibellum.Entities.Result", b =>
+                {
+                    b.HasOne("wikibellum.Entities.Event", null)
+                        .WithMany("Results")
+                        .HasForeignKey("EventId");
                 });
 #pragma warning restore 612, 618
         }

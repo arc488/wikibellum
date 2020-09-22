@@ -25,6 +25,8 @@ namespace wikibellum.App.Pages
 
         [Inject]
         public ILocationDataService LocationDataService { get; set; }
+        [Inject]
+        public IResultDataService ResultDataService { get; set; }
 
         [Parameter]
         public int EventId { get; set; }
@@ -58,6 +60,14 @@ namespace wikibellum.App.Pages
             StateHasChanged();
         }
 
+        protected async void AddResult()
+        {
+            var result = await ResultDataService.Add(new Result() { EventId = Event.EventId });
+            Event.Results.Add(result);
+            await EventDataService.Update(Event.EventId, Event);
+            StateHasChanged();
+        }
+
         protected void HandleValidSubmit()
         {
 
@@ -75,6 +85,11 @@ namespace wikibellum.App.Pages
         protected void UpdateEventChanges()
         {
             EventDataService.Update(Event.EventId, Event);
+        }
+
+        protected void UpdateResultChanges(Result result)
+        {
+            ResultDataService.Update(result.ResultId, result);
         }
         protected override void OnAfterRender(bool firstRender)
         {

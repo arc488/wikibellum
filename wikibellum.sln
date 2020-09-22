@@ -7,15 +7,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Entities", "wiki
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Common", "wikibellum.Common\wikibellum.Common.csproj", "{51CB9CA9-DDED-41FE-BC15-C7A9594828A9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikiparser", "wikiparser\wikiparser.csproj", "{95B67E75-DF8D-49F9-888F-AC19C398F106}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Web", "wikibellum.Web\wikibellum.Web.csproj", "{8C4C90E1-8666-4F42-B820-BC3303023511}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Data", "wikibellum.Data\wikibellum.Data.csproj", "{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Api", "wikibellum.Api\wikibellum.Api.csproj", "{60F7CAAC-2A2D-47B0-ACB1-D6AFE29C9AE7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.App", "wikibellum.App\wikibellum.App.csproj", "{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Example", "Example", "{88A294D5-E0B4-4ECD-AE80-5423A0FBAEAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppAuth.Server", "BlazorAppAuth\Server\BlazorAppAuth.Server.csproj", "{CC46E407-FBC3-44EF-9F3E-48F83AFE1832}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppAuth.Client", "BlazorAppAuth\Client\BlazorAppAuth.Client.csproj", "{50C156B9-76C9-4087-894D-D7B03BE1159B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppAuth.Shared", "BlazorAppAuth\Shared\BlazorAppAuth.Shared.csproj", "{A9AEB692-854A-46DD-9919-3F91EF184322}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +35,6 @@ Global
 		{51CB9CA9-DDED-41FE-BC15-C7A9594828A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51CB9CA9-DDED-41FE-BC15-C7A9594828A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51CB9CA9-DDED-41FE-BC15-C7A9594828A9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95B67E75-DF8D-49F9-888F-AC19C398F106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95B67E75-DF8D-49F9-888F-AC19C398F106}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95B67E75-DF8D-49F9-888F-AC19C398F106}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95B67E75-DF8D-49F9-888F-AC19C398F106}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8C4C90E1-8666-4F42-B820-BC3303023511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C4C90E1-8666-4F42-B820-BC3303023511}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C4C90E1-8666-4F42-B820-BC3303023511}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C4C90E1-8666-4F42-B820-BC3303023511}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,9 +47,26 @@ Global
 		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC46E407-FBC3-44EF-9F3E-48F83AFE1832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC46E407-FBC3-44EF-9F3E-48F83AFE1832}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC46E407-FBC3-44EF-9F3E-48F83AFE1832}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC46E407-FBC3-44EF-9F3E-48F83AFE1832}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50C156B9-76C9-4087-894D-D7B03BE1159B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50C156B9-76C9-4087-894D-D7B03BE1159B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50C156B9-76C9-4087-894D-D7B03BE1159B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50C156B9-76C9-4087-894D-D7B03BE1159B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9AEB692-854A-46DD-9919-3F91EF184322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9AEB692-854A-46DD-9919-3F91EF184322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9AEB692-854A-46DD-9919-3F91EF184322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9AEB692-854A-46DD-9919-3F91EF184322}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC46E407-FBC3-44EF-9F3E-48F83AFE1832} = {88A294D5-E0B4-4ECD-AE80-5423A0FBAEAF}
+		{50C156B9-76C9-4087-894D-D7B03BE1159B} = {88A294D5-E0B4-4ECD-AE80-5423A0FBAEAF}
+		{A9AEB692-854A-46DD-9919-3F91EF184322} = {88A294D5-E0B4-4ECD-AE80-5423A0FBAEAF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B30CA86-A7BF-4C38-AFFE-3EF255750ECE}

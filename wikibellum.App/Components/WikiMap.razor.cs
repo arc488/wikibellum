@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -18,31 +20,25 @@ namespace wikibellum.App.Components
         private IEventDataService EventDataService { get; set; }
         [Inject]
         private DateHelpers DateHelpers { get; set; }
-
-        //[Inject]
-        //public JSRuntime JSRuntime { get; set; }
-        //public int TotalMonths
-        //{
-        //    get
-        //    {
-        //        return _totalMonths;
-        //    }
-        //    set
-        //    {
-        //        _totalMonths = value;
-                
-        //        //OnDateChanged(value);
-        //    }
-        //}
+        [Parameter]
+        public EventCallback<int> EventSelectedEventCallback { get; set; }
+        public int CurrentEventId 
+        {
+            get
+            {
+                return _currentEventId;
+            }
+            set
+            {
+                _currentEventId = value;
+                EventSelectedEventCallback.InvokeAsync(_currentEventId);
+            } 
+        }
+        private int _currentEventId = 0;
         private int _totalMonths = 13;
         private IEnumerable<Event> _events;
         private bool _shouldRender;
 
-        public void UpdateTotalMonths(int totalMonths)
-        {
-            _totalMonths = totalMonths;
-            OnDateChanged();
-        }
         protected async override Task OnInitializedAsync()
         {
             _totalMonths = 13;
@@ -57,20 +53,25 @@ namespace wikibellum.App.Components
 
         protected override void OnAfterRender(bool firstRender)
         {
+
             if (_events != null)
             {
                 JSRuntime.InvokeVoidAsync("map");
-                //JSRuntime.InvokeVoidAsync("addMarkers", _events);
                 _shouldRender = false;
             }
         }
 
+        public void UpdateTotalMonths(int totalMonths)
+        {
+            _totalMonths = totalMonths;
+            OnDateChanged();
+        }
         protected void OnDateChanged()
         {
-            SetMarkerVisibility();
+            AddNewMarkers();
         }
 
-        protected void SetMarkerVisibility()
+        protected void AddNewMarkers()
         {
             var currentEvents = new List<Event>();
             foreach (var item in _events)
@@ -81,8 +82,6 @@ namespace wikibellum.App.Components
                 }
             }
 
-            //JSRuntime.InvokeVoidAsync("setHidden");
-            //JSRuntime.InvokeVoidAsync("setVisible", currentEvents);
             JSRuntime.InvokeVoidAsync("removeAllMarkers");
             JSRuntime.InvokeVoidAsync("addCurrentEvents", currentEvents);
 

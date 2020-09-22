@@ -32,6 +32,7 @@ namespace wikibellum.Data
         public DbSet<Nation> Nations { get; set; }
         public DbSet<Alliance> Alliances { get; set; }
         public DbSet<Asset> Assets { get; set; }
+        public DbSet<Result> Result { get; set; }
 
         public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<WikiContext>
         {
@@ -50,9 +51,6 @@ namespace wikibellum.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Event>()
-            //    .HasMany(ep => ep.Participants)
-            //    .WithOne(ep => ep.Event);
 
             base.OnModelCreating(modelBuilder);
 

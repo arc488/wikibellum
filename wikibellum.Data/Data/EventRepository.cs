@@ -16,12 +16,15 @@ namespace wikibellum.Data
         public async override Task<IEnumerable<Event>> GetAll()
         {
             var entries = _entries.Include(e => e.Location)
+                .Include(e => e.Results)
                 .Include(e => e.Participants)
-                .ThenInclude(ep => ep.Assets)
-                .ThenInclude(a => a.Classification)
+                    .ThenInclude(ep => ep.Assets)
+                    .ThenInclude(a => a.Classification)
                 .Include(e => e.Participants)
-                .ThenInclude(e => e.Assets)
-                .ThenInclude(a => a.Condition)
+                    .ThenInclude(e => e.Assets)
+                    .ThenInclude(a => a.Condition)
+                .Include(e => e.Participants)
+                    .ThenInclude(e => e.Nation)
                 .ToList();
             return entries;
         }
@@ -29,12 +32,15 @@ namespace wikibellum.Data
         public async override Task<Event> Get(int id)
         {
             var entry = _entries.Include(e => e.Location)
+                .Include(e => e.Results)
                 .Include(e => e.Participants)
-                .ThenInclude(ep => ep.Assets)
-                .ThenInclude(a => a.Classification)
+                    .ThenInclude(ep => ep.Assets)
+                    .ThenInclude(a => a.Classification)
                 .Include(e => e.Participants)
-                .ThenInclude(e => e.Assets)
-                .ThenInclude(a => a.Condition)
+                    .ThenInclude(e => e.Assets)
+                    .ThenInclude(a => a.Condition)
+                .Include(e => e.Participants)
+                    .ThenInclude(e => e.Nation)
                 .FirstOrDefault(e => e.EventId == id);
             return entry;
         }
