@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -28,7 +29,7 @@ namespace wikibellum.Api.Controllers
         }
 
         // GET: api/Events
-        [HttpGet]
+        [HttpGet][AllowAnonymous]
         public async Task<IEnumerable<Event>> GetEvents()
         {
             var events = await _eventRepository.GetAll();
@@ -36,7 +37,7 @@ namespace wikibellum.Api.Controllers
         }
 
         // GET: api/Events/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}")][AllowAnonymous]
         public async Task<ActionResult<Event>> GetEvent(int id)
         {
             var @event = await _eventRepository.Get(id);

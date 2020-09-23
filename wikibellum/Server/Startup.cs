@@ -89,7 +89,7 @@ namespace wikibellum.Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapControllers();
+                endpoints.MapControllers().RequireAuthorization();
                 endpoints.MapFallbackToFile("index.html");
             });
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using wikibellum.Entities;
 
 namespace wikibellum.Client.Pages
 {
+    [Authorize]
     public partial class EventList : ComponentBase
     {
         [Inject]

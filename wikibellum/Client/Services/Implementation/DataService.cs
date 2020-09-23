@@ -28,7 +28,7 @@ namespace wikibellum.Client.Services
         public async Task<List<TEntity>> GetAll()
         {
             var stream = await _httpClient.GetStreamAsync($"api/" + ControllerName);
-
+            Console.WriteLine(_httpClient);
             var response = await JsonSerializer.DeserializeAsync<IEnumerable<TEntity>>
                 (await _httpClient.GetStreamAsync($"api/" + ControllerName), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
             return response.ToList();

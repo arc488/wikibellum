@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ using wikibellum.Entities.Models.Units;
 
 namespace wikibellum.Client.Pages
 {
+    [Authorize]
     public partial class ModifyEvent : ComponentBase
     {
         [Inject]
@@ -65,16 +67,6 @@ namespace wikibellum.Client.Pages
             Event.Results.Add(result);
             await EventDataService.Update(Event.EventId, Event);
             StateHasChanged();
-        }
-
-        protected void HandleValidSubmit()
-        {
-
-        }
-
-        protected void HandleInvalidSubmit()
-        {
-
         }
 
         protected void UpdateLocationChanges()
