@@ -33,13 +33,13 @@
 
 							<div class="form-group">
 								<label for="classification">Classification</label>
-								<CustomInputSelect id="classification" class="form-control" @bind-Value="@Asset.ClassificationIdString">
+								<InputSelect id="classification" class="form-control" @bind-Value="@Asset.ClassificationIdString">
 									@foreach (var item in CurrentBranchClassifications)
 									{
 										<option value="@item.ClassificationId">@item.FullName</option>
 
 									}
-								</CustomInputSelect>
+								</InputSelect>
 								<ValidationMessage For="@(() => Asset.Classification)" />
 							</div>
 							@if (Asset.AssetType == AssetType.Loss)

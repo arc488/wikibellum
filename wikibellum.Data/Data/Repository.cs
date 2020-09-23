@@ -23,7 +23,6 @@ namespace wikibellum.Data
             var newEntity = await _entries.AddAsync(entity);
             _context.SaveChanges();
             return newEntity.State;
-
         }
 
         public virtual EntityState Delete(TEntity entity)
