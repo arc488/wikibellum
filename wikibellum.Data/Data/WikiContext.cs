@@ -23,8 +23,7 @@ namespace wikibellum.Data
     public class WikiContext : ApiAuthorizationDbContext<ApplicationUser>
     {
         public WikiContext(DbContextOptions options,
-            IOptions<OperationalStoreOptions> operationalStoreOptions) 
-            : base(options, operationalStoreOptions)
+            IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
 
         }
@@ -54,13 +53,6 @@ namespace wikibellum.Data
         //        return new WikiContext(builder.Options);
         //    }
         //}
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-
-            base.OnModelCreating(modelBuilder);
-
-        }
 
     }
 }

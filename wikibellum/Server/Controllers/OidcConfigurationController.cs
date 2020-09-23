@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 
-namespace wikibellum.Api.Controllers
+namespace wikibellum.Server.Controllers
 {
-    [AllowAnonymous]
     public class OidcConfigurationController : Controller
     {
         private readonly ILogger<OidcConfigurationController> _logger;
@@ -23,7 +20,6 @@ namespace wikibellum.Api.Controllers
         public IActionResult GetClientRequestParameters([FromRoute] string clientId)
         {
             var parameters = ClientRequestParametersProvider.GetClientParameters(HttpContext, clientId);
-            Debug.WriteLine("Past parameters");
             return Ok(parameters);
         }
     }

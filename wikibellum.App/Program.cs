@@ -11,6 +11,7 @@ using wikibellum.App.Services;
 using wikibellum.App.Services.Implementation;
 using wikibellum.App.Services.Interfaces;
 using wikibellum.App.Helpers;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace wikibellum.App
 {
@@ -33,6 +34,18 @@ namespace wikibellum.App
             builder.Services.AddHttpClient<ILocationDataService, LocationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
             builder.Services.AddHttpClient<IResultDataService, ResultDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
             builder.Services.AddSingleton<DateHelpers>();
+
+            //builder.Services.AddHttpClient("wikibellum.Api", client => client.BaseAddress = new Uri("https://localhost:44308/"))
+            //    .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+            builder.Services.AddHttpClient("wikibellum.Api", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
+                .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+            // Supply HttpClient instances that include access tokens when making requests to the server project
+            builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("wikibellum.Api"));
+
+            builder.Services.AddApiAuthorization();
+
             await builder.Build().RunAsync();
         }
     }
