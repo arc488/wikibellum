@@ -1,0 +1,24 @@
+﻿@inject IJSRuntime JSRuntime
+
+@if (_events == null)
+{
+    <h4>Loading...</h4>
+}
+else
+{
+    <input id="_currentEventIdInput" type="number" @bind="CurrentEventId" />
+    <div style="height: 500px">
+        <div class="h-100" id="map"></div>
+    </div>
+}
+
+<style>
+    .wiki-marker {
+        height: 25px;
+        width: 25px;
+        background-color: tomato;
+        border-radius: 50%;
+        display: inline-block;
+    }
+</style>
+

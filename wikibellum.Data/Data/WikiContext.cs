@@ -17,6 +17,7 @@ using wikibellum.Entities.Models;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using IdentityServer4.EntityFramework.Options;
 using Microsoft.Extensions.Options;
+using wikibellum.Entities.Data;
 
 namespace wikibellum.Data
 {

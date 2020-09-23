@@ -17,11 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Api", "wikibellu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.App", "wikibellum.App\wikibellum.App.csproj", "{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wikibellum.Api.Server", "wikibellum\Server\wikibellum.Api.Server.csproj", "{84C3FEED-89A0-4D0C-868A-E9C2842C7ECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Server", "wikibellum\Server\wikibellum.Server.csproj", "{84C3FEED-89A0-4D0C-868A-E9C2842C7ECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wikibellum.Client", "wikibellum\Client\wikibellum.Client.csproj", "{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Client", "wikibellum\Client\wikibellum.Client.csproj", "{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wikibellum.Shared", "wikibellum\Shared\wikibellum.Shared.csproj", "{C459DABE-9D4E-4071-ADCE-264BD835051F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Shared", "wikibellum\Shared\wikibellum.Shared.csproj", "{C459DABE-9D4E-4071-ADCE-264BD835051F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

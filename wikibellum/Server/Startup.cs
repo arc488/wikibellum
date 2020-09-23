@@ -11,10 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
-using wikibellum.Server.Models;
 using wikibellum.Data;
 using wikibellum.Data.Data.IRepositiories;
 using wikibellum.Data.Data;
+using wikibellum.Entities.Data;
 
 namespace wikibellum.Server
 {
@@ -35,11 +35,11 @@ namespace wikibellum.Server
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<wikibellum.Data.ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<WikiContext>();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<wikibellum.Data.ApplicationUser, WikiContext>();
+                .AddApiAuthorization<ApplicationUser, WikiContext>();
 
             services.AddAuthentication()
                 .AddIdentityServerJwt();

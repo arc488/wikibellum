@@ -1,0 +1,131 @@
+﻿@page "/modifyevent"
+@page "/modifyevent/{EventId:int}"
+@inject IJSRuntime JSRuntime
+
+@code{
+    bool strengthVisible = false;
+    bool lossesVisible = false;
+}
+
+@if (Event == null)
+{
+    <h4>Loading...</h4>
+}
+else
+{
+    <div id="details">
+        <div class="container">
+            <EditForm Model="@Event" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+                <div class="row">
+                    <div id="overview" class="col-md-5 border rounded overflow-auto">
+                        <div class="form-group">
+                            <label asp-for="title">Title</label>
+                            <div class="input-group input-group-sm">
+                                <input id="title" @bind-value="Event.Title" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="Title" />
+                            </div>
+                            <div><ValidationMessage class="text-danger" For="@(() => Event.Title)" /></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col">
+                                <label id="startDate">Start</label>
+                                <div class="input-group input-group-sm">
+                                    <input id="startDate" @bind="Event.Start" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="Start" />
+                                </div>
+                                <div><ValidationMessage class="text-danger" For="@(() => Event.Start)" /></div>
+                            </div>
+                            <div class="form-group col">
+                                <label id="endDate">End</label>
+                                <div class="input-group input-group-sm">
+                                    <input id="endDate" @bind="Event.End" @onfocusout="@(e => UpdateEventChanges())" class="form-control" placeholder="End" />
+                                </div>
+                                <div><ValidationMessage class="text-danger" For="@(() => Event.End)" /></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h6>Results</h6>
+                            <button @onclick="AddResult" class="btn btn-primary mx-auto d-block my-2">Add</button>
+                            @if (Event.Results.Count < 1)
+                            {
+                                <p>No results</p>
+                            }
+                            else
+                            {
+                                @foreach (var result in Event.Results)
+                                {
+                                    {
+                                        <div class="input-group input-group-sm">
+
+                                            <input @bind="@result.Description" @onfocusout="@(e => UpdateResultChanges(result))" class="form-control" />
+                                        </div>
+
+                                    }
+                                }
+                            }
+                        </div>
+
+                        <hr>
+
+                        <div class="location">
+                            <div class="form-group">
+                                <label id="locationName">Location name</label>
+                                <div class="input-group input-group-sm">
+                                    <input id="locationName" @bind="Event.Location.Name" @onfocusout="@(e => UpdateLocationChanges())" class="form-control"  />
+                                </div>
+                                <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Name)" /></div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label id="locationLat">Latitude</label>
+                                    <div class="input-group input-group-sm">
+                                        <input id="locationLat" @bind="Event.Location.Lat" @onfocusout="@(e => UpdateLocationChanges())" class="form-control"  />
+                                    </div>
+                                    <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Lat)" /></div>
+                                </div>
+                                <div class="form-group col">
+                                    <label id="locationLong">Longitude</label>
+                                    <div class="input-group input-group-sm">
+                                        <input id="locationLong" @bind="Event.Location.Long" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" />
+                                    </div>
+                                    <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Long)" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <div id="belligerents" class="col-md-5 border rounded overflow-auto">
+                        <h4>Belligerents</h4>
+                        <button @onclick="AddParticipant" class="btn btn-primary mx-auto d-block my-2">Add</button>
+                        @foreach (var item in Event.Participants)
+                        {
+                            <BelligerentInfo Belligerent="item"></BelligerentInfo>
+
+                        }
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="border col-md-10 text-center">
+                        <div class="form-group">
+                            <label id="description">description</label>
+                            <div class="input-group input-group-sm">
+                                <textarea id="description" @bind="Event.Description" @onfocusout="@(e => UpdateEventChanges())" type="text" asp-for="title" class="form-control"  />
+                            </div>
+                            <div><ValidationMessage class="text-danger" For="@(() => Event.Description)" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="border col-md-10 text-center">
+                        <input type="submit" value="Submit Entry" class="btn btn-primary my-2">
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+
+    </div>
+}
+
+@*<AddUnitAssetDialog @ref="this.AddUnitAssetDialog" AddAssetEventCallback="@AddUnitAssetDialog_OnAssetAdded" CloseEventCallback="@AddUnitAssetDialog_OnDialogClose"></AddUnitAssetDialog>*@

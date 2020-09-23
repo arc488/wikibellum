@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using wikibellum.Client.Services;
+using wikibellum.Client.Helpers;
 
 namespace wikibellum.Client
 {
@@ -25,6 +27,18 @@ namespace wikibellum.Client
             builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("wikibellum.ServerAPI"));
 
             builder.Services.AddApiAuthorization();
+
+            builder.Services.AddHttpClient<IEventDataService, EventDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IClassificationDataService, ClassificationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IBranchDataService, BranchDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IEventParticipantDataService, EventParticipantDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IConditionDataService, ConditionDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<INationDataService, NationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IAllianceDataService, AllianceDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IAssetDataService, AssetDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<ILocationDataService, LocationDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddHttpClient<IResultDataService, ResultDataService>(client => client.BaseAddress = new Uri("https://localhost:44308/"));
+            builder.Services.AddSingleton<DateHelpers>();
 
             await builder.Build().RunAsync();
         }

@@ -1,0 +1,76 @@
+﻿@if (ShowDialog)
+{
+	<div class="modal fade show d-block" id="exampleModal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="titleLabel">Asset Quick Add</h5>
+					<button type="button" class="close" @onclick="@Close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				@if (_branches == null || _classifications == null)
+				{
+					<h4>Loading...</h4>
+				}
+				else
+				{
+					<div class="type-selection border-bottom py-2">
+						<div class="btn-group w-100" role="group">
+							@foreach (var branch in _branches)
+							{
+								<button @onclick="@(e => SetBranch(branch))" type="button" class="btn btn-secondary @(((CurrentBranch == branch)) ? "active" : "")">@branch.Name</button>
+
+							}
+						</div>
+					</div>
+					<div class="modal-body">
+
+						<EditForm Model="@Asset" OnValidSubmit="@HandleValidSubmit">
+
+							<DataAnnotationsValidator />
+							<ValidationSummary />
+
+							<div class="form-group">
+								<label for="classification">Classification</label>
+								<CustomInputSelect id="classification" class="form-control" @bind-Value="@Asset.ClassificationIdString">
+									@foreach (var item in CurrentBranchClassifications)
+									{
+										<option value="@item.ClassificationId">@item.FullName</option>
+
+									}
+								</CustomInputSelect>
+								<ValidationMessage For="@(() => Asset.Classification)" />
+							</div>
+							@if (Asset.AssetType == AssetType.Loss)
+							{
+								<div class="form-group">
+									<label for="condition">Condition: </label>
+									<InputSelect id="condition" class="form-control" @bind-Value="@Asset.ConditionIdString">
+										@foreach (var item in _conditions)
+										{
+											<option value="@item.ConditionId">@item.Name</option>
+
+										}
+									</InputSelect>
+									<ValidationMessage For="@(() => Asset.Condition)" />
+								</div>
+                            }
+
+							<div class="form-group">
+								<label for="amount">Amount: </label>
+								<InputNumber id="amount" class="form-control" @bind-Value="@Asset.Amount" placeholder="Enter amount"></InputNumber>
+								<ValidationMessage For="@(() => Asset.Amount)" />
+							</div>
+							<button type="submit" class="btn btn-primary">Save</button>
+							<a class="btn btn-outline-primary" @onclick="@Close">Close</a>
+						</EditForm>
+
+					</div>
+				}
+				</div>
+		</div>
+	</div>
+}
+
+
