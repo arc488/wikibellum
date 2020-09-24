@@ -99,6 +99,23 @@ namespace wikibellum.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DeviceCodes",
+                columns: table => new
+                {
+                    UserCode = table.Column<string>(maxLength: 200, nullable: false),
+                    DeviceCode = table.Column<string>(maxLength: 200, nullable: false),
+                    SubjectId = table.Column<string>(maxLength: 200, nullable: true),
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: false),
+                    Data = table.Column<string>(maxLength: 50000, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeviceCodes", x => x.UserCode);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Locations",
                 columns: table => new
                 {
@@ -111,6 +128,23 @@ namespace wikibellum.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Locations", x => x.LocationId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PersistedGrants",
+                columns: table => new
+                {
+                    Key = table.Column<string>(maxLength: 200, nullable: false),
+                    Type = table.Column<string>(maxLength: 50, nullable: false),
+                    SubjectId = table.Column<string>(maxLength: 200, nullable: true),
+                    ClientId = table.Column<string>(maxLength: 200, nullable: false),
+                    CreationTime = table.Column<DateTime>(nullable: false),
+                    Expiration = table.Column<DateTime>(nullable: true),
+                    Data = table.Column<string>(maxLength: 50000, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PersistedGrants", x => x.Key);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,8 +213,8 @@ namespace wikibellum.Data.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(nullable: false),
-                    ProviderKey = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false)
                 },
@@ -224,8 +258,8 @@ namespace wikibellum.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    LoginProvider = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
+                    LoginProvider = table.Column<string>(maxLength: 128, nullable: false),
+                    Name = table.Column<string>(maxLength: 128, nullable: false),
                     Value = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -269,7 +303,6 @@ namespace wikibellum.Data.Migrations
                     Title = table.Column<string>(nullable: true),
                     Start = table.Column<DateTime>(nullable: false),
                     End = table.Column<DateTime>(nullable: false),
-                    Result = table.Column<string>(nullable: true),
                     LocationId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     ReccomendationId = table.Column<int>(nullable: true),
@@ -319,7 +352,27 @@ namespace wikibellum.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Asset",
+                name: "Result",
+                columns: table => new
+                {
+                    ResultId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(nullable: true),
+                    EventId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Result", x => x.ResultId);
+                    table.ForeignKey(
+                        name: "FK_Result_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "EventId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Assets",
                 columns: table => new
                 {
                     AssetId = table.Column<int>(nullable: false)
@@ -332,21 +385,21 @@ namespace wikibellum.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Asset", x => x.AssetId);
+                    table.PrimaryKey("PK_Assets", x => x.AssetId);
                     table.ForeignKey(
-                        name: "FK_Asset_Classifications_ClassificationId",
+                        name: "FK_Assets_Classifications_ClassificationId",
                         column: x => x.ClassificationId,
                         principalTable: "Classifications",
                         principalColumn: "ClassificationId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Asset_Conditions_ConditionId",
+                        name: "FK_Assets_Conditions_ConditionId",
                         column: x => x.ConditionId,
                         principalTable: "Conditions",
                         principalColumn: "ConditionId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Asset_EventParticipants_EventParticipantId",
+                        name: "FK_Assets_EventParticipants_EventParticipantId",
                         column: x => x.EventParticipantId,
                         principalTable: "EventParticipants",
                         principalColumn: "EventParticipantId",
@@ -393,24 +446,35 @@ namespace wikibellum.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Asset_ClassificationId",
-                table: "Asset",
+                name: "IX_Assets_ClassificationId",
+                table: "Assets",
                 column: "ClassificationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Asset_ConditionId",
-                table: "Asset",
+                name: "IX_Assets_ConditionId",
+                table: "Assets",
                 column: "ConditionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Asset_EventParticipantId",
-                table: "Asset",
+                name: "IX_Assets_EventParticipantId",
+                table: "Assets",
                 column: "EventParticipantId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Classifications_BranchId",
                 table: "Classifications",
                 column: "BranchId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DeviceCodes_DeviceCode",
+                table: "DeviceCodes",
+                column: "DeviceCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DeviceCodes_Expiration",
+                table: "DeviceCodes",
+                column: "Expiration");
 
             migrationBuilder.CreateIndex(
                 name: "IX_EventParticipants_EventId",
@@ -436,6 +500,21 @@ namespace wikibellum.Data.Migrations
                 name: "IX_Nations_AllianceId",
                 table: "Nations",
                 column: "AllianceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersistedGrants_Expiration",
+                table: "PersistedGrants",
+                column: "Expiration");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PersistedGrants_SubjectId_ClientId_Type",
+                table: "PersistedGrants",
+                columns: new[] { "SubjectId", "ClientId", "Type" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Result_EventId",
+                table: "Result",
+                column: "EventId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -456,7 +535,16 @@ namespace wikibellum.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Asset");
+                name: "Assets");
+
+            migrationBuilder.DropTable(
+                name: "DeviceCodes");
+
+            migrationBuilder.DropTable(
+                name: "PersistedGrants");
+
+            migrationBuilder.DropTable(
+                name: "Result");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

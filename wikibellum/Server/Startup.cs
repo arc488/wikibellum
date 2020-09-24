@@ -15,6 +15,9 @@ using wikibellum.Data;
 using wikibellum.Data.Data.IRepositiories;
 using wikibellum.Data.Data;
 using wikibellum.Entities.Data;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using System.Linq.Expressions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace wikibellum.Server
 {
@@ -35,7 +38,7 @@ namespace wikibellum.Server
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<WikiContext>();
 
             services.AddIdentityServer()
@@ -56,7 +59,12 @@ namespace wikibellum.Server
                 options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(config => 
+                config.Filters.Add
+                (new AuthorizeFilter
+                    (new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build())
+                )
+            );
             services.AddRazorPages();
         }
 
@@ -89,7 +97,7 @@ namespace wikibellum.Server
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapControllers().RequireAuthorization();
+                endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
             });
         }

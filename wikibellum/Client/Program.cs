@@ -29,16 +29,27 @@ namespace wikibellum.Client
             builder.Services.AddApiAuthorization();
 
             string serverAddress = "https://localhost:44331/";
-            builder.Services.AddHttpClient<IEventDataService, EventDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<IClassificationDataService, ClassificationDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<IBranchDataService, BranchDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<IEventParticipantDataService, EventParticipantDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<IConditionDataService, ConditionDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<INationDataService, NationDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<IAllianceDataService, AllianceDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<IAssetDataService, AssetDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<ILocationDataService, LocationDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            builder.Services.AddHttpClient<IResultDataService, ResultDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IEventDataService, EventDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IClassificationDataService, ClassificationDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IBranchDataService, BranchDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IEventParticipantDataService, EventParticipantDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IConditionDataService, ConditionDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<INationDataService, NationDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IAllianceDataService, AllianceDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IAssetDataService, AssetDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<ILocationDataService, LocationDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            //builder.Services.AddHttpClient<IResultDataService, ResultDataService>(client => client.BaseAddress = new Uri(serverAddress));
+            builder.Services.AddTransient<IEventDataService, EventDataService>();
+            builder.Services.AddTransient<IClassificationDataService, ClassificationDataService>();
+            builder.Services.AddTransient<IBranchDataService, BranchDataService>();
+            builder.Services.AddTransient<IEventParticipantDataService, EventParticipantDataService>();
+            builder.Services.AddTransient<IConditionDataService, ConditionDataService>();
+            builder.Services.AddTransient<INationDataService, NationDataService>();
+            builder.Services.AddTransient<IAllianceDataService, AllianceDataService>();
+            builder.Services.AddTransient<IAssetDataService, AssetDataService>();
+            builder.Services.AddTransient<ILocationDataService, LocationDataService>();
+            builder.Services.AddTransient<IResultDataService, ResultDataService>();
+
             builder.Services.AddSingleton<DateHelpers>();
 
             await builder.Build().RunAsync();

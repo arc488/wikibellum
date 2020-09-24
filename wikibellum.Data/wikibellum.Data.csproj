@@ -5,19 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200915102240_addedManualModelConfig.cs" />
-    <Compile Remove="Migrations\20200915102240_addedManualModelConfig.Designer.cs" />
-    <Compile Remove="Migrations\20200915112026_addCustomEventWithLocations.cs" />
-    <Compile Remove="Migrations\20200915112026_addCustomEventWithLocations.Designer.cs" />
-    <Compile Remove="Migrations\20200916094715_fixAttempt.cs" />
-    <Compile Remove="Migrations\20200916094715_fixAttempt.Designer.cs" />
-    <Compile Remove="Migrations\20200917135109_fixAttempt.cs" />
-    <Compile Remove="Migrations\20200917135109_fixAttempt.Designer.cs" />
+    <None Remove="20200912094305_populateBranchesAndClassificationsFromEnums.txt" />
+    <None Remove="20200912095452_populateConditionsAlliancesAndCountries.txt" />
+    <None Remove="branches.txt" />
+    <None Remove="populate.txt" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="branches.txt" />
-    <None Remove="populate.txt" />
+    <Compile Include="20200912094305_populateBranchesAndClassificationsFromEnums.txt" />
+    <Compile Include="20200912095452_populateConditionsAlliancesAndCountries.txt" />
   </ItemGroup>
 
   <ItemGroup>

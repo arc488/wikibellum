@@ -29,7 +29,7 @@ namespace wikibellum.Api.Controllers
         }
 
         // GET: api/Events
-        [HttpGet][AllowAnonymous]
+        [HttpGet]
         public async Task<IEnumerable<Event>> GetEvents()
         {
             var events = await _eventRepository.GetAll();
@@ -37,7 +37,7 @@ namespace wikibellum.Api.Controllers
         }
 
         // GET: api/Events/5
-        [HttpGet("{id}")][AllowAnonymous]
+        [HttpGet("{id}")]
         public async Task<ActionResult<Event>> GetEvent(int id)
         {
             var @event = await _eventRepository.Get(id);
