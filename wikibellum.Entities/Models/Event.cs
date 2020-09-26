@@ -14,6 +14,7 @@ namespace wikibellum.Entities
         {
             Location = new Location();
             Participants = new List<EventParticipant>();
+            Results = new List<Result>();
         }
 
         [Key]

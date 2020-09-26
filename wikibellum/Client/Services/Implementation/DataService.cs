@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web;
+using wikibellum.Entities;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace wikibellum.Client.Services
@@ -18,18 +19,15 @@ namespace wikibellum.Client.Services
 
         public string ControllerName { get; set; }
 
-        private readonly HttpClient _httpClient;
+        protected HttpClient _httpClient;
 
         public DataService(HttpClient httpClient)
         {
             _httpClient = httpClient;
-            Console.WriteLine("Default request headers");
-            Console.WriteLine(_httpClient.DefaultRequestHeaders);
         }
 
         public async Task<List<TEntity>> GetAll()
         {
-            var stream = await _httpClient.GetStreamAsync($"api/" + ControllerName);
             var response = await JsonSerializer.DeserializeAsync<IEnumerable<TEntity>>
                 (await _httpClient.GetStreamAsync($"api/" + ControllerName), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
             return response.ToList();
@@ -39,7 +37,6 @@ namespace wikibellum.Client.Services
         {
             var response = await JsonSerializer.DeserializeAsync<TEntity>
                 (await _httpClient.GetStreamAsync($"api/" + ControllerName + $"/{id}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            var stream = await _httpClient.GetStreamAsync($"api/" + ControllerName + $"/{id}");
             return response;
         }
         

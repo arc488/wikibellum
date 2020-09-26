@@ -8,19 +8,27 @@ using System.Threading.Tasks;
 using wikibellum.Client.Components;
 using wikibellum.Client.Helpers;
 using wikibellum.Client.Services;
+using wikibellum.Client.Services.Interfaces;
 using wikibellum.Entities;
+using wikibellum.Entities.ViewModels;
 
 namespace wikibellum.Client.Pages
 {
     public partial class Index : ComponentBase
     {
         [Inject]
-        private IEventDataService EventDataService { get; set; }
+        private IEventAnonymousDataService EventAnonymousDataService { get; set; }
         private WikiMap WikiMap { get; set; }
 
         private EventDetail EventDetail { get; set; }
 
         private Event _currentEvent;
+        private List<EventMarker> _eventMarkers;
+
+        protected async override Task OnInitializedAsync()
+        {
+            _eventMarkers = await EventAnonymousDataService.GetAll();
+        }
         private void TimeIndicator_OnDateChanged(int totalMonths)
         {
             WikiMap.UpdateTotalMonths(totalMonths);
@@ -28,7 +36,7 @@ namespace wikibellum.Client.Pages
        
         private async void WikiMap_OnEventSelected(int id)
         {
-            _currentEvent = await EventDataService.GetById(id);
+            _currentEvent = await EventAnonymousDataService.GetById(id);
             EventDetail.DisplayEventDetail(_currentEvent);
         }
     }

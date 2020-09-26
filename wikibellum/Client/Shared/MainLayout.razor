@@ -1,15 +1,25 @@
-﻿@inherits LayoutComponentBase
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.AspNetCore.Identity
+@using wikibellum.Entities.Data
+@inherits LayoutComponentBase
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
-<div class="sidebar">
-    <NavMenu />
-</div>
 
-<div class="main">
-    <div class="top-row px-4 auth">
-        <LoginDisplay />
+<AuthorizeView>
+    <div class="sidebar">
+        <NavMenu />
     </div>
+</AuthorizeView>
 
-    <div class="content px-4">
-        @Body
+    <div class="main">
+
+        <div class="top-row px-4 auth">
+            <h1 id="app-name" class="mr-auto">ArmaSchema</h1>
+            <LoginDisplay />
+        </div>
+
+        <div class="content px-4">
+            @Body
+        </div>
+
     </div>
-</div>

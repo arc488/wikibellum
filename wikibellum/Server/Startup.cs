@@ -47,6 +47,15 @@ namespace wikibellum.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
+
+
+            services.AddControllersWithViews(config =>
+                config.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build())));
+
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<IEventParticipantRepository, EventParticipantRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
@@ -54,17 +63,10 @@ namespace wikibellum.Server
             services.AddScoped<IClassificationRepository, ClassificationRepository>();
             services.AddScoped<INationRepository, NationRepository>();
             services.AddScoped<IAllianceRepository, AllianceRepository>();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Open", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            });
+            services.AddScoped<IEventAnonymousRepository, EventAnonymousRepository>();
 
-            services.AddControllersWithViews(config => 
-                config.Filters.Add
-                (new AuthorizeFilter
-                    (new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build())
-                )
-            );
+
+
             services.AddRazorPages();
         }
 

@@ -40,13 +40,13 @@ namespace wikibellum.Client.Pages
 
         protected async override Task OnInitializedAsync()
         {
-            _events = await EventDataService.GetAll();
             if (EventId == 0)
             {
                 Event = await EventDataService.Add(new Event());
             }
             else
             {
+                _events = await EventDataService.GetAll();
                 Event = _events.FirstOrDefault(e => e.EventId == EventId);
             }
 

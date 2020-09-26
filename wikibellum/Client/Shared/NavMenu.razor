@@ -25,7 +25,10 @@
     </ul>
 </div>
 
+
 @code {
+
+    public bool Authenticated { get; set; }
     private bool collapseNavMenu = true;
 
     private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -34,4 +37,7 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+
+
 }

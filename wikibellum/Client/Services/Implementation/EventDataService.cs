@@ -11,7 +11,7 @@ namespace wikibellum.Client.Services
     {
         public EventDataService(HttpClient httpClient) : base(httpClient)
         {
-            ControllerName = "Events";
+            ControllerName = "Events";          
         }
     }
 }

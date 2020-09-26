@@ -37,15 +37,15 @@ window.setEventJs = (id) => {
 window.addCurrentEvents = (currentEvents) => {
     try {
         for (var i in currentEvents) {
-            var event = currentEvents[i];
-            var lat = parseFloat(event.location.lat);
-            var long = parseFloat(event.location.long);
-            var title = "<p>" + event.title + "</p>";
+            var eventMarker = currentEvents[i];
+            var lat = parseFloat(eventMarker.lat);
+            var long = parseFloat(eventMarker.long);
+            var title = "<p>" + eventMarker.title + "</p>";
             var coords = [long, lat];
 
             var el = document.createElement('div');
             el.classList.add("wiki-marker");
-            el.id = event.eventId;
+            el.id = eventMarker.eventId;
 
             el.addEventListener('click', () => {
                 console.log("Marker clicked");

@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using wikibellum.Client.Services;
 using wikibellum.Client.Helpers;
+using wikibellum.Client.Services.Interfaces;
+using wikibellum.Client.Services.Implementation;
 
 namespace wikibellum.Client
 {
@@ -23,12 +25,14 @@ namespace wikibellum.Client
             builder.Services.AddHttpClient("wikibellum.ServerAPI", client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress))
                 .AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
+            builder.Services.AddHttpClient("wikibellum.ServerAPI.NoAuthenticationClient",
+                client => client.BaseAddress = new Uri(builder.HostEnvironment.BaseAddress));
+
             // Supply HttpClient instances that include access tokens when making requests to the server project
             builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("wikibellum.ServerAPI"));
 
             builder.Services.AddApiAuthorization();
 
-            string serverAddress = "https://localhost:44331/";
             //builder.Services.AddHttpClient<IEventDataService, EventDataService>(client => client.BaseAddress = new Uri(serverAddress));
             //builder.Services.AddHttpClient<IClassificationDataService, ClassificationDataService>(client => client.BaseAddress = new Uri(serverAddress));
             //builder.Services.AddHttpClient<IBranchDataService, BranchDataService>(client => client.BaseAddress = new Uri(serverAddress));
@@ -49,6 +53,7 @@ namespace wikibellum.Client
             builder.Services.AddTransient<IAssetDataService, AssetDataService>();
             builder.Services.AddTransient<ILocationDataService, LocationDataService>();
             builder.Services.AddTransient<IResultDataService, ResultDataService>();
+            builder.Services.AddTransient<IEventAnonymousDataService, EventAnonymousDataService>();
 
             builder.Services.AddSingleton<DateHelpers>();
 

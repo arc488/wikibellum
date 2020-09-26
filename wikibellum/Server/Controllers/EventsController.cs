@@ -18,13 +18,11 @@ namespace wikibellum.Api.Controllers
     public class EventsController : ControllerBase
     {
         private readonly WikiContext _context;
-        private readonly LinkGenerator _linkGenerator;
         private readonly IEventRepository _eventRepository;
 
-        public EventsController(WikiContext context, IEventRepository eventRepository, LinkGenerator linkGenerator)
+        public EventsController(WikiContext context, IEventRepository eventRepository)
         {
             _context = context;
-            _linkGenerator = linkGenerator;
             _eventRepository = eventRepository;
         }
 
@@ -56,6 +54,7 @@ namespace wikibellum.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutEvent(int id, Event @event)
         {
+            Debug.WriteLine(@event);
             if (id != @event.EventId)
             {
                 return BadRequest();

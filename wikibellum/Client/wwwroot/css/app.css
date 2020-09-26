@@ -19,7 +19,10 @@ app {
     display: flex;
     flex-direction: column;
 }
-
+#app-name {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 .top-row {
     height: 3.5rem;
     display: flex;
@@ -146,7 +149,8 @@ app {
     }
 
     .main .top-row a, .main .top-row .btn-link {
-        margin-left: 0;
+        /*margin-left: 0;*/    
+
     }
 }
 
