@@ -11,9 +11,9 @@ namespace wikibellum.Entities.Models.Units
     {
         [Key]
         public int AssetId { get; set; }
-        public int ClassificationId { get; set; }
+        public int? ClassificationId { get; set; }
         [ForeignKey("ClassificationId")]
-        public Classification Classification { get; set; }
+        public Classification? Classification { get; set; }
         [NotMapped]
         public string ClassificationIdString { get; set; }
         [ForeignKey("ConditionId")]
@@ -21,11 +21,19 @@ namespace wikibellum.Entities.Models.Units
         public int ConditionId { get; set; }
         [NotMapped]
         public string ConditionIdString { get; set; }
+        public int? OrganizationId { get; set; }
+        [NotMapped]
+        public string OrganizationIdString { get; set; }
+        public Organization? Organization { get; set; }
         public int Amount { get; set; }
         public AssetType AssetType { get; set; }
         public int EventParticipantId { get; set; }
+        [NotMapped]
+        public bool ClassificationIsDisabled { get; set; }
+        [NotMapped]
+        public bool OrganizationIsDisabled { get; set; }
     }
-
+    
     public enum AssetType
     {
         Strength,

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using wikibellum.Data;
+using wikibellum.Data.Data.IRepositiories;
 using wikibellum.Entities.Models.Units;
 
 namespace wikibellum.Api.Controllers
@@ -15,10 +16,12 @@ namespace wikibellum.Api.Controllers
     public class AssetsController : ControllerBase
     {
         private readonly WikiContext _context;
+        private IAssetRepository _assetRepository;
 
-        public AssetsController(WikiContext context)
+        public AssetsController(WikiContext context, IAssetRepository assetRepository)
         {
             _context = context;
+            _assetRepository = assetRepository;
         }
 
         // GET: api/Assets
@@ -80,7 +83,14 @@ namespace wikibellum.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Asset>> PostAsset(Asset asset)
         {
-            asset.Classification = _context.Classifications.Find(asset.ClassificationId);
+            if (!asset.ClassificationIsDisabled)
+            {
+                asset.Classification = _context.Classifications.Find(asset.ClassificationId);
+            }
+            if (!asset.OrganizationIsDisabled)
+            {
+                asset.Organization = _context.Organizations.Find(asset.OrganizationId);
+            }
             if (asset.AssetType == AssetType.Loss)
             {
                 asset.ConditionId = Int32.Parse(asset.ConditionIdString);
@@ -95,18 +105,17 @@ namespace wikibellum.Api.Controllers
 
         // DELETE: api/Assets/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Asset>> DeleteAsset(int id)
+        public async Task<ActionResult> DeleteAsset(int id)
         {
-            var asset = await _context.Assets.FindAsync(id);
-            if (asset == null)
+            var entity = await _assetRepository.Get(id);
+            if (entity == null)
             {
                 return NotFound();
             }
-
-            _context.Assets.Remove(asset);
+            _assetRepository.Delete(entity);
             await _context.SaveChangesAsync();
 
-            return asset;
+            return Ok();
         }
 
         private bool AssetExists(int id)

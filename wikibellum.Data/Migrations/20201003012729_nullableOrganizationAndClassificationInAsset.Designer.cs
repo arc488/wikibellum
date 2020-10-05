@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wikibellum.Data;
 
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    partial class WikiContextModelSnapshot : ModelSnapshot
+    [Migration("20201003012729_nullableOrganizationAndClassificationInAsset")]
+    partial class nullableOrganizationAndClassificationInAsset
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -491,13 +493,13 @@ namespace wikibellum.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AbbrName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("BranchId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Plural")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Singular")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClassificationId");
@@ -532,10 +534,7 @@ namespace wikibellum.Data.Migrations
                     b.Property<int>("BranchId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Plural")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Singular")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrganizationId");

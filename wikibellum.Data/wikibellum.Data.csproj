@@ -5,15 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="rerere\**" />
+    <EmbeddedResource Remove="rerere\**" />
+    <None Remove="rerere\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201003000428_populate.cs" />
+    <Compile Remove="Migrations\20201003000428_populate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="20200912094305_populateBranchesAndClassificationsFromEnums.txt" />
-    <None Remove="20200912095452_populateConditionsAlliancesAndCountries.txt" />
     <None Remove="branches.txt" />
     <None Remove="populate.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="20200912094305_populateBranchesAndClassificationsFromEnums.txt" />
-    <Compile Include="20200912095452_populateConditionsAlliancesAndCountries.txt" />
   </ItemGroup>
 
   <ItemGroup>

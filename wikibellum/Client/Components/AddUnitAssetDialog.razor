@@ -19,52 +19,62 @@
 						<div class="btn-group w-100" role="group">
 							@foreach (var branch in _branches)
 							{
-								<button @onclick="@(e => SetBranch(branch))" type="button" class="btn btn-secondary @(((CurrentBranch == branch)) ? "active" : "")">@branch.Name</button>
-
+								<button @onclick="@(e => SetBranch(branch))" type="button" class="btn btn-secondary @(((_currentBranch == branch)) ? "active" : "")">@branch.Name</button>
 							}
 						</div>
 					</div>
 					<div class="modal-body">
 
-						<EditForm Model="@Asset" OnValidSubmit="@HandleValidSubmit">
+                        <EditForm Model="@Asset" OnValidSubmit="@HandleValidSubmit">
+                            <DataAnnotationsValidator />
+                            <ValidationSummary />
+                            <div class="form-group">
+                                <label for="classification">Classification</label>
+                                <input type="checkbox" @bind="@ClassificationIsDisabled">
+                                <InputSelect disabled="@ClassificationIsDisabled" id="classification" class="form-control" @bind-Value="@Asset.ClassificationIdString">
+                                    @foreach (var item in _currentClassifications)
+                                            {
+                                        <option value="@item.ClassificationId">@item.Singular</option>
+                                            }
+                                </InputSelect>
+                                <ValidationMessage For="@(() => Asset.Classification)" />
+                            </div>
 
-							<DataAnnotationsValidator />
-							<ValidationSummary />
+                            <div class="form-group">
+                                <label for="classification">Classification</label>
+                                <input type="checkbox" @bind="@OrganizationIsDisabled">
+                                <InputSelect disabled="@OrganizationIsDisabled" id="classification" class="form-control" @bind-Value="@Asset.OrganizationIdString">
+                                    @foreach (var item in _currentOrganizations)
+                                            {
+                                        <option value="@item.OrganizationId">@item.Singular</option>
+                                            }
+                                </InputSelect>
+                                <ValidationMessage For="@(() => Asset.Organization)" />
+                            </div>
 
-							<div class="form-group">
-								<label for="classification">Classification</label>
-								<InputSelect id="classification" class="form-control" @bind-Value="@Asset.ClassificationIdString">
-									@foreach (var item in CurrentBranchClassifications)
-									{
-										<option value="@item.ClassificationId">@item.FullName</option>
+                            @if (Asset.AssetType == AssetType.Loss)
+                            {
+                                <div class="form-group">
+                                    <label for="condition">Condition: </label>
+                                    <InputSelect id="condition" class="form-control" @bind-Value="@Asset.ConditionIdString">
+                                        @foreach (var item in _conditions)
+                                                    {
+                                            <option value="@item.ConditionId">@item.Name</option>
 
-									}
-								</InputSelect>
-								<ValidationMessage For="@(() => Asset.Classification)" />
-							</div>
-							@if (Asset.AssetType == AssetType.Loss)
-							{
-								<div class="form-group">
-									<label for="condition">Condition: </label>
-									<InputSelect id="condition" class="form-control" @bind-Value="@Asset.ConditionIdString">
-										@foreach (var item in _conditions)
-										{
-											<option value="@item.ConditionId">@item.Name</option>
-
-										}
-									</InputSelect>
-									<ValidationMessage For="@(() => Asset.Condition)" />
-								</div>
+                                                    }
+                                    </InputSelect>
+                                    <ValidationMessage For="@(() => Asset.Condition)" />
+                                </div>
                             }
 
-							<div class="form-group">
-								<label for="amount">Amount: </label>
-								<InputNumber id="amount" class="form-control" @bind-Value="@Asset.Amount" placeholder="Enter amount"></InputNumber>
-								<ValidationMessage For="@(() => Asset.Amount)" />
-							</div>
-							<button type="submit" class="btn btn-primary">Save</button>
-							<a class="btn btn-outline-primary" @onclick="@Close">Close</a>
-						</EditForm>
+                            <div class="form-group">
+                                <label for="amount">Amount: </label>
+                                <InputNumber id="amount" class="form-control" @bind-Value="@Asset.Amount" placeholder="Enter amount"></InputNumber>
+                                <ValidationMessage For="@(() => Asset.Amount)" />
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-outline-primary" @onclick="@Close">Close</a>
+                        </EditForm>
 
 					</div>
 				}

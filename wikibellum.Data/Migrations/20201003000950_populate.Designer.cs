@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wikibellum.Data;
 
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    partial class WikiContextModelSnapshot : ModelSnapshot
+    [Migration("20201003000950_populate")]
+    partial class populate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -444,7 +446,7 @@ namespace wikibellum.Data.Migrations
                     b.Property<int>("AssetType")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClassificationId")
+                    b.Property<int>("ClassificationId")
                         .HasColumnType("int");
 
                     b.Property<int>("ConditionId")
@@ -453,7 +455,7 @@ namespace wikibellum.Data.Migrations
                     b.Property<int>("EventParticipantId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("OrganizationId")
+                    b.Property<int>("OrganizationId")
                         .HasColumnType("int");
 
                     b.HasKey("AssetId");
@@ -491,13 +493,13 @@ namespace wikibellum.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AbbrName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("BranchId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Plural")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Singular")
+                    b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClassificationId");
@@ -532,10 +534,7 @@ namespace wikibellum.Data.Migrations
                     b.Property<int>("BranchId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Plural")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Singular")
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("OrganizationId");
@@ -657,7 +656,9 @@ namespace wikibellum.Data.Migrations
                 {
                     b.HasOne("wikibellum.Entities.Models.Units.Classification", "Classification")
                         .WithMany()
-                        .HasForeignKey("ClassificationId");
+                        .HasForeignKey("ClassificationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("wikibellum.Entities.Models.Units.Condition", "Condition")
                         .WithMany()
@@ -673,7 +674,9 @@ namespace wikibellum.Data.Migrations
 
                     b.HasOne("wikibellum.Entities.Models.Units.Organization", "Organization")
                         .WithMany()
-                        .HasForeignKey("OrganizationId");
+                        .HasForeignKey("OrganizationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("wikibellum.Entities.Models.Units.Classification", b =>

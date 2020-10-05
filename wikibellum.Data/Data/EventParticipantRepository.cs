@@ -21,6 +21,8 @@ namespace wikibellum.Data
                     .ThenInclude(a => a.Classification)
                 .Include(e => e.Assets)
                     .ThenInclude(a => a.Condition)
+                .Include(e => e.Assets)
+                    .ThenInclude(a => a.Organization)
                 .Include(e => e.Nation)
                 .FirstOrDefault(e => e.EventParticipantId == id);
             return entry;
@@ -33,6 +35,8 @@ namespace wikibellum.Data
                     .ThenInclude(a => a.Classification)
                 .Include(e => e.Assets)
                     .ThenInclude(a => a.Condition)
+                .Include(e => e.Assets)
+                    .ThenInclude(a => a.Organization)
                 .Include(e => e.Nation)
                 .ToList();
             return entries;

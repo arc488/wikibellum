@@ -29,8 +29,6 @@
                     }
                 }
             }
-
-
         </InputSelect>
     </div>
     <div class="row">
@@ -53,7 +51,15 @@
                 {
                     @item.Amount
                     @:&nbsp;
-                    @item.Classification.FullName
+                    @if (item.Classification != null)
+                    {
+                        @item.Classification.Singular
+                    }
+                    @:&nbsp;
+                    @if (item.Organization != null)
+                    {
+                        @item.Organization.Singular
+                    }
                     @:&nbsp;
                     <button @onclick="@(e => DeleteAsset(item.AssetId))" type="button" class="btn btn-danger btn-circle">
                         <i class="fa fa-times"></i>
@@ -84,9 +90,15 @@
                 {
                     @item.Amount
                     @:&nbsp;
-                    @item.Classification.FullName
+                    @if (item.Classification != null)
+                    {
+                        @item.Classification.Singular
+                    }
                     @:&nbsp;
-                    @item.Condition.Name
+                    @if (item.Organization != null)
+                    {
+                        @item.Organization.Singular
+                    }
                     @:&nbsp;
                     <button @onclick="@(e => DeleteAsset(item.AssetId))" type="button" class="btn btn-danger btn-circle">
                         <i class="fa fa-times"></i>

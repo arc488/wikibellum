@@ -1,0 +1,48 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
+using wikibellum.Entities.Enums;
+
+namespace wikibellum.Data.Migrations
+{
+    public partial class populateOrganizationsTable : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            var classificationId = 1;
+            foreach (var item in Enum.GetValues(typeof(LandOrganization)))
+            {
+                var fullName = item.ToString().Replace("_", " ");
+                migrationBuilder.InsertData(
+                    table: "Organizations",
+                    columns: new[] { "OrganizationId", "Name", "BranchId" },
+                    values: new object[] { classificationId, fullName, 1});
+                classificationId++;
+            }
+
+            foreach (var item in Enum.GetValues(typeof(NavyOrganization)))
+            {
+                var fullName = item.ToString().Replace("_", " ");
+                migrationBuilder.InsertData(
+                    table: "Organizations",
+                    columns: new[] { "OrganizationId", "Name", "BranchId" },
+                    values: new object[] { classificationId, fullName, 2 });
+                classificationId++;
+            }
+
+            foreach (var item in Enum.GetValues(typeof(AirOrganization)))
+            {
+                var fullName = item.ToString().Replace("_", " ");
+                migrationBuilder.InsertData(
+                    table: "Organizations",
+                    columns: new[] { "OrganizationId", "Name", "BranchId" },
+                    values: new object[] { classificationId, fullName, 3 });
+                classificationId++;
+            }
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+
+        }
+    }
+}

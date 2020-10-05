@@ -1,0 +1,50 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
+using wikibellum.Entities.Enums;
+using wikibellum.Entities.Models.Units;
+
+namespace wikibellum.Data.Migrations
+{
+    public partial class populateOrganizationalClassifications : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            int classificationId = 43;
+
+            foreach (var item in Enum.GetValues(typeof(LandOrganization)))
+            {
+                var fullName = item.ToString().Replace("_", " ");
+                migrationBuilder.InsertData(
+                    table: "Classifications",
+                    columns: new[] { "ClassificationId", "FullName", "AbbrName", "BranchId", "ClassificationType" },
+                    values: new object[] { classificationId, fullName, "", 1, (int)ClassificationType.Organizational });
+                classificationId++;
+            }
+
+            foreach (var item in Enum.GetValues(typeof(NavyOrganization)))
+            {
+                var fullName = item.ToString().Replace("_", " ");
+                migrationBuilder.InsertData(
+                    table: "Classifications",
+                    columns: new[] { "ClassificationId", "FullName", "AbbrName", "BranchId", "ClassificationType" },
+                    values: new object[] { classificationId, fullName, "", 2, (int)ClassificationType.Organizational });
+                classificationId++;
+            }
+
+            foreach (var item in Enum.GetValues(typeof(AirOrganization)))
+            {
+                var fullName = item.ToString().Replace("_", " ");
+                migrationBuilder.InsertData(
+                    table: "Classifications",
+                    columns: new[] { "ClassificationId", "FullName", "AbbrName", "BranchId", "ClassificationType" },
+                    values: new object[] { classificationId, fullName, "", 3, (int)ClassificationType.Organizational });
+                classificationId++;
+            }
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+
+        }
+    }
+}

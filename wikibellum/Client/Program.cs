@@ -33,16 +33,7 @@ namespace wikibellum.Client
 
             builder.Services.AddApiAuthorization();
 
-            //builder.Services.AddHttpClient<IEventDataService, EventDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<IClassificationDataService, ClassificationDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<IBranchDataService, BranchDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<IEventParticipantDataService, EventParticipantDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<IConditionDataService, ConditionDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<INationDataService, NationDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<IAllianceDataService, AllianceDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<IAssetDataService, AssetDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<ILocationDataService, LocationDataService>(client => client.BaseAddress = new Uri(serverAddress));
-            //builder.Services.AddHttpClient<IResultDataService, ResultDataService>(client => client.BaseAddress = new Uri(serverAddress));
+
             builder.Services.AddTransient<IEventDataService, EventDataService>();
             builder.Services.AddTransient<IClassificationDataService, ClassificationDataService>();
             builder.Services.AddTransient<IBranchDataService, BranchDataService>();
@@ -54,6 +45,7 @@ namespace wikibellum.Client
             builder.Services.AddTransient<ILocationDataService, LocationDataService>();
             builder.Services.AddTransient<IResultDataService, ResultDataService>();
             builder.Services.AddTransient<IEventAnonymousDataService, EventAnonymousDataService>();
+            builder.Services.AddTransient<IOrganizationDataService, OrganizationDataService>();
 
             builder.Services.AddSingleton<DateHelpers>();
 

@@ -6,12 +6,12 @@ using System.Text;
 
 namespace wikibellum.Entities.Models.Units
 {
-    public class Classification
+    public class Organization
     {
         [Key]
-        public int ClassificationId { get; set; }
+        public int OrganizationId { get; set; }
         [NotMapped]
-        public string ClassificationIdString { get; set; }
+        public string OrganizationIdString { get; set; }
         public string Singular { get; set; }
         public string Plural { get; set; }
         public int BranchId { get; set; }

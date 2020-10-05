@@ -61,7 +61,7 @@ namespace wikibellum.Client.Services
 
         public async Task Delete(int entityId)
         {
-            await _httpClient.DeleteAsync($"api/" + ControllerName + "/{entityId}");
+            await _httpClient.DeleteAsync($"api/" + ControllerName + $"/{entityId}");
         }
 
     }

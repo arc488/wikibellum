@@ -51,7 +51,7 @@ namespace wikibellum.Client.Components
             _alliedNations = _nations.Where(n => n.AllianceId == _alliesAlliance.AllianceId).ToList();
             _axisNations = _nations.Where(n => n.AllianceId == _axisAlliance.AllianceId).ToList();
 
-            Alliance = _alliesAlliance;
+            Alliance = Belligerent.Nation.Alliance == null ? _alliesAlliance : Belligerent.Nation.Alliance;
 
             await base.OnInitializedAsync();
         }
@@ -85,6 +85,7 @@ namespace wikibellum.Client.Components
         private void DeleteAsset(int id)
         {
             Belligerent.Assets.Remove(Belligerent.Assets.FirstOrDefault(b => b.AssetId == id));
+            EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
             AssetDataService.Delete(id);
             StateHasChanged();
         }
