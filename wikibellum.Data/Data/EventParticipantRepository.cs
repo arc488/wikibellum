@@ -18,7 +18,7 @@ namespace wikibellum.Data
         {
             var entry = _entries
                 .Include(e => e.Assets)
-                    .ThenInclude(a => a.Classification)
+                    .ThenInclude(a => a.Unit)
                 .Include(e => e.Assets)
                     .ThenInclude(a => a.Condition)
                 .Include(e => e.Assets)
@@ -32,7 +32,7 @@ namespace wikibellum.Data
         {
             var entries = _entries
                 .Include(e => e.Assets)
-                    .ThenInclude(a => a.Classification)
+                    .ThenInclude(a => a.Unit)
                 .Include(e => e.Assets)
                     .ThenInclude(a => a.Condition)
                 .Include(e => e.Assets)

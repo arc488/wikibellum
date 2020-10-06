@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using wikibellum.Client.Services;
 using wikibellum.Client.Services.Interfaces;
+using wikibellum.Entities.Models;
 using wikibellum.Entities.Models.Units;
 
 namespace wikibellum.Client.Components
@@ -21,6 +22,8 @@ namespace wikibellum.Client.Components
         private IConditionDataService ConditionDataService { get; set; }
         [Inject]
         private IOrganizationDataService OrganizationDataService { get; set; }
+        [Inject]
+        private IUnitDataService UnitDataService { get; set; }
         #endregion
         #region UI Controls
         private bool ShowDialog { get; set; }
@@ -70,11 +73,15 @@ namespace wikibellum.Client.Components
         private List<Classification> _currentClassifications;
         private List<Organization> _currentOrganizations;
         private Branch _currentBranch;
+        private List<Unit> _units;
+        private Unit _selectedUnit;
+        private string _unitSearch;
         #endregion
         private Asset Asset { get; set; }
 
         protected async override Task OnInitializedAsync()
         {
+            _units = (await UnitDataService.GetAll()).ToList();
             _classifications = (await ClassificationDataService.GetAll()).ToList();
             _conditions = (await ConditionDataService.GetAll()).ToList();
             _organizations = (await OrganizationDataService.GetAll()).ToList();
@@ -122,6 +129,18 @@ namespace wikibellum.Client.Components
             ShowDialog = false;
             StateHasChanged();
         }
+        private async Task<IEnumerable<Unit>> SearchClassifications(string searchText)
+        {
+            _unitSearch = searchText;
+            return await Task.FromResult(_units.Where(x => x.Name.ToLower().Contains(searchText.ToLower())).ToList());
+        }
+
+        private async Task CreateUnit()
+        {
+            _selectedUnit = await UnitDataService.Add(new Unit() { Name = _unitSearch });
+            
+            StateHasChanged();
+        }
 
         private void ResetDialog(AssetType assetType)
         {
@@ -129,19 +148,28 @@ namespace wikibellum.Client.Components
             {
                 AssetType = assetType,
                 OrganizationIdString = _organizations[0].OrganizationId.ToString(),
-                ClassificationIdString = _classifications[0].ClassificationId.ToString()
+                UnitIdString = _classifications[0].ClassificationId.ToString()
             };
 
         }
 
         protected async Task HandleValidSubmit()
         {
-            if (Asset.ClassificationIsDisabled) Asset.ClassificationId = _classifiationNAId;
-            if (Asset.OrganizationIsDisabled) Asset.OrganizationId = _organizationNAId;
+            //if (Asset.ClassificationIsDisabled) Asset.ClassificationId = _classifiationNAId;
+            //if (Asset.OrganizationIsDisabled) Asset.OrganizationId = _organizationNAId;
 
-            Asset.ClassificationId = Int32.Parse(Asset.ClassificationIdString);
-            Asset.OrganizationId = Int32.Parse(Asset.OrganizationIdString);
-
+            //Asset.ClassificationId = Int32.Parse(Asset.ClassificationIdString);
+            //Asset.OrganizationId = Int32.Parse(Asset.OrganizationIdString);
+            Debug.WriteLine("_selectedUnit value is: ");
+            Debug.WriteLine(_selectedUnit.Name);
+            //if (_units.Contains(_selectedUnit))
+            //{
+            //    Debug.WriteLine("Contained selected Unit");
+            //}
+            //else
+            //{
+            //    Debug.WriteLine("Doesn't contain selected unit");
+            //}
             ShowDialog = false;
             await AddAssetEventCallback.InvokeAsync(Asset);
             await CloseEventCallback.InvokeAsync(true);

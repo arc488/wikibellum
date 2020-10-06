@@ -83,14 +83,7 @@ namespace wikibellum.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Asset>> PostAsset(Asset asset)
         {
-            if (!asset.ClassificationIsDisabled)
-            {
-                asset.Classification = _context.Classifications.Find(asset.ClassificationId);
-            }
-            if (!asset.OrganizationIsDisabled)
-            {
-                asset.Organization = _context.Organizations.Find(asset.OrganizationId);
-            }
+
             if (asset.AssetType == AssetType.Loss)
             {
                 asset.ConditionId = Int32.Parse(asset.ConditionIdString);

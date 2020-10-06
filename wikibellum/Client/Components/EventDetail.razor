@@ -62,7 +62,7 @@
                                     <ul>
                                         @foreach (var asset in item.Assets.Where(a => a.AssetType == AssetType.Strength))
                                         {
-                                            <li>@(asset.Amount + " " + asset.Classification.Singular)</li>
+                                            <li>@(asset.Amount + " " + asset.Unit.Name)</li>
                                         }
                                     </ul>
                                 </div>
@@ -73,7 +73,7 @@
                                     <ul>
                                         @foreach (var asset in item.Assets.Where(a => a.AssetType == AssetType.Loss))
                                         {
-                                        <li>@(asset.Amount + " " + asset.Classification.Singular + " " + asset.Condition.Name)</li>
+                                        <li>@(asset.Amount + " " + asset.Unit.Name + " " + asset.Condition.Name)</li>
                                         }
                                     </ul>
                                 </div>

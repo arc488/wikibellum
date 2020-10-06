@@ -40,6 +40,7 @@ namespace wikibellum.Data
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Result> Result { get; set; }
         public DbSet<Organization> Organizations { get; set; }
+        public DbSet<Unit> Units { get; set; }
 
         //public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<WikiContext>
         //{

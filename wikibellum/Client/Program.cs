@@ -46,6 +46,7 @@ namespace wikibellum.Client
             builder.Services.AddTransient<IResultDataService, ResultDataService>();
             builder.Services.AddTransient<IEventAnonymousDataService, EventAnonymousDataService>();
             builder.Services.AddTransient<IOrganizationDataService, OrganizationDataService>();
+            builder.Services.AddTransient<IUnitDataService, UnitDataService>();
 
             builder.Services.AddSingleton<DateHelpers>();
 

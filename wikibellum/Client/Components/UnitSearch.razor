@@ -1,0 +1,18 @@
+﻿@if (_units == null)
+{
+    <h4>Loading...</h4>
+}
+else
+{
+    <BlazoredTypeahead SearchMethod="SearchClassifications"
+                       @bind-Value="_selectedUnit">
+        <SelectedTemplate>
+            @context.Name
+        </SelectedTemplate>
+        <ResultTemplate>
+            @context.Name (@context.UnitId)
+        </ResultTemplate>
+    </BlazoredTypeahead>
+}
+
+

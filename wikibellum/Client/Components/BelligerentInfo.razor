@@ -51,9 +51,9 @@
                 {
                     @item.Amount
                     @:&nbsp;
-                    @if (item.Classification != null)
+                    @if (item.Unit != null)
                     {
-                        @item.Classification.Singular
+                        @item.Unit.Name
                     }
                     @:&nbsp;
                     @if (item.Organization != null)
@@ -90,9 +90,9 @@
                 {
                     @item.Amount
                     @:&nbsp;
-                    @if (item.Classification != null)
+                    @if (item.Unit != null)
                     {
-                        @item.Classification.Singular
+                        @item.Unit.Name
                     }
                     @:&nbsp;
                     @if (item.Organization != null)

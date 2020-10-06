@@ -29,15 +29,18 @@
                             <DataAnnotationsValidator />
                             <ValidationSummary />
                             <div class="form-group">
-                                <label for="classification">Classification</label>
-                                <input type="checkbox" @bind="@ClassificationIsDisabled">
-                                <InputSelect disabled="@ClassificationIsDisabled" id="classification" class="form-control" @bind-Value="@Asset.ClassificationIdString">
-                                    @foreach (var item in _currentClassifications)
-                                            {
-                                        <option value="@item.ClassificationId">@item.Singular</option>
-                                            }
-                                </InputSelect>
-                                <ValidationMessage For="@(() => Asset.Classification)" />
+                                <label for="classification">Unit</label>
+                                <BlazoredTypeahead Context="TypeHeadContext" SearchMethod="SearchClassifications" @bind-Value="_selectedUnit">
+                                    <SelectedTemplate>
+                                        @TypeHeadContext.Name
+                                    </SelectedTemplate>
+                                    <ResultTemplate>
+                                        @TypeHeadContext.Name (@TypeHeadContext.UnitId)
+                                    </ResultTemplate>
+                                    <NotFoundTemplate>
+                                        <button class="btn btn-sm btn-primary" @onclick="@CreateUnit">Create Unit</button>
+                                    </NotFoundTemplate>
+                                </BlazoredTypeahead>
                             </div>
 
                             <div class="form-group">
