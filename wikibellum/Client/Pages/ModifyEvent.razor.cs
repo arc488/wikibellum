@@ -56,8 +56,7 @@ namespace wikibellum.Client.Pages
         {
             var newParticipant = await EventParticipantDataService.Add(new EventParticipant() { EventId = Event.EventId }  );
             Event.Participants.Add(newParticipant);
-
-            await EventDataService.Update(Event.EventId, Event);
+            UpdateEventChanges();
             StateHasChanged();
         }
 
@@ -65,13 +64,26 @@ namespace wikibellum.Client.Pages
         {
             var result = await ResultDataService.Add(new Result() { EventId = Event.EventId });
             Event.Results.Add(result);
-            await EventDataService.Update(Event.EventId, Event);
+            UpdateEventChanges();
+            StateHasChanged();
+        }
+
+        protected async Task DeleteResult(int id)
+        {
+            await ResultDataService.Delete(id);
+            Event.Results.Remove(Event.Results.Find(r => r.ResultId == id));
+            UpdateEventChanges();
             StateHasChanged();
         }
 
         protected void UpdateLocationChanges()
         {
             LocationDataService.Update(Event.LocationId, Event.Location);
+        }
+
+        protected void UpdateSource()
+        {
+            EventDataService.Update(Event.LocationId, Event);
         }
         protected void UpdateEventChanges()
         {

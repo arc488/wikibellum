@@ -83,10 +83,9 @@ namespace wikibellum.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Asset>> PostAsset(Asset asset)
         {
-
+            asset.Unit = _context.Units.Find(asset.UnitId);
             if (asset.AssetType == AssetType.Loss)
             {
-                asset.ConditionId = Int32.Parse(asset.ConditionIdString);
                 asset.Condition = _context.Conditions.Find(asset.ConditionId);
             }
             _context.Assets.Add(asset);

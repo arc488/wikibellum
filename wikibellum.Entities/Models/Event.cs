@@ -20,15 +20,15 @@ namespace wikibellum.Entities
         [Key]
         public int EventId { get; set; }
         public string Title { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        public DateTime Start { get; set; } = new DateTime(1939, 9, 1);
+        public DateTime End { get; set; } = new DateTime(1939, 9, 1);
         public Location? Location { get; set; }
         [ForeignKey("Location")]
         public int LocationId { get; set; }
         public List<EventParticipant> Participants { get; set; }
         public string Description { get; set; }
         public BookRecommendation Reccomendation { get; set; }
-        public string FileName { get; set; }
+        public string Source { get; set; } = "www.wikipedia.org";
         public List<Result> Results { get; set; }
 
 

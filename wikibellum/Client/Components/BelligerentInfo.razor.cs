@@ -51,7 +51,7 @@ namespace wikibellum.Client.Components
             _alliedNations = _nations.Where(n => n.AllianceId == _alliesAlliance.AllianceId).ToList();
             _axisNations = _nations.Where(n => n.AllianceId == _axisAlliance.AllianceId).ToList();
 
-            Alliance = Belligerent.Nation.Alliance == null ? _alliesAlliance : Belligerent.Nation.Alliance;
+            Alliance = Belligerent.Nation == null ? _alliesAlliance : Belligerent.Nation.Alliance;
 
             await base.OnInitializedAsync();
         }
@@ -92,8 +92,6 @@ namespace wikibellum.Client.Components
 
         public void SetNation()
         {
-            Belligerent.NationId = Int32.Parse(Belligerent.NationIdString);
-            Belligerent.Nation = _nations.FirstOrDefault(n => n.NationId == Belligerent.NationId);
             EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
             StateHasChanged();
 

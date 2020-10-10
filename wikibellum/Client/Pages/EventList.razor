@@ -11,17 +11,25 @@ else
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in _events)
             {
-                <tr @onclick="@(e => ShowDetails(item.EventId))">
-                    <th scope="row">@item.EventId</th>
-                    <td>@item.Title</td>
-                </tr>
+            <tr>
+                <th @onclick="@(e => ShowDetails(item.EventId))" scope="row">@item.EventId</th>
+                <td @onclick="@(e => ShowDetails(item.EventId))">@item.Title</td>
+                <td>
+                    <button @onclick="@(e => Delete(item.EventId))" type="button" class="btn btn-danger btn-circle">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </td>
+            </tr>
             }
 
         </tbody>
     </table>
 }
+
+<ConfirmDelete @ref="ConfirmDelete"  DeleteConfirmationEventCallback="ConfirmDelete_OnEventDeleted"></ConfirmDelete>

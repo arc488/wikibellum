@@ -11,27 +11,30 @@ namespace wikibellum.Entities.Models.Units
     {
         [Key]
         public int AssetId { get; set; }
-        public int UnitId { get; set; }
+        public int? UnitId { get; set; }
         [ForeignKey("UnitId")]
-        public Unit Unit { get; set; }
-        [NotMapped]
-        public string UnitIdString { get; set; }
+        public Unit? Unit { get; set; }
         [ForeignKey("ConditionId")]
         public Condition? Condition { get; set; }
         public int ConditionId { get; set; }
-        [NotMapped]
-        public string ConditionIdString { get; set; }
-        public int? OrganizationId { get; set; }
-        [NotMapped]
-        public string OrganizationIdString { get; set; }
-        public Organization? Organization { get; set; }
         public int Amount { get; set; }
         public AssetType AssetType { get; set; }
         public int EventParticipantId { get; set; }
         [NotMapped]
-        public bool ClassificationIsDisabled { get; set; }
-        [NotMapped]
-        public bool OrganizationIsDisabled { get; set; }
+        public string DisplayName
+        {
+            get
+            {
+                string formatString = Amount ==  0 ? "{1}" : "{0} {1}";
+                var displayName = string.Format(formatString, new[] { Amount.ToString(), Unit.Name }) ;
+                if (AssetType == AssetType.Loss) displayName = string.Format("{0} {1}", displayName, Condition.Name.ToLower());
+                return displayName;
+            }
+            set
+            {
+
+            }
+        }
     }
     
     public enum AssetType

@@ -102,7 +102,7 @@ namespace wikibellum.Api.Controllers
                 return NotFound();
             }
 
-            _context.Events.Remove(@event);
+            _eventRepository.Delete(@event);
             await _context.SaveChangesAsync();
 
             return @event;

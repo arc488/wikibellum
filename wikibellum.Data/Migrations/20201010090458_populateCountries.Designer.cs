@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using wikibellum.Data;
 
 namespace wikibellum.Data.Migrations
 {
     [DbContext(typeof(WikiContext))]
-    partial class WikiContextModelSnapshot : ModelSnapshot
+    [Migration("20201010090458_populateCountries")]
+    partial class populateCountries
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -329,14 +331,14 @@ namespace wikibellum.Data.Migrations
                     b.Property<DateTime>("End")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.Property<int?>("ReccomendationId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Source")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Start")
                         .HasColumnType("datetime2");
@@ -465,6 +467,9 @@ namespace wikibellum.Data.Migrations
                     b.Property<int>("EventParticipantId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("OrganizationId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("UnitId")
                         .HasColumnType("int");
 
@@ -473,6 +478,8 @@ namespace wikibellum.Data.Migrations
                     b.HasIndex("ConditionId");
 
                     b.HasIndex("EventParticipantId");
+
+                    b.HasIndex("OrganizationId");
 
                     b.HasIndex("UnitId");
 
@@ -674,6 +681,10 @@ namespace wikibellum.Data.Migrations
                         .HasForeignKey("EventParticipantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("wikibellum.Entities.Models.Units.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
 
                     b.HasOne("wikibellum.Entities.Models.Unit", "Unit")
                         .WithMany()

@@ -15,7 +15,6 @@ window.map = () => {
 }
 
 window.broadcastEventId = (dotNetObject) => {
-    console.log("Inside broadcast");
     dotNetObject.invokeMethodAsync('SetEvent', eventId.toString());
 }
 
@@ -27,11 +26,10 @@ window.removeAllMarkers = () => {
 }
 
 window.setEventJs = (id) => {
-    console.log("setEventJs called with id: " + id);
-    var el = document.getElementById("_currentEventIdInput");
-    el.value = id;
+    var eventIdInput = document.getElementById("_currentEventIdInput");
+    eventIdInput.value = id;
     var event = new Event('change');
-    el.dispatchEvent(event);
+    eventIdInput.dispatchEvent(event);
 }
 
 window.addCurrentEvents = (currentEvents) => {
@@ -47,10 +45,8 @@ window.addCurrentEvents = (currentEvents) => {
             el.classList.add("wiki-marker");
             el.id = eventMarker.eventId;
 
-            el.addEventListener('click', () => {
-                console.log("Marker clicked");
-                setEventJs(el.id);
-                console.log("Id: " + el.id);
+            el.addEventListener('click', function(e) {
+                setEventJs(this.id);
             }); 
 
             try {
@@ -59,6 +55,8 @@ window.addCurrentEvents = (currentEvents) => {
                     .setPopup(new mapboxgl.Popup().setHTML(title))
                     .addTo(map);
                 currentMarkers.push(marker);
+
+
             }
             catch (err) {
                 console.log(err);
@@ -70,56 +68,3 @@ window.addCurrentEvents = (currentEvents) => {
     }
 
 }
-//window.setHidden = () => {
-
-//    $('.wiki-marker').css("visibility", "hidden");
-
-//    //var markers = document.getElementsByClassName("wiki-marker");
-
-//    //if (markers.length > 0) {
-//    //    for (var i in markers) {
-//    //        var marker = markers[i];
-          
-//    //        marker.style.visibility = "hidden";
-//    //    };
-//    //};
-
-//};
-
-
-
-//window.setVisible = (currentEvents) => {
-
-//    for (i in currentEvents) {
-//        var item = currentEvents[i];
-//        var eventId = "event" + item.eventId;
-//        $('.' + eventId).css("visibility", "visible");
-//    }
-
-//}
-
-//window.addMarkers = (eventsJson) => {
-//    for (var i in eventsJson) {
-//        var mapItem = eventsJson[i];
-//        console.log(mapItem);
-//        var lat = parseFloat(mapItem.location.lat);
-//        var long = parseFloat(mapItem.location.long);-
-//        var title = "<p>" + mapItem.title + "</p>";
-//        var coords = [long, lat];
-
-//        var el = document.createElement('div');
-//        el.classList.add("wiki-marker");
-//        el.classList.add("event" + mapItem.eventId);
-
-//        try {
-//            var marker = new mapboxgl.Marker(el)
-//                .setLngLat(coords)
-//                .setPopup(new mapboxgl.Popup().setHTML(title))
-//                .addTo(map);
-//            currentMarkers.push(marker);
-//        }
-//        catch (err) {
-//            console.log(err);
-//        }
-//    }
-//}

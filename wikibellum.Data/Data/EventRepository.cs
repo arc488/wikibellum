@@ -26,9 +26,6 @@ namespace wikibellum.Data
                     .ThenInclude(e => e.Assets)
                         .ThenInclude(a => a.Condition)
                 .Include(e => e.Participants)
-                    .ThenInclude(e => e.Assets)
-                        .ThenInclude(a => a.Organization)
-                .Include(e => e.Participants)
                     .ThenInclude(e => e.Nation)
                 .ToList();
             return entries;
@@ -45,12 +42,19 @@ namespace wikibellum.Data
                     .ThenInclude(e => e.Assets)
                         .ThenInclude(a => a.Condition)
                 .Include(e => e.Participants)
-                    .ThenInclude(e => e.Assets)
-                        .ThenInclude(a => a.Organization)
-                .Include(e => e.Participants)
                     .ThenInclude(e => e.Nation)
                 .FirstOrDefault(e => e.EventId == id);
             return entry;
+        }
+        public override EntityState Delete(Event entity)
+        {
+            var entry = _context.Events
+                .Include(e => e.Participants)
+                    .ThenInclude(p => p.Assets)
+                .FirstOrDefault(e => e.EventId == entity.EventId);
+            var state = _context.Events.Remove(entry).State;
+            _context.SaveChanges();
+            return state;
         }
     }
 }

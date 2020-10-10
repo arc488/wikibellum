@@ -42,20 +42,7 @@ namespace wikibellum.Data
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Unit> Units { get; set; }
 
-        //public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<WikiContext>
-        //{
-        //    public WikiContext CreateDbContext(string[] args)
-        //    {
-        //        IConfigurationRoot configuration = new ConfigurationBuilder()
-        //            .SetBasePath(Directory.GetCurrentDirectory())
-        //            .AddJsonFile(@Directory.GetCurrentDirectory() + "/../wikibellum.Api/appsettings.json")
-        //            .Build();
-        //        var builder = new DbContextOptionsBuilder<WikiContext>();
-        //        var connectionString = configuration.GetConnectionString("DefaultConnection");
-        //        builder.UseSqlServer(connectionString);
-        //        return new WikiContext(builder.Options);
-        //    }
-        //}
+
 
     }
 }

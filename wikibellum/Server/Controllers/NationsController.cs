@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using wikibellum.Data;
+using wikibellum.Data.Data.IRepositiories;
 using wikibellum.Entities.Models;
 
 namespace wikibellum.Api.Controllers
@@ -15,24 +16,27 @@ namespace wikibellum.Api.Controllers
     public class NationsController : ControllerBase
     {
         private readonly WikiContext _context;
+        private readonly INationRepository _nationRepository;
 
-        public NationsController(WikiContext context)
+        public NationsController(WikiContext context,
+                                INationRepository nationRepository)
         {
             _context = context;
+            _nationRepository = nationRepository;
         }
 
         // GET: api/Nations
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Nation>>> GetNations()
         {
-            return await _context.Nations.ToListAsync();
+            return (await _nationRepository.GetAll()).ToList();
         }
 
         // GET: api/Nations/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Nation>> GetNation(int id)
         {
-            var nation = await _context.Nations.FindAsync(id);
+            var nation = await _nationRepository.Get(id);
 
             if (nation == null)
             {

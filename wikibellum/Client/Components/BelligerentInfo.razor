@@ -6,13 +6,18 @@
         </div>
     </div>
     <div class="input-group input-group-sm my-1 px-3">
-        <InputSelect @onfocusout="@(e => SetNation())" id="classification" class="form-control" @bind-Value="@Belligerent.NationIdString">
+        <select @onfocusout="@(e => SetNation())" id="classification" class="form-control" @bind="@Belligerent.NationId">
             @if (_alliedNations == null || _axisNations == null)
             {
-            <h6>Loading...</h6>
+                <h6>Loading...</h6>
             }
             else
             {
+                @if (Belligerent.Nation != null)
+                {
+                    <option value="@Belligerent.Nation.NationId">@Belligerent.Nation.Name</option>
+
+                }
                 @if (Alliance == _alliesAlliance)
                 {
 
@@ -29,7 +34,7 @@
                     }
                 }
             }
-        </InputSelect>
+        </select>
     </div>
     <div class="row">
         <div class="col-md-6 text-center">
@@ -49,18 +54,7 @@
             {
                 @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Strength).ToList())
                 {
-                    @item.Amount
-                    @:&nbsp;
-                    @if (item.Unit != null)
-                    {
-                        @item.Unit.Name
-                    }
-                    @:&nbsp;
-                    @if (item.Organization != null)
-                    {
-                        @item.Organization.Singular
-                    }
-                    @:&nbsp;
+                    @item.DisplayName
                     <button @onclick="@(e => DeleteAsset(item.AssetId))" type="button" class="btn btn-danger btn-circle">
                         <i class="fa fa-times"></i>
                     </button>
@@ -88,18 +82,7 @@
             {
                 @foreach (var item in Belligerent.Assets.Where(i => i.AssetType == AssetType.Loss).ToList())
                 {
-                    @item.Amount
-                    @:&nbsp;
-                    @if (item.Unit != null)
-                    {
-                        @item.Unit.Name
-                    }
-                    @:&nbsp;
-                    @if (item.Organization != null)
-                    {
-                        @item.Organization.Singular
-                    }
-                    @:&nbsp;
+                    @item.DisplayName
                     <button @onclick="@(e => DeleteAsset(item.AssetId))" type="button" class="btn btn-danger btn-circle">
                         <i class="fa fa-times"></i>
                     </button>
@@ -127,14 +110,5 @@
             font-weight: bold;
         }
 
-    .btn-circle {
-        width: 30px;
-        height: 30px;
-        padding: 0px 0px;
-        border-radius: 15px;
-        text-align: center;
-        font-size: 20px;
-        font-weight: 1000;
-        line-height: 1.42857;
-    }
+
 </style>
