@@ -55,11 +55,24 @@ else
                                 {
                                     {
                                     <div class="input-group input-group-sm">
+                                        <BlazoredTypeahead Context="TypeHeadContext" @onfocusout="UpdateEventChanges" SearchMethod="SearchResults" @bind-Value="result">
+                                            <SelectedTemplate>
+                                                @TypeHeadContext.Description
+                                            </SelectedTemplate>
+                                            <ResultTemplate>
+                                                @TypeHeadContext.Description (@TypeHeadContext.ResultId)
+                                            </ResultTemplate>
+                                            <NotFoundTemplate>
+                                                <button class="btn btn-sm btn-primary" @onclick="@(e => CreateResult(result.Guid))">Create Result</button>
+                                            </NotFoundTemplate>
+                                        </BlazoredTypeahead>
+
+
                                         <input @bind="@result.Description" @onfocusout="@(e => UpdateResultChanges(result))" class="form-control" />
                                         <button @onclick="@(e => DeleteResult(result.ResultId))" type="button" class="btn btn-danger btn-circle">
                                             <i class="fa fa-times"></i>
                                         </button>
-                                    </div>
+                        </div>
 
                                     }
                                 }

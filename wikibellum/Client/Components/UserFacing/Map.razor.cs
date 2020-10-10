@@ -1,22 +1,15 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using wikibellum.Client.Helpers;
-using wikibellum.Client.Services;
-using wikibellum.Client.Services.Interfaces;
-using wikibellum.Entities;
 using wikibellum.Entities.ViewModels;
 
-namespace wikibellum.Client.Components
+namespace wikibellum.Client.Components.UserFacing
 {
-    public partial class WikiMap : ComponentBase
+    public partial class Map : ComponentBase
     {
         [CascadingParameter]
         protected List<EventMarker> EventMarkers { get; set; }
@@ -24,7 +17,7 @@ namespace wikibellum.Client.Components
         private DateHelpers DateHelpers { get; set; }
         [Parameter]
         public EventCallback<int> EventSelectedEventCallback { get; set; }
-        public int CurrentEventId 
+        public int CurrentEventId
         {
             get
             {
@@ -34,7 +27,7 @@ namespace wikibellum.Client.Components
             {
                 _currentEventId = value;
                 EventSelectedEventCallback.InvokeAsync(_currentEventId);
-            } 
+            }
         }
         private int _currentEventId = 0;
         private int _totalMonths = 13;
@@ -56,7 +49,7 @@ namespace wikibellum.Client.Components
 
             if (EventMarkers != null)
             {
-                JSRuntime.InvokeVoidAsync("map");
+                Runtime.InvokeVoidAsync("map");
                 _shouldRender = false;
             }
         }
@@ -81,9 +74,8 @@ namespace wikibellum.Client.Components
                     currentEvents.Add(item);
                 }
             }
-
-            JSRuntime.InvokeVoidAsync("removeAllMarkers");
-            JSRuntime.InvokeVoidAsync("addCurrentEvents", currentEvents);
+            Runtime.InvokeVoidAsync("removeAllMarkers");
+            Runtime.InvokeVoidAsync("addCurrentEvents", currentEvents);
 
         }
     }

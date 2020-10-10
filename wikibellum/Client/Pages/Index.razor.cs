@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using wikibellum.Client.Components;
+using wikibellum.Client.Components.UserFacing;
 using wikibellum.Client.Helpers;
 using wikibellum.Client.Services;
 using wikibellum.Client.Services.Interfaces;
@@ -18,7 +18,7 @@ namespace wikibellum.Client.Pages
     {
         [Inject]
         private IEventAnonymousDataService EventAnonymousDataService { get; set; }
-        private WikiMap WikiMap { get; set; }
+        private Map WikiMap { get; set; }
 
         private EventDetail EventDetail { get; set; }
 
@@ -37,6 +37,7 @@ namespace wikibellum.Client.Pages
         private async void WikiMap_OnEventSelected(int id)
         {
             _currentEvent = await EventAnonymousDataService.GetById(id);
+            
             EventDetail.DisplayEventDetail(_currentEvent);
         }
     }

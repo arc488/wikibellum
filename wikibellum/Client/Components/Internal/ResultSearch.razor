@@ -1,0 +1,18 @@
+﻿@if (_results == null)
+{
+    <h4>Loading...</h4>
+}
+else
+{
+    <BlazoredTypeahead SearchMethod="SearchResults"
+                       @bind-Value="_selectedResult">
+        <SelectedTemplate>
+            @context.Description
+        </SelectedTemplate>
+        <ResultTemplate>
+            @context.Description (@context.ResultId)
+        </ResultTemplate>
+    </BlazoredTypeahead>
+}
+
+

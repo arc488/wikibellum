@@ -25,7 +25,7 @@ namespace wikibellum.Client.Components
 
         private async Task<IEnumerable<Unit>> SearchClassifications(string searchText)
         {
-            return await Task.FromResult(_units.Where(x => x.Name.ToLower().Contains(searchText.ToLower())).ToList());
+            return await Task.FromResult(_units.Where(x => x.Name.ToLower().StartsWith(searchText.ToLower())).ToList());
         }
     }
 }

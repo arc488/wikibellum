@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pluralize.NET;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -25,8 +26,10 @@ namespace wikibellum.Entities.Models.Units
         {
             get
             {
+                IPluralize pluralizer = new Pluralizer();
+                pluralizer.AddUncountableRule("personnel");
                 string formatString = Amount ==  0 ? "{1}" : "{0} {1}";
-                var displayName = string.Format(formatString, new[] { Amount.ToString(), Unit.Name }) ;
+                var displayName = string.Format(formatString, Amount.ToString(), Amount > 1 ? pluralizer.Pluralize(Unit.Name) : Unit.Name);
                 if (AssetType == AssetType.Loss) displayName = string.Format("{0} {1}", displayName, Condition.Name.ToLower());
                 return displayName;
             }

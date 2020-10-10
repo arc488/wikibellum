@@ -37,9 +37,13 @@ namespace wikibellum.Client.Pages
         public int ParticipantIndex { get; set; }
 
         private List<Event> _events;
+        private List<Result> _results;
+        private Result _selectedResult;
 
         protected async override Task OnInitializedAsync()
         {
+            _results = await ResultDataService.GetAll();
+
             if (EventId == 0)
             {
                 Event = await EventDataService.Add(new Event());
@@ -62,10 +66,20 @@ namespace wikibellum.Client.Pages
 
         protected async void AddResult()
         {
-            var result = await ResultDataService.Add(new Result() { EventId = Event.EventId });
-            Event.Results.Add(result);
+            //var result = await ResultDataService.Add(new Result() { EventId = Event.EventId });
+            Event.Results.Add(new Result());
+            StateHasChanged();
+        }
+
+        protected async Task CreateResult(Guid guid)
+        {
+            var index = Event.Results.IndexOf(Event.Results.Find(r => r.Guid == guid));
+            var currentValue = Event.Results[index].Description;
+            var result = await ResultDataService.Add(new Result() { Description = currentValue, EventId = Event.EventId });
+            Event.Results[index] = result;
             UpdateEventChanges();
             StateHasChanged();
+
         }
 
         protected async Task DeleteResult(int id)
@@ -98,6 +112,10 @@ namespace wikibellum.Client.Pages
         {
             JSRuntime.InvokeVoidAsync("setBelligerentsHeight");
             
+        }
+        private async Task<IEnumerable<Result>> SearchResults(string searchText)
+        {
+            return await Task.FromResult(_results.Where(x => x.Description.ToLower().StartsWith(searchText.ToLower())).ToList());
         }
     }
 }
