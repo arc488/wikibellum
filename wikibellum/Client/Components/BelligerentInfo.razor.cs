@@ -18,7 +18,6 @@ namespace wikibellum.Client.Components
     {
         [Parameter]
         public EventParticipant Belligerent { get; set; }
-
         [Inject]
         private IEventParticipantDataService EventParticipantDataService { get; set; }
         [Inject]
@@ -94,7 +93,6 @@ namespace wikibellum.Client.Components
         {
             EventParticipantDataService.Update(Belligerent.EventParticipantId, Belligerent);
             StateHasChanged();
-
         }
     }
 

@@ -44,27 +44,39 @@ else
 
                         <div class="form-group">
                             <h6>Results</h6>
-                            <button @onclick="AddResult" class="btn btn-primary mx-auto d-block my-2">Add</button>
-                            @if (Event.Results.Count < 1)
-                            {
-                                <p>No results</p>
-                            }
-                            else
-                            {
-                                @foreach (var result in Event.Results)
+                            <div class="input-group input-group-sm">
+                                <BlazoredTypeahead Context="TypeHeadContext" @bind-Value="_selectedResult" SearchMethod="SearchResults">
+                                    <SelectedTemplate>
+                                        @TypeHeadContext.Description
+                                    </SelectedTemplate>
+                                    <ResultTemplate>
+                                        @TypeHeadContext.Description (@TypeHeadContext.ResultId)
+                                        <button class="btn btn-sm btn-primary" @onclick="@(e => AddResultToEvent(TypeHeadContext.ResultId))">Add</button>
+                                    </ResultTemplate>
+                                    <NotFoundTemplate>
+                                        <button class="btn btn-sm btn-primary" @onclick="@(CreateResult)">Create Result</button>
+                                    </NotFoundTemplate>
+                                </BlazoredTypeahead>
+                            </div>
+                                @if (Event.Results.Count < 1)
                                 {
+
+                                }
+                                else
+                                {
+                                    @for (int i = 0; i < Event.Results.Count; i++)
                                     {
-                                    <div class="input-group input-group-sm">
-                                        <input @bind="@result.Description" @onfocusout="@(e => UpdateResultChanges(result))" class="form-control" />
-                                        <button @onclick="@(e => DeleteResult(result.ResultId))" type="button" class="btn btn-danger btn-circle">
+                                    <div>
+                                        @Event.Results[i].Description
+                                        <button @onclick="@(e => DeleteResult(Event.Results[i]))" class="btn btn-danger btn-circle">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </div>
 
-                                    }
+
                                 }
-                            }
-                        </div>
+                                }
+                            </div>
 
                         <hr>
 
@@ -73,6 +85,14 @@ else
                                 <label id="locationName">Location name</label>
                                 <div class="input-group input-group-sm">
                                     <input id="locationName" @bind="Event.Location.Name" @onfocusout="@(e => UpdateLocationChanges())" class="form-control" />
+                                </div>
+                                <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Name)" /></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label id="locationName">Raw Coordinate Text</label>
+                                <div class="input-group input-group-sm">
+                                    <input id="locationName" @onchange="@(e => ConvertToCoordinates(e.Value.ToString()))" class="form-control" />
                                 </div>
                                 <div><ValidationMessage class="text-danger" For="@(() => Event.Location.Name)" /></div>
                             </div>
@@ -120,7 +140,7 @@ else
                         <div class="form-group">
                             <label id="description">description</label>
                             <div class="input-group input-group-sm">
-                                <textarea id="description" @bind="Event.Description" @onfocusout="@(e => UpdateEventChanges())" type="text" asp-for="title" class="form-control"  />
+                                <textarea id="description" @bind="Event.Description" @onfocusout="@(e => UpdateEventChanges())" type="text" asp-for="title" class="form-control" />
                             </div>
                             <div><ValidationMessage class="text-danger" For="@(() => Event.Description)" /></div>
                         </div>
@@ -136,4 +156,3 @@ else
 
     </div>
 }
-

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace wikibellum.Entities
@@ -8,7 +9,6 @@ namespace wikibellum.Entities
     {
         public int ResultId { get; set; }
         public string Description { get; set; }
-        public int EventId { get; set; }
 
     }
 }

@@ -31,6 +31,14 @@ namespace wikibellum.Data
             return entries;
         }
 
+        public async override Task<EntityState> Update(Event entity)
+        {
+            var state =_entries.Update(entity);
+
+            await _context.SaveChangesAsync();
+
+            return state.State;
+        }
         public async override Task<Event> Get(int id)
         {
             var entry = _entries.Include(e => e.Location)
@@ -56,5 +64,6 @@ namespace wikibellum.Data
             _context.SaveChanges();
             return state;
         }
+
     }
 }

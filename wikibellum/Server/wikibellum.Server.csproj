@@ -14,7 +14,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\wikibellum.Data\wikibellum.Data.csproj" />
     <ProjectReference Include="..\Client\wikibellum.Client.csproj" />
-    <ProjectReference Include="..\Shared\wikibellum.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using wikibellum.Client.Components;
+using wikibellum.Client.Helpers;
 using wikibellum.Client.Services;
 using wikibellum.Entities;
 using wikibellum.Entities.Enums;
@@ -37,9 +39,13 @@ namespace wikibellum.Client.Pages
         public int ParticipantIndex { get; set; }
 
         private List<Event> _events;
-
+        private List<Result> _results;
+        private Result _selectedResult;
+        private string _resultString;
         protected async override Task OnInitializedAsync()
         {
+            _results = await ResultDataService.GetAll();
+
             if (EventId == 0)
             {
                 Event = await EventDataService.Add(new Event());
@@ -54,24 +60,32 @@ namespace wikibellum.Client.Pages
 
         protected async void AddParticipant()
         {
-            var newParticipant = await EventParticipantDataService.Add(new EventParticipant() { EventId = Event.EventId }  );
+            var newParticipant = await EventParticipantDataService.Add(new EventParticipant() { EventId = Event.EventId });
             Event.Participants.Add(newParticipant);
             UpdateEventChanges();
             StateHasChanged();
         }
 
-        protected async void AddResult()
+        protected async Task AddResultToEvent(int id)
         {
-            var result = await ResultDataService.Add(new Result() { EventId = Event.EventId });
+            var result = _results.FirstOrDefault(r => r.ResultId == id);
             Event.Results.Add(result);
             UpdateEventChanges();
             StateHasChanged();
         }
 
-        protected async Task DeleteResult(int id)
+        protected async Task CreateResult()
         {
-            await ResultDataService.Delete(id);
-            Event.Results.Remove(Event.Results.Find(r => r.ResultId == id));
+            var result = await ResultDataService.Add(new Result { Description = _resultString });
+            Event.Results.Add(result);
+            UpdateEventChanges();
+            _results = await ResultDataService.GetAll();
+            StateHasChanged();
+
+        }
+        protected async Task DeleteResult(Result result)
+        {
+            Event.Results.Remove(result);
             UpdateEventChanges();
             StateHasChanged();
         }
@@ -90,14 +104,31 @@ namespace wikibellum.Client.Pages
             EventDataService.Update(Event.EventId, Event);
         }
 
-        protected void UpdateResultChanges(Result result)
-        {
-            ResultDataService.Update(result.ResultId, result);
-        }
         protected override void OnAfterRender(bool firstRender)
         {
             JSRuntime.InvokeVoidAsync("setBelligerentsHeight");
-            
+
+        }
+
+        private async void ConvertToCoordinates(string rawString)
+        {
+            Dictionary<string, double> coords = new Dictionary<string, double>();
+            try
+            {
+                coords = Coordinates.ConvertCoordinates(rawString);
+                Event.Location.Lat = coords["lat"];
+                Event.Location.Long = coords["lng"];
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("Could not parse these coordinates");
+                Debug.WriteLine(e.Message);
+            }
+        }
+        private async Task<IEnumerable<Result>> SearchResults(string searchText)
+        {
+            _resultString = searchText;
+            return await Task.FromResult(_results.Where(x => x.Description.ToLower().StartsWith(searchText.ToLower())).ToList());
         }
     }
 }

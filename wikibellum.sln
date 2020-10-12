@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Server", "wikibe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Client", "wikibellum\Client\wikibellum.Client.csproj", "{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Shared", "wikibellum\Shared\wikibellum.Shared.csproj", "{C459DABE-9D4E-4071-ADCE-264BD835051F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wikibellum.Shared", "wikibellum.Shared\wikibellum.Shared.csproj", "{3628D637-F025-435A-B212-5B2FB83A513A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,10 +57,10 @@ Global
 		{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C459DABE-9D4E-4071-ADCE-264BD835051F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C459DABE-9D4E-4071-ADCE-264BD835051F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C459DABE-9D4E-4071-ADCE-264BD835051F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C459DABE-9D4E-4071-ADCE-264BD835051F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3628D637-F025-435A-B212-5B2FB83A513A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3628D637-F025-435A-B212-5B2FB83A513A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3628D637-F025-435A-B212-5B2FB83A513A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3628D637-F025-435A-B212-5B2FB83A513A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

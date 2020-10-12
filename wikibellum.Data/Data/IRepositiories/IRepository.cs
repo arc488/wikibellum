@@ -12,7 +12,7 @@ namespace wikibellum.Data
         Task<EntityState> Create(TEntity entity);
         Task<TEntity> Get(int id);
         Task<IEnumerable<TEntity>> GetAll();
-        EntityState Update(TEntity entity);
+        Task<EntityState> Update(TEntity entity);
         EntityState Delete(TEntity entity);
     }
 }

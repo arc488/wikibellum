@@ -44,7 +44,7 @@ namespace wikibellum.Data
             return entities;
         }
 
-        public virtual EntityState Update(TEntity entity)
+        public async virtual Task<EntityState> Update(TEntity entity)
         {
             var entry = _entries.Update(entity);
             _context.SaveChanges();
