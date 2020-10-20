@@ -25,6 +25,7 @@ namespace wikibellum.Entities.Models.Units
         {
             get
             {
+                if (Unit == null) return String.Empty;
                 string formatString = Amount ==  0 ? "{1}" : "{0} {1}";
                 var displayName = string.Format(formatString, new[] { Amount.ToString(), Unit.Name }) ;
                 if (AssetType == AssetType.Loss) displayName = string.Format("{0} {1}", displayName, Condition.Name.ToLower());
@@ -43,3 +44,4 @@ namespace wikibellum.Entities.Models.Units
         Loss
     }
 }
+

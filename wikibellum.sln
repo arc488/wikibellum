@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Server", "wikibe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Client", "wikibellum\Client\wikibellum.Client.csproj", "{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wikibellum.Shared", "wikibellum.Shared\wikibellum.Shared.csproj", "{3628D637-F025-435A-B212-5B2FB83A513A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Shared", "wikibellum.Shared\wikibellum.Shared.csproj", "{3628D637-F025-435A-B212-5B2FB83A513A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "armaschema.Parser", "armaschema.Parser\armaschema.Parser.csproj", "{EB16ED22-BA0E-46FE-B2C4-9A893C22305A}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "wikibellum.scraper", "wikibellum.scraper\wikibellum.scraper.pyproj", "{1E87481B-E1EF-4D17-A4EF-257F2917189C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +65,12 @@ Global
 		{3628D637-F025-435A-B212-5B2FB83A513A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3628D637-F025-435A-B212-5B2FB83A513A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3628D637-F025-435A-B212-5B2FB83A513A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB16ED22-BA0E-46FE-B2C4-9A893C22305A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB16ED22-BA0E-46FE-B2C4-9A893C22305A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB16ED22-BA0E-46FE-B2C4-9A893C22305A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB16ED22-BA0E-46FE-B2C4-9A893C22305A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E87481B-E1EF-4D17-A4EF-257F2917189C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E87481B-E1EF-4D17-A4EF-257F2917189C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

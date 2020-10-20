@@ -38,7 +38,6 @@ namespace wikibellum.Client.Components
         private IEnumerable<Nation> _alliedNations;
         private IEnumerable<Nation> _axisNations;
 
-
         protected async override Task OnInitializedAsync()
         {
             _alliances = await AllianceDataService.GetAll();

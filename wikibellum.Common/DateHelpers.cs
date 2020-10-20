@@ -4,9 +4,10 @@ using System.Text;
 
 namespace wikibellum.Common
 {
-    public class DateHelpers
+    public static class DateHelpers
     {
-        public bool DateIsWithinBounds(DateTime currentDate, DateTime startDate, DateTime endDate)
+
+        public static bool DateIsWithinBounds(DateTime currentDate, DateTime startDate, DateTime endDate)
         {
             if (!(startDate.Year <= currentDate.Year && currentDate.Year <= endDate.Year))
             {
@@ -21,5 +22,19 @@ namespace wikibellum.Common
                 return false;
             }
         }
+
+        public static bool IsDate(string date)
+        {
+            try
+            {
+                DateTime dt = DateTime.Parse(date);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }
