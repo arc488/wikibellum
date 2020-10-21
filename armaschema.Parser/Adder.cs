@@ -2,37 +2,78 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using wikibellum.Data;
+using wikibellum.Entities;
 
 namespace armaschema.Parser
 {
     public class Adder
     {
-        public void ParseJson()
+        private readonly IEventRepository _eventRepository;
+
+        public Adder(IEventRepository eventRepository)
         {
-            var jsonText = File.ReadAllText(@"F:\Projects\pythonscraper\db.json");
-            JObject json = JObject.Parse(jsonText);
-            List<Dto> dtos = new List<Dto>();
-            Console.WriteLine("Hello World");
-            foreach (var item in json)
+            _eventRepository = eventRepository;
+        }
+
+        public void Test()
+        {
+            Debug.WriteLine("This is a test");
+            Debug.WriteLine(_eventRepository);
+        }
+
+        public List<Event> DtoToEvent(List<Dto> dtos)
+        {
+            List<Event> events = new List<Event>();
+            foreach (var dto in dtos)
             {
-                var dto = JsonConvert.DeserializeObject<Dto>(item.Value.First.First.ToString());
-                dtos.Add(dto);
-                Console.WriteLine(dto);
+                var battle = new Event()
+                {
+                    Title = dto.name,
+                    Linkline = dto.linkline,              
+                    Location = new Location()
+                    {
+                        Lat = dto.coordinates[0],
+                        Long = dto.coordinates[1],
+                        Name = dto.basics.location
+                    },
+                    Start = DateTime.Parse(dto.basics.start),
+                    End = DateTime.Parse(dto.basics.end),
+                    DateFlagged = dto.basics.flagged,
+                    Source = dto.source
+                };
+                foreach (var item in dto.basics.results)
+                {
+                    var result = new Result()
+                    {
+                        Description = item
+                    };
+                    battle.Results.Add(result);
+                }
+                events.Add(battle);
             }
+            return events;
+        }
+
+        public List<Dto> ParseJson()
+        {
+            var jsonText = File.ReadAllText(@"F:\Projects\pythonscraper\exported.json");
+            //var dtos = new List<Dto>();
+            //var json = JObject.Parse(jsonText);
+            //foreach (var item in json)
+            //{
+            //    var dto = JsonConvert.DeserializeObject<Dto>(item.ToString());
+            //    dtos.Add(dto);
+            //}
+            var dtos = JsonConvert.DeserializeObject<List<Dto>>(jsonText);
+            //var dtos = System.Text.Json.JsonSerializer.Deserialize<List<Dto>>(jsonText);
 
             foreach (var dto in dtos)
             {
-                Console.WriteLine("---------");
-                Console.WriteLine(dto.linkline);
-                Console.WriteLine(dto.name);
-                Console.WriteLine(dto.coordinates[0] + " " + dto.coordinates[1]);
-                Console.WriteLine(dto.basics.start);
-                Console.WriteLine(dto.basics.end);
-                Console.WriteLine(dto.basics.flagged);
-                Console.WriteLine(dto.basics.location);
                 if (dto.basics.results != null)
                 {
                     foreach (var item in dto.basics.results)
@@ -42,6 +83,8 @@ namespace armaschema.Parser
                 }
                 Console.WriteLine(dto.source);
             }
+
+            return dtos;
         }
 
     }
@@ -50,7 +93,7 @@ namespace armaschema.Parser
     {
         public int linkline { get; set; }
         public string name { get; set; }
-        public string[] coordinates { get; set; }
+        public double[] coordinates { get; set; }
         public Basics basics { get; set; }
         public string source { get; set; }
 
@@ -59,8 +102,8 @@ namespace armaschema.Parser
     public class Basics
     {
         public string date { get; set; }
-        public DateTime start { get; set; }
-        public DateTime end { get; set; }
+        public string start { get; set; }
+        public string end { get; set; }
         public bool flagged { get; set; }
         public string location { get; set; }
         public string[] results { get; set; }

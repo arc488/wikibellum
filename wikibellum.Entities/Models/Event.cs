@@ -20,6 +20,8 @@ namespace wikibellum.Entities
         [Key]
         public int EventId { get; set; }
         public string Title { get; set; }
+        public int Linkline { get; set; }
+        public bool DateFlagged { get; set; }
         public DateTime Start { get; set; } = new DateTime(1939, 9, 1);
         public DateTime End { get; set; } = new DateTime(1939, 9, 1);
         public Location? Location { get; set; }
