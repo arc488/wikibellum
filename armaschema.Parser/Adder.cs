@@ -20,10 +20,12 @@ namespace armaschema.Parser
             _eventRepository = eventRepository;
         }
 
-        public void Test()
+        public void AddEvents(List<Event> events)
         {
-            Debug.WriteLine("This is a test");
-            Debug.WriteLine(_eventRepository);
+            foreach (var item in events)
+            {
+                _eventRepository.Create(item);
+            }
         }
 
         public List<Event> DtoToEvent(List<Dto> dtos)

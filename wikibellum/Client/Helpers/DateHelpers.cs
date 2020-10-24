@@ -11,6 +11,8 @@ namespace wikibellum.Client.Helpers
         {
             int startMonths = ConvertDateToMonths(startDate);
             int endMonths = ConvertDateToMonths(endDate);
+            int startDatys = ConvertDateToDays(startDate);
+            int endDays = ConvertDateToDays(endDate);
 
             if (startMonths <= totalMonths && totalMonths <= endMonths)
             {
@@ -20,15 +22,20 @@ namespace wikibellum.Client.Helpers
             {
                 return false;
             }
-
-
         }
-
+        public int ConvertDateToDays(DateTime date)
+        {
+            var span = date - new DateTime(1939, 1, 1);
+            var days = span.TotalDays;
+            var daysAsInt = (int)MathF.Round((float)days);
+            return daysAsInt;            
+        }
         public int ConvertDateToMonths(DateTime dateTime)
         {
             var year = -(1938 - dateTime.Year);
             var month = dateTime.Month;
-            return year * 12 + month;
+            var totalMonths = year * 12 + month;
+            return totalMonths;
         }
     }
 }

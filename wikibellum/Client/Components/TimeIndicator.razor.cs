@@ -54,7 +54,7 @@ namespace wikibellum.Client.Components
         }
         private readonly int _yearRangeStart = 1939;
         private readonly int _yearRangeEnd = 1945;
-
+        public bool MonthMode { get; set; }
         [Parameter]
         public EventCallback<int> DateChangeEventCallback { get; set; }
         protected override void OnInitialized()
@@ -64,8 +64,18 @@ namespace wikibellum.Client.Components
             base.OnInitialized();
         }
 
-    }
+        protected void AddMonth(int amount)
+        {
+            TotalMonths += amount;
+            DateChangeEventCallback.InvokeAsync(_totalMonths);
+        }
 
+    }
+    public enum IndicatorMode
+    {
+        Months,
+        Days
+    }
     public enum Month
     {
         January,

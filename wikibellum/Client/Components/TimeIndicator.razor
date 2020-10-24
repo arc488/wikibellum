@@ -3,7 +3,10 @@
         <div class="range-slider mt-1">
             <input class="range-slider__range" type="range" @bind-value="TotalMonths" @bind-value:event="oninput" min="13" max="96" step="1" list="ticks">
         </div>
-        <div class="time text-center mt-1 pb-3">
+        <div class="time text-center mt-1 pb-2">
+            <button @onclick="e => AddMonth(-1)" type="button" class="btn">
+                <i class="fas fa-arrow-circle-left fa-lg"></i>
+            </button>
             <select @bind="CurrentMonth" class="btn btn-dark dropdown-toggle" name="months" id="months">
                 @{int monthValue = 1; }
                 @foreach (var item in Enum.GetValues(typeof(Month)))
@@ -18,10 +21,12 @@
                 {
                     <option value="@yearValue">@year</option>
                     yearValue++;
-                    
-                }
 
+                }
             </select>
+            <button @onclick="e => AddMonth(1)"  type="button" class="btn">
+                <i class="fas fa-arrow-circle-right fa-lg"></i>
+            </button>
         </div>
     </div>
 </div>
@@ -30,6 +35,18 @@
     .btn {
         border-radius: 0;
     }
+
+    .time button {
+        font-size: 25px;
+        padding: 0;
+        padding-right: 5px;
+        padding-left: 5px;
+        color: #343a40;
+        background-color: transparent;
+        border: 0;
+        height: 40px;
+    }
+
     .range-slider {
         margin: 60px 0 0 0%;
     }

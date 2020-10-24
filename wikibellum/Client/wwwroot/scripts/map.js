@@ -21,8 +21,8 @@ window.broadcastEventId = (dotNetObject) => {
 window.removeAllMarkers = () => {
     for (var i = 0; i < currentMarkers.length; i++) {
         currentMarkers[i].remove();
-        currentMarkers.splice(i, 1);
     }
+    currentMarkers.length = 0;
 }
 
 window.setEventJs = (id) => {

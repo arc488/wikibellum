@@ -25,6 +25,7 @@ namespace armaschema.Parser
             var adder = new Adder(serviceProvider.GetService<IEventRepository>());
             var dtos = adder.ParseJson();
             var events = adder.DtoToEvent(dtos);
+            adder.AddEvents(events);
 
         }
     }
