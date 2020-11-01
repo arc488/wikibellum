@@ -7,14 +7,16 @@
 else
 {
     <CascadingValue Value="_eventMarkers">
-        <div>
+        <div class="border rounded">
             <TimeIndicator DateChangeEventCallback="@TimeIndicator_OnDateChanged"></TimeIndicator>
         </div>
-        <div class="row mt-3">
-            <div class="col-md-8 border">
+        <div class="row mt-3 no-gutters">
+            <div class="col-md-8">
                 <WikiMap @ref="WikiMap" EventSelectedEventCallback="@WikiMap_OnEventSelected"></WikiMap>
             </div>
-            <EventDetail @ref="EventDetail" DateFormat="dd MMMM yyyy"></EventDetail>
+            <div class="col-md-4 overflow-auto">
+                <EventDetail @ref="EventDetail" DateFormat="dd MMMM yyyy"></EventDetail>
+            </div>
         </div>
     </CascadingValue>
 }

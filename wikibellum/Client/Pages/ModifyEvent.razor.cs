@@ -58,6 +58,11 @@ namespace wikibellum.Client.Pages
 
         }
 
+        private void ChangeEvent(int direction)
+        {
+            var index = _events.FindIndex(e => e.EventId == Event.EventId);
+            Event = _events[index + direction];
+        }
         protected async void AddParticipant()
         {
             var newParticipant = await EventParticipantDataService.Add(new EventParticipant() { EventId = Event.EventId });
@@ -83,8 +88,10 @@ namespace wikibellum.Client.Pages
             StateHasChanged();
 
         }
-        protected async Task DeleteResult(Result result)
+        protected async Task DeleteResult(int resultId)
         {
+            ResultDataService.Delete(resultId);
+            var result = Event.Results.FirstOrDefault(r => r.ResultId == resultId);
             Event.Results.Remove(result);
             UpdateEventChanges();
             StateHasChanged();

@@ -1,12 +1,19 @@
-﻿<div class="row">
-    <div class="col border rounded">
-        <div class="range-slider mt-1">
-            <input class="range-slider__range" type="range" @bind-value="TotalMonths" @bind-value:event="oninput" min="13" max="96" step="1" list="ticks">
-        </div>
-        <div class="time text-center mt-1 pb-2">
-            <button @onclick="e => AddMonth(-1)" type="button" class="btn">
+﻿
+
+<div class="row">
+        <div class="col-md-9 time text-center mt-1 pb-2">
+            <button @onclick="e => IncrementDate(-1)" type="button" class="btn next-previous">
                 <i class="fas fa-arrow-circle-left fa-lg"></i>
             </button>
+            @if (Mode == IndicatorMode.Days)
+            {
+                <select @bind="CurrentDay" class="btn btn-dark dropdown-toggle" name="days" id="days">
+                    @for (int day = 1; day <= DateTime.DaysInMonth(CurrentYear, CurrentMonth); day++)
+                    {
+                        <option value="@day">@day</option>
+                    }
+                </select>
+            }
             <select @bind="CurrentMonth" class="btn btn-dark dropdown-toggle" name="months" id="months">
                 @{int monthValue = 1; }
                 @foreach (var item in Enum.GetValues(typeof(Month)))
@@ -16,27 +23,63 @@
                 }
             </select>
             <select @bind="CurrentYear" class="btn btn-dark dropdown-toggle" name="years" id="years">
-                @{ int yearValue = 1; }
                 @for (int year = _yearRangeStart; year <= _yearRangeEnd; year++)
                 {
-                    <option value="@yearValue">@year</option>
-                    yearValue++;
-
+                    <option value="@year">@year</option>
                 }
             </select>
-            <button @onclick="e => AddMonth(1)"  type="button" class="btn">
+            <button @onclick="e => IncrementDate(1)" type="button" class="btn next-previous">
                 <i class="fas fa-arrow-circle-right fa-lg"></i>
             </button>
+
+
+        </div>
+        <div class="col-md-3 time text-center pt-2">
+            @{
+                string activeClasses = "btn-primary active";
+                string inactiveClasses = "btn-default";
+
+            }
+            <div class="mode btn-group btn-toggle">
+                <button @onclick="e => ChangeMode(IndicatorMode.Months)" class="btn @(Mode == IndicatorMode.Months ? activeClasses : inactiveClasses)">Months</button>
+                <button @onclick="e => ChangeMode(IndicatorMode.Days)" class="btn @(Mode == IndicatorMode.Days ? activeClasses : inactiveClasses)">Days</button>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="row range-slider mt-1 px-3">
+        <input class="range-slider__range" type="range" @bind-value="IndicatorValue" @bind-value:event="oninput" min="@MinRange" max="@MaxRange" step="@StepValue" list="ticks">
+    </div>
+
+    <div class="row mt-1 text-center">
+        <div class="col-md-9">
+            <button @onclick="e => Play(-1)" type="button" class="btn control @(IsActive(-1) == true ? "text-success" : "") ">
+                <i class="fas fa-backward"></i>
+            </button>
+            <button @onclick="e => Play(-2)" type="button" class="btn control @(IsActive(-2) == true ? "text-success" : "") ">
+                <i class="fas fa-play fa-flip-horizontal"></i>
+            </button>
+            <button @onclick="e => Stop()" type="button" class="btn control @(_timer != null && _timer.Enabled == false ? "text-success" : "") ">
+                <i class="fas fa-pause"></i>
+            </button>
+            <button @onclick="e => Play(2)" type="button" class="btn control @(IsActive(2) == true ? "text-success" : "") ">
+                <i class="fas fa-play"></i>
+            </button>
+            <button @onclick="e => Play(1)" type="button" class="btn control @(IsActive(1) == true ? "text-success" : "") ">
+                <i class="fas fa-forward"></i>
+            </button>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
 
 <style>
     .btn {
         border-radius: 0;
     }
 
-    .time button {
+    .time .next-previous {
         font-size: 25px;
         padding: 0;
         padding-right: 5px;
@@ -45,6 +88,25 @@
         background-color: transparent;
         border: 0;
         height: 40px;
+    }
+
+    .control {
+        font-size: 25px;
+        color: #343a40;
+        background-color: transparent;
+        border: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .time .mode button:first-of-type {
+        border: 1px solid grey;
+        border-radius: 10px 0px 0px 10px;
+    }
+
+    .time .mode button:last-of-type {
+        border: 1px solid grey;
+        border-radius: 0px 10px 10px 0px;
     }
 
     .range-slider {

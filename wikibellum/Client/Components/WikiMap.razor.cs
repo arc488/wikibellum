@@ -37,12 +37,11 @@ namespace wikibellum.Client.Components
             } 
         }
         private int _currentEventId = 0;
-        private int _totalMonths = 13;
         private bool _shouldRender;
+        public DateTime CurrentDate { get; set; } = new DateTime(1939, 1, 1);
 
         protected async override Task OnInitializedAsync()
         {
-            _totalMonths = 13;
             _shouldRender = true;
         }
 
@@ -61,22 +60,18 @@ namespace wikibellum.Client.Components
             }
         }
 
-        public void UpdateTotalMonths(int totalMonths)
+        public void OnDateChanged(DateChangeData data)
         {
-            _totalMonths = totalMonths;
-            OnDateChanged();
-        }
-        protected void OnDateChanged()
-        {
-            AddNewMarkers();
+            CurrentDate = data.Date;
+            AddNewMarkers(data);
         }
 
-        protected void AddNewMarkers()
+        protected void AddNewMarkers(DateChangeData data)
         {
             var currentEvents = new List<EventMarker>();
             foreach (var item in EventMarkers)
             {
-                if (DateHelpers.DateIsWithinBounds(_totalMonths, item.Start, item.End))
+                if (IsWithinBounds(data, item))
                 {
                     currentEvents.Add(item);
                 }
@@ -85,6 +80,38 @@ namespace wikibellum.Client.Components
             JSRuntime.InvokeVoidAsync("removeAllMarkers");
             JSRuntime.InvokeVoidAsync("addCurrentEvents", currentEvents);
 
+        }
+
+        protected bool IsWithinBounds(DateChangeData data, EventMarker marker)
+        {
+           
+            Dictionary<string, int> bounds = new Dictionary<string, int>();
+            DateTime date = data.Date;
+            int asDays = (int)TimeSpan.FromTicks(date.Ticks).TotalDays;
+
+            if (data.Mode == IndicatorMode.Months)
+            {
+                DateTime monthStart = new DateTime(marker.Start.Year, marker.Start.Month, 1);
+                DateTime monthEnd = new DateTime(marker.End.Year, marker.End.Month, DateTime.DaysInMonth(marker.End.Year, marker.End.Month));
+                int lower = (int)TimeSpan.FromTicks(monthStart.Ticks).TotalDays;
+                int upper = (int)TimeSpan.FromTicks(monthEnd.Ticks).TotalDays;
+                bounds.Add("lower", lower);
+                bounds.Add("upper", upper); 
+            }
+            else if (data.Mode == IndicatorMode.Days)
+            {
+                int lower = (int)TimeSpan.FromTicks(marker.Start.Ticks).TotalDays;
+                int upper = (int)TimeSpan.FromTicks(marker.End.Ticks).TotalDays;
+                bounds.Add("lower", lower);
+                bounds.Add("upper", upper); 
+            }
+
+            if (bounds["lower"] <= asDays && asDays <= bounds["upper"])
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

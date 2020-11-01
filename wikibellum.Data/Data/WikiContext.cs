@@ -41,6 +41,7 @@ namespace wikibellum.Data
         public DbSet<Result> Result { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Unit> Units { get; set; }
+        public DbSet<Report> Reports { get; set; }
 
 
 

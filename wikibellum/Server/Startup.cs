@@ -66,6 +66,7 @@ namespace wikibellum.Server
             services.AddScoped<IEventAnonymousRepository, EventAnonymousRepository>();
             services.AddScoped<IAssetRepository, AssetRepository>();
             services.AddScoped<IUnitRepository, UnitRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
 
 
 

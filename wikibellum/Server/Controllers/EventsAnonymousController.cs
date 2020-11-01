@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using wikibellum.Data;
 using wikibellum.Data.Data.IRepositiories;
 using wikibellum.Entities;
+using wikibellum.Entities.Models;
 using wikibellum.Entities.ViewModels;
 
 namespace wikibellum.Server.Controllers
@@ -18,18 +19,20 @@ namespace wikibellum.Server.Controllers
     [ApiController]
     public class EventsAnonymousController : ControllerBase
     {
-        private readonly IEventAnonymousRepository _repo;
+        private readonly IEventAnonymousRepository _eventRepo;
+        private readonly IReportRepository _reportRepository;
 
-        public EventsAnonymousController(IEventAnonymousRepository repo)
+        public EventsAnonymousController(IEventAnonymousRepository repo, IReportRepository reportRepository)
         {
-            _repo = repo;
+            _eventRepo = repo;
+            _reportRepository = reportRepository;
         }
 
         [HttpGet]
         [AllowAnonymous]
         public async Task<IEnumerable<EventMarker>> GetEvents()
         {
-            var events = await _repo.GetAll();
+            var events = await _eventRepo.GetAll();
             var eventMarkers = new List<EventMarker>();
             foreach (var item in events)
             {
@@ -56,11 +59,19 @@ namespace wikibellum.Server.Controllers
             return eventMarkers;
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<EntityState> PostReport(Report report)
+        {
+            var state = await _reportRepository.Create(report);
+            return state;
+        }
+
         [HttpGet("{id}")]
         [AllowAnonymous]
         public async Task<ActionResult<Event>> GetEvent(int id)
         {
-            var @event = await _repo.Get(id);
+            var @event = await _eventRepo.Get(id);
 
             if (@event == null)
             {

@@ -29,9 +29,9 @@ namespace wikibellum.Client.Pages
         {
             _eventMarkers = await EventAnonymousDataService.GetAll();
         }
-        private void TimeIndicator_OnDateChanged(int totalMonths)
+        private void TimeIndicator_OnDateChanged(DateChangeData data)
         {
-            WikiMap.UpdateTotalMonths(totalMonths);
+            WikiMap.OnDateChanged(data);
         }
        
         private async void WikiMap_OnEventSelected(int id)

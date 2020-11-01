@@ -13,6 +13,8 @@
 }
 else
 {
+    <button @onclick="e => ChangeEvent(-1)">Previous</button>
+    <button @onclick="e => ChangeEvent(1)">Next</button>
     <div id="details">
         <div class="container">
             <EditForm Model="@Event">
@@ -58,25 +60,25 @@ else
                                     </NotFoundTemplate>
                                 </BlazoredTypeahead>
                             </div>
-                                @if (Event.Results.Count < 1)
-                                {
+                            @if (Event.Results.Count < 1)
+                            {
 
-                                }
-                                else
+                            }
+                            else
+                            {
+                                @foreach (var result in Event.Results)
                                 {
-                                    @for (int i = 0; i < Event.Results.Count; i++)
-                                    {
                                     <div>
-                                        @Event.Results[i].Description
-                                        <button @onclick="@(e => DeleteResult(Event.Results[i]))" class="btn btn-danger btn-circle">
+                                        @result.Description
+                                        <button @onclick="@(e => DeleteResult(result.ResultId))" class="btn btn-danger btn-circle">
                                             <i class="fa fa-times"></i>
                                         </button>
                                     </div>
 
 
                                 }
-                                }
-                            </div>
+                            }
+                        </div>
 
                         <hr>
 

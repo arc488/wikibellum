@@ -1,170 +1,183 @@
-﻿<div class="col-md-4 border overflow-auto">
+﻿<div class="rubric border rounded">
+
     @if (_currentEvent == null)
     {
-        <p>Click map marker to view details</p>
+        <div class="text-center">
+            <p>Click map marker to view details</p>
+        </div>
     }
     else
     {
-<div class="rubric">
-    <div id="basic" class="text-center">
-        <div class="row">
-            <div id="title" class="col">
-                @_currentEvent.Title
+        <div id="basic" class="text-center">
+            <div class="mt-1">
+                <div id="title" class="col">
+                    @_currentEvent.Title
+                </div>
+            </div>
+            <div class="mt-1">
+                <div id="location " class="col">
+                    @_currentEvent.Location.Name
+                </div>
+            </div>
+            <div class="mt-1">
+                <div id="duration " class="col">
+                    @_currentEvent.Start.ToString(DateFormat) – @_currentEvent.End.ToString(DateFormat)
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div id="location " class="col">
-                @_currentEvent.Location.Name
+        <div id="result">
+            <div class="mt-1">
+                <div class="col header">
+                    Result
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div id="duration " class="col">
-                @_currentEvent.Start.ToString(DateFormat) – @_currentEvent.End.ToString(DateFormat)
+            <div class="mt-1">
+                <div class="col">
+                    <ul>
+                        @foreach (var item in _currentEvent.Results.Where(i => !String.IsNullOrWhiteSpace(i.Description)))
+                        {
+                            <li>@item.Description</li>
+                        }
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
-    <div id="result">
-        <div class="row">
-            <div class="col header">
-                Result
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <ul>
-                    @foreach (var item in _currentEvent.Results.Where(i => !String.IsNullOrWhiteSpace(i.Description)))
-                    {
-                        <li>@item.Description</li>
-                    }
-                </ul>
-            </div>
-        </div>
 
-    </div>
-    <div id="belligerents">
-        <div class="row">
-            <div class="col header">
-                Belligerents
-            </div>
         </div>
-        @foreach (var item in _currentEvent.Participants)
+        @if (1 < 0)
         {
-            <div class="belligerent">
-                <div class="row">
-                    <div class="col text-center font-weight-bolder">
-                        @item.Nation.Name
+            <div id="belligerents">
+                <div class="">
+                    <div class="col header">
+                        Belligerents
                     </div>
                 </div>
-                <div class="row assets no-gutters">
-                    <div class="col">
-                        <div class="strength h-100">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Strength</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var asset in item.Assets.Where(a => a.AssetType == AssetType.Strength))
-                                    {
-                                        <tr>
-                                            <td>@asset.DisplayName</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
+                @foreach (var item in _currentEvent.Participants)
+                {
+                    <div class="belligerent">
+                        <div class="">
+                            <div class="col text-center font-weight-bolder">
+                                @item.Nation.Name
+                            </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="losses h-100">
-                            <table class="table table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Losses</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var asset in item.Assets.Where(a => a.AssetType == AssetType.Loss))
-                                    {
-                                        <tr>
-                                            <td>@asset.DisplayName</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                        <div class=" assets no-gutters">
+                            <div class="col">
+                                <div class="strength h-100">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Strength</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var asset in item.Assets.Where(a => a.AssetType == AssetType.Strength))
+                                            {
+                                                <tr>
+                                                    <td>@asset.DisplayName</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="losses h-100">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Losses</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var asset in item.Assets.Where(a => a.AssetType == AssetType.Loss))
+                                            {
+                                                <tr>
+                                                    <td>@asset.DisplayName</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
 
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+
+                }
+
             </div>
-
 
         }
-
-    </div>
-    <div class="row">
-        <div class="col">
-            Source: <a href="@_currentEvent.Source">Wikipedia</a>
+        <div class="mt-1">
+            <div class="col">
+                <button @onclick="ShowReportErrorDialog" class="btn btn-warning">Report Error</button>
+            </div>
         </div>
-    </div>
-</div>
+        <div class="mt-1">
+            <div class="col">
+                Source: <a href="@_currentEvent.Source">Wikipedia</a>
+            </div>
+        </div>
     }
 </div>
 
+<ReportError @ref="ReportErrorDialog"></ReportError>
 
 <style>
-    .rubric {
-        height: 500px;
-    }
+        .rubric {
+            height: 500px;
+        }
 
-        .rubric #basic {
+            .rubric #basic {
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+
+            .rubric .row {
+                margin-top: 0.3rem;
+            }
+
+        #title {
+            background: #F05D5E;
+        }
+
+        #result {
+            margin-top: 0.5rem;
+        }
+
+        .header {
+            text-align: center;
+            background: #EEF5DB;
             font-weight: 600;
             font-size: 1.1rem;
         }
 
-        .rubric .row {
-            margin-top: 0.3rem;
+        #belligerents h6 {
+            text-align: center;
         }
 
-    #title {
-        background: #F05D5E;
-    }
+        #belligerents .assets {
+            font-size: 1rem;
+        }
 
-    #result {
-        margin-top: 0.5rem;
-    }
+        .source {
+            overflow-wrap: anywhere;
+            font-size: medium;
+        }
 
-    .header {
-        text-align: center;
-        background: #EEF5DB;
-        font-weight: 600;
-        font-size: 1.1rem;
-    }
+        .strength {
+            /*        background: #e6e6e6;
+    */
+        }
 
-    #belligerents h6 {
-        text-align: center;
-    }
+        .losses {
+            /*        background: #ffeeec;
+    */
+        }
 
-    #belligerents .assets {
-        font-size: 1rem;
-    }
-
-    .source {
-        overflow-wrap: anywhere;
-        font-size: medium;
-    }
-
-    .strength {
-/*        background: #e6e6e6;
-*/    }
-
-    .losses {
-/*        background: #ffeeec;
-*/    }
-
-    .belligerent {
-        margin-top: 0.4rem;
-        border-top: 1px dotted black;
-        border-bottom: 1px dotted black;
-    }
+        .belligerent {
+            margin-top: 0.4rem;
+            border-top: 1px dotted black;
+            border-bottom: 1px dotted black;
+        }
 </style>

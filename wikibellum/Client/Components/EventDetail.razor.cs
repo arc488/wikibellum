@@ -11,12 +11,19 @@ namespace wikibellum.Client.Components
     {
         [Parameter]
         public string DateFormat { get; set; }
+        public ReportError ReportErrorDialog { get; set; }
         private Event _currentEvent;
+
 
         public void DisplayEventDetail(Event currentEvent)
         {
             _currentEvent = currentEvent;
             StateHasChanged();
+        }
+
+        private void ShowReportErrorDialog()
+        {
+            ReportErrorDialog.Show(_currentEvent.EventId);
         }
     }
 }
