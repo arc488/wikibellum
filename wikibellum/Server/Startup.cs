@@ -14,7 +14,7 @@ using System.Linq;
 using wikibellum.Data;
 using wikibellum.Data.Data.IRepositiories;
 using wikibellum.Data.Data;
-using wikibellum.Entities.Data;
+using wikibellum.Entities;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Linq.Expressions;
 using Microsoft.AspNetCore.Authorization;
