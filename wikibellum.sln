@@ -9,14 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Common", "wikibe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Data", "wikibellum.Data\wikibellum.Data.csproj", "{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Api", "wikibellum.Api\wikibellum.Api.csproj", "{60F7CAAC-2A2D-47B0-ACB1-D6AFE29C9AE7}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5} = {C449DD23-0644-498E-9AE6-41CA5BA4F2D5}
-		{51CB9CA9-DDED-41FE-BC15-C7A9594828A9} = {51CB9CA9-DDED-41FE-BC15-C7A9594828A9}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.App", "wikibellum.App\wikibellum.App.csproj", "{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Server", "wikibellum\Server\wikibellum.Server.csproj", "{84C3FEED-89A0-4D0C-868A-E9C2842C7ECD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "wikibellum.Client", "wikibellum\Client\wikibellum.Client.csproj", "{6A82FBE8-DB73-4499-BDAD-BF847AEF580A}"
@@ -43,14 +35,6 @@ Global
 		{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F50F46B-9BB3-4351-B5CB-0EF213F970B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{60F7CAAC-2A2D-47B0-ACB1-D6AFE29C9AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{60F7CAAC-2A2D-47B0-ACB1-D6AFE29C9AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{60F7CAAC-2A2D-47B0-ACB1-D6AFE29C9AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{60F7CAAC-2A2D-47B0-ACB1-D6AFE29C9AE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C449DD23-0644-498E-9AE6-41CA5BA4F2D5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{84C3FEED-89A0-4D0C-868A-E9C2842C7ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84C3FEED-89A0-4D0C-868A-E9C2842C7ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84C3FEED-89A0-4D0C-868A-E9C2842C7ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
