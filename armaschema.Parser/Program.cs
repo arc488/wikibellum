@@ -3,7 +3,7 @@ using System;
 using wikibellum.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
-using wikibellum.Entities.Data;
+using wikibellum.Entities;
 
 namespace armaschema.Parser
 {
