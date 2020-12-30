@@ -36,7 +36,7 @@ namespace wikibellum.Data
         public DbSet<Condition> Conditions { get; set; }
         public DbSet<Nation> Nations { get; set; }
         public DbSet<Alliance> Alliances { get; set; }
-        public DbSet<Asset> Assets { get; set; }
+        public DbSet<Asset> Assets { get; set; } 
         public DbSet<Result> Result { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Unit> Units { get; set; }
