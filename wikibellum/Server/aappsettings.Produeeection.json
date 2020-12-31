@@ -1,0 +1,8 @@
+{
+  "IdentityServer": {
+    "Key": {
+      "Type": "File",
+      "FilePath" :  "cert.cer"
+    }
+  }
+}
